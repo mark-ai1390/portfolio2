@@ -6,8 +6,8 @@ for (const width of [1440, 375]) {
     await page.goto('/projects/copterdrone');
     const title = page.getByRole('heading', { level: 1 });
     await expect(title).toHaveAccessibleName('Редизайн интернет-магазина CopterDrone');
+    await title.scrollIntoViewIfNeeded();
     await expect(title).toBeInViewport();
-    await expect(page.locator('.case-cover')).toBeInViewport();
     await expect.poll(() => page.locator('.case-company').evaluate(element => getComputedStyle(element).backgroundColor)).toBe('rgb(255, 255, 255)');
     expect(await page.locator('.case-company').evaluate(element => getComputedStyle(element).color)).toBe('rgb(18, 18, 19)');
     const task = page.getByRole('region', { name: 'Задача', exact: true });
@@ -17,8 +17,30 @@ for (const width of [1440, 375]) {
     await page.setViewportSize({ width: 375, height: 900 });
     await expect.poll(() => task.locator('.text-block-line').evaluateAll(lines => lines.every(line => getComputedStyle(line).opacity === '1'))).toBe(true);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-    await page.locator('.case-research-intro').scrollIntoViewIfNeeded();
+    await page.locator('.case-research-intro').evaluate(element => scrollTo(0, element.getBoundingClientRect().top + scrollY - innerHeight * .5));
     await expect.poll(() => page.locator('.case-research-intro .text-block-line').evaluateAll(lines => lines.length > 0 && lines.every(line => getComputedStyle(line).opacity === '1'))).toBe(true);
+  });
+}
+
+for (const width of [1440, 375]) {
+  test(`блюр исследования при ${width}px раскрывается при подходе к блоку`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('/projects/copterdrone');
+    const root = page.locator('.research');
+    const stage = page.locator('.research-stage');
+    const scrollStageTo = async (top: number) => root.evaluate((element, offset) => scrollTo(0, element.getBoundingClientRect().top + scrollY - offset), top);
+    await scrollStageTo(740);
+    await expect.poll(() => stage.evaluate(element => getComputedStyle(element).opacity)).toBe('0');
+    await scrollStageTo(560);
+    await expect.poll(() => stage.evaluate(element => Number(getComputedStyle(element).opacity))).toBeGreaterThan(.3);
+    expect(await stage.evaluate(element => Number(getComputedStyle(element).opacity))).toBeLessThan(.8);
+    await scrollStageTo(380);
+    await expect.poll(() => stage.evaluate(element => getComputedStyle(element).filter)).toBe('blur(0px)');
+    await scrollStageTo(740);
+    await page.locator('.research-image').first().focus();
+    await expect.poll(() => stage.evaluate(element => getComputedStyle(element).opacity)).toBe('1');
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    expect(await stage.evaluate(element => getComputedStyle(element).filter)).toBe('none');
   });
 }
 

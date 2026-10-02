@@ -17,6 +17,10 @@ function ResearchTimeline() {
     const update = () => {
       frame = 0;
       root.classList.toggle('research--pinned', desktop.matches);
+      root.classList.toggle('research--reveal', !reduced.matches);
+      const revealDistance = Math.min(320, window.innerHeight * .4);
+      const reveal = Math.max(0, Math.min(1, (window.innerHeight * .8 - root.getBoundingClientRect().top) / revealDistance));
+      root.style.setProperty('--reveal', String(reduced.matches || root.matches(':focus-within') ? 1 : reveal * reveal * (3 - 2 * reveal)));
       if (desktop.matches) {
         const distance = root.offsetHeight - root.querySelector<HTMLElement>('.research-stage')!.offsetHeight;
         const progress = Math.max(0, Math.min(1, (80 - root.getBoundingClientRect().top) / distance));
