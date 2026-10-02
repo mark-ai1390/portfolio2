@@ -20,7 +20,12 @@ export function AuthorPanel() {
           ))}
         </nav>
       </div>
-      <p className="author-name">{author.name}</p>
+      <div className="author-identity">
+        <div className="author-portrait">
+          <img src={author.portrait} alt="Марк Сангинов" width="153" height="153" />
+        </div>
+        <p className="author-name">{author.name}</p>
+      </div>
     </header>
   );
 }

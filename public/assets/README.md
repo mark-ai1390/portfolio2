@@ -1,20 +1,17 @@
 # Материалы портфолио
 
-Оригинальные экспорты сохранять здесь, без временных URL Figma.
-Макет: Portfolio 2026, Page 3, файл yojJb08rcCuEd3ZTZZYsgA.
+Источник: экспорты Figma, загруженные Марком в сессии 003. Исходные вложения не изменялись. Шесть PNG 2048×1227 сохранены для сайта как WebP (quality 92, method 6), без изменения размеров и композиции. Общий вес шести обложек примерно 1.37 MB вместо 19.72 MB исходных PNG.
 
-| Экспорт обложки | Узел Figma | Имя файла |
+| Вложение | Ресурс сайта | Состояние |
 | --- | --- | --- |
-| PrimeKraft, обычный | 417:144637 | primekraft-normal.png |
-| PrimeKraft, hover | 417:144682 | primekraft-hover.png |
-| CopterDrone, обычный | 417:144652 | copterdrone-normal.png |
-| CopterDrone, hover | 417:144697 | copterdrone-hover.png |
-| 4SALES CRM, обычный | 417:144667 | 4sales-normal.png |
-| 4SALES CRM, hover | 417:144712 | 4sales-hover.png |
+| Презентация.png | primekraft-normal.webp | PrimeKraft normal |
+| Презентация-1.png | primekraft-hover.webp | PrimeKraft hover |
+| Презентация-2.png | copterdrone-normal.webp | CopterDrone normal |
+| Презентация-3.png | copterdrone-hover.webp | CopterDrone hover |
+| Презентация-4.png | 4sales-normal.webp | 4SALES normal |
+| Презентация-5.png | 4sales-hover.webp | 4SALES hover |
+| IMG_5784.jpg | mark-portrait.jpg | Фото автора, исходные байты |
 
-Экспортировать область «Презентация» 816×489, без текста карточки.
-Для точной покадровой анимации понадобятся также исходные слои персонажей, монет и 3D-объектов; готовые экспорты дают проверяемые конечные состояния.
+Обложки — готовые композиции. CSS меняет opacity hover-изображения за 300ms (ease-out для PrimeKraft/CopterDrone, linear для CRM). Это crossfade; отдельные слои Smart Animate не воспроизводятся. На touch сохраняется normal; reduced motion отключает transition.
 
-Сессия 002: MCP читает макет и выдаёт экспорты, но скачивание curl возвращает HTML Site Unavailable. Передача PNG через use_figma возвращает обрезанную до 20 KB строку, поэтому такой файл нельзя использовать.
-
-Портрет — исходное видео/фото автора (узел 296:259702); резюме — отдельный файл или постоянная ссылка. Не заменять их случайными материалами. Экспорты, портрет и резюме пока не получены.
+Портрет кадрируется только в CSS в круг 153px, исходное фото сохранено целиком. Резюме пока нет по сообщению пользователя; временные ссылки и фиктивный файл не добавлены.

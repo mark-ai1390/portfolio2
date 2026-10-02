@@ -16,6 +16,10 @@ for (const width of [1440, 1280, 1024, 768, 390, 375]) {
     await expect(page.getByRole('link', { name: 'Email' })).toBeInViewport();
     await expect(page.getByRole('link', { name: 'Telegram' })).toBeInViewport();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+    const media = await page.locator('.project-media').first().boundingBox();
+    const cover = await page.locator('.project-cover').first().boundingBox();
+    expect(cover?.height).toBe(media?.height);
+    expect(cover?.width).toBe(media?.width);
     for (const title of ['PrimeKraft', 'CopterDrone', '4SALES CRM']) {
       await page.getByRole('heading', { name: title }).scrollIntoViewIfNeeded();
       await expect(page.getByRole('heading', { name: title })).toBeInViewport();
