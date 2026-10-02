@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { copterdrone } from '../data/copterdrone';
 import './case.css';
+import { Highlighter } from './ui/Highlighter';
 
 function ResearchTimeline() {
   const section = useRef<HTMLElement>(null);
@@ -115,6 +116,12 @@ export function CopterDroneCase() {
         <div className="case-intro">
           <h1>{copterdrone.title}</h1>
           <p>{copterdrone.introduction}</p>
+          <section className="case-task" aria-labelledby="task-title">
+            <h2 id="task-title">Задача</h2>
+            <p>{copterdrone.task.map((part, index) => 'action' in part
+              ? <Highlighter key={index} action={part.action} color={part.color} isView>{part.text}</Highlighter>
+              : part.text)}</p>
+          </section>
           <span className="case-scroll-cue" aria-hidden="true">
             <svg width="24" height="32" viewBox="0 0 24 32" fill="none">
               <path d="M12 3v24m-7-7 7 7 7-7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

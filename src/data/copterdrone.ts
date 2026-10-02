@@ -1,6 +1,15 @@
 export const copterdrone = {
   title: 'Редизайн интернет-магазина CopterDrone',
   introduction: 'CopterDrone — интернет-магазин радиоуправляемых моделей: машин, вертолётов, самолётов, танков и комплектующих.',
+  task: [
+    { text: 'Упростить ' },
+    { text: 'поиск и выбор', action: 'highlight', color: '#17685c' },
+    { text: ' радиоуправляемых моделей, сделать ' },
+    { text: 'оформление заказа', action: 'underline', color: '#1fb59c' },
+    { text: ' понятнее и обновить ' },
+    { text: 'визуальный стиль', action: 'highlight', color: '#245c55' },
+    { text: ' магазина.' },
+  ] as const,
   figma: 'https://www.figma.com/design/yojJb08rcCuEd3ZTZZYsgA/Portfolio-2026?node-id=296-239537',
   steps: [
     {

@@ -8,6 +8,10 @@
 .case-intro { position: relative; padding: 44px 0 140px; width: 100%; text-align: center; }
 .case-intro h1 { font-size: 52px; font-weight: 700; line-height: 1.12; letter-spacing: -.03em; }
 .case-intro p { max-width: 900px; font-size: 20px; line-height: 1.45; color: #cacad2; margin: 24px auto 0; }
+.case-task { max-width: 900px; margin: 48px auto 0; padding: 28px 32px; background: rgba(31, 181, 156, .045); border: 1px solid rgba(31, 181, 156, .15); border-radius: 18px; }
+.case-task h2 { margin: 0; font-size: 24px; line-height: 1.25; font-weight: 600; }
+.case-task p { margin: 16px 0 0; line-height: 1.7; color: #e4e4e9; }
+.case-highlighter { position: relative; isolation: isolate; background: transparent; }
 .case-scroll-cue { position: absolute; left: 50%; bottom: 52px; translate: -50% 0; display: block; color: #cacad2; }
 .case-scroll-cue svg { display: block; }
 @keyframes case-arrow-down {
@@ -60,6 +64,8 @@
   .case-header span { display: none; }
   .case-intro h1 { font-size: 32px; }
   .case-intro p { font-size: 20px; margin-top: 20px; }
+  .case-task { margin-top: 32px; padding: 24px 16px; }
+  .case-task p { margin-top: 16px; }
   .research h2 { margin-bottom: 32px; }
   .research-track { grid-template-columns: minmax(0, 1fr); gap: 0; }
   .research-step { position: relative; padding: 0 0 48px 44px; }

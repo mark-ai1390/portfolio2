@@ -1,5 +1,20 @@
 import { expect, test } from '@playwright/test';
 
+test('задача выделяет три ключевые фразы и сохраняет переносы на телефоне', async ({ page }) => {
+  await page.goto('/projects/copterdrone');
+  const task = page.getByRole('region', { name: 'Задача', exact: true });
+  await task.scrollIntoViewIfNeeded();
+  await expect(task.locator('p')).toHaveText('Упростить поиск и выбор радиоуправляемых моделей, сделать оформление заказа понятнее и обновить визуальный стиль магазина.');
+  await expect(task.locator('.rough-annotation')).toHaveCount(3);
+  await expect.poll(() => task.locator('.rough-annotation path').count()).toBeGreaterThanOrEqual(3);
+  await page.setViewportSize({ width: 375, height: 900 });
+  await task.scrollIntoViewIfNeeded();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await expect(task.locator('.rough-annotation')).toHaveCount(3);
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await expect.poll(() => task.locator('.rough-annotation path').evaluateAll(paths => paths.every(path => getComputedStyle(path).animationName === 'none'))).toBe(true);
+});
+
 for (const width of [1440, 375]) {
   test(`исследование плавно проявляется при прокрутке ${width}px; фокус и reduced motion сохраняют доступ`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
