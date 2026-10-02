@@ -16,9 +16,10 @@
   },
   "dependencies": {
     "@fontsource/rubik": "^5.2.9",
+    "@gsap/react": "^2.1.2",
+    "gsap": "^3.15.0",
     "react": "^19.3.0",
-    "react-dom": "^19.3.0",
-    "rough-notation": "^0.5.1"
+    "react-dom": "^19.3.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.63.0",

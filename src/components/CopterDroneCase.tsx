@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { copterdrone } from '../data/copterdrone';
 import './case.css';
-import { Highlighter } from './ui/Highlighter';
+import TextBlockAnimation from './ui/text-block-animation';
 import { CaseHeading } from './CaseHeading';
 
 function ResearchTimeline() {
@@ -11,22 +11,12 @@ function ResearchTimeline() {
   useEffect(() => {
     const root = section.current!;
     const list = track.current!;
-    const cover = root.closest('.case-main')!.querySelector<HTMLImageElement>('.case-cover')!;
     const desktop = window.matchMedia('(min-width: 1024px) and (min-height: 740px) and (prefers-reduced-motion: no-preference)');
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
     let frame = 0;
     const update = () => {
       frame = 0;
       root.classList.toggle('research--pinned', desktop.matches);
-      root.classList.toggle('research--reveal', !reduced.matches);
-      const revealDistance = Math.min(240, window.innerHeight * .3);
-      // The laptop buttons begin at y=700 in the original 1227px cover.
-      // Start revealing when that part of the image crosses the viewport top.
-      const coverBounds = cover.getBoundingClientRect();
-      const buttonsTop = coverBounds.top + coverBounds.height * (700 / 1227);
-      const reveal = Math.max(0, Math.min(1, -buttonsTop / revealDistance));
-      // Smooth the reveal without adding a delayed transition to scroll updates.
-      root.style.setProperty('--reveal', String(reduced.matches || root.matches(':focus-within') ? 1 : reveal * reveal * (3 - 2 * reveal)));
       if (desktop.matches) {
         const distance = root.offsetHeight - root.querySelector<HTMLElement>('.research-stage')!.offsetHeight;
         const progress = Math.max(0, Math.min(1, (80 - root.getBoundingClientRect().top) / distance));
@@ -48,7 +38,6 @@ function ResearchTimeline() {
     const observer = new ResizeObserver(schedule);
     observer.observe(root);
     observer.observe(list);
-    observer.observe(cover);
     window.addEventListener('scroll', schedule, { passive: true });
     window.addEventListener('resize', schedule);
     desktop.addEventListener('change', schedule);
@@ -67,8 +56,6 @@ function ResearchTimeline() {
   return (
     <section className="research" ref={section} aria-labelledby="research-title">
       <div className="research-stage">
-        <p className="case-eyebrow">01 / COPTERDRONE</p>
-        <CaseHeading id="research-title">UX-исследование</CaseHeading>
         <div className="research-window">
           <ol className="research-track" ref={track} onFocusCapture={event => {
             const root = section.current!;
@@ -113,21 +100,28 @@ export function CopterDroneCase() {
         <a href={copterdrone.figma} target="_blank" rel="noopener noreferrer">Макет в Figma ↗</a>
       </header>
       <main id="case-main" className="case-main" tabIndex={-1}>
-        <img className="case-cover" src="/assets/copterdrone-normal.webp" alt="Редизайн CopterDrone на ноутбуке и телефоне" width="2048" height="1227" fetchPriority="high" />
-        <div className="case-intro">
-          <h1>{copterdrone.title}</h1>
-          <p>{copterdrone.introduction}</p>
-          <section className="case-task" aria-labelledby="task-title" data-highlight-group>
-            <CaseHeading id="task-title">Задача</CaseHeading>
-            <p>{copterdrone.task.map((part, index) => 'action' in part
-              ? <Highlighter key={index} action={part.action} color={part.color} isView delay={2000}>{part.text}</Highlighter>
-              : part.text)}</p>
-          </section>
+        <section className="case-hero" aria-label="Обложка проекта">
+          <img className="case-cover" src="/assets/copterdrone-normal.webp" alt="Редизайн CopterDrone на ноутбуке и телефоне" width="2048" height="1227" fetchPriority="high" />
+          <TextBlockAnimation className="case-title-animation" animateOnScroll={false} delay={.2} blockColor="#1fb59c">
+            <h1>{copterdrone.titleLead}{' '}<br /><span className="case-company">{copterdrone.company}</span></h1>
+          </TextBlockAnimation>
           <span className="case-scroll-cue" aria-hidden="true">
             <svg width="24" height="32" viewBox="0 0 24 32" fill="none">
               <path d="M12 3v24m-7-7 7 7 7-7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </span>
+        </section>
+        <section className="case-task" aria-labelledby="task-title">
+          <TextBlockAnimation blockColor="#1fb59c" stagger={.08}>
+            <CaseHeading id="task-title">Задача</CaseHeading>
+            {copterdrone.task.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
+          </TextBlockAnimation>
+        </section>
+        <div className="case-research-intro">
+          <TextBlockAnimation blockColor="#1fb59c">
+            <p className="case-eyebrow">01 / COPTERDRONE</p>
+            <CaseHeading id="research-title">UX-исследование</CaseHeading>
+          </TextBlockAnimation>
         </div>
         <ResearchTimeline />
         <footer className="case-footer"><a href="/#copterdrone-title">На главную</a><a href={copterdrone.figma} target="_blank" rel="noopener noreferrer">Полный кейс в Figma ↗</a></footer>
