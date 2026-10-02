@@ -5,10 +5,10 @@ export function AuthorPanel() {
     <header className="author-panel">
       <div className="author-intro">
         <h1>{author.discipline}</h1>
-        <ul className="specialties" aria-label="Направления работы">
-          {author.areas.map(area => <li key={area}>{area}</li>)}
-        </ul>
+        <p className="specialties">{author.areas.join(', ')}</p>
+        <p className="author-description">{author.description}</p>
         <nav className="contacts" aria-label="Связаться с Марком">
+          <span className="contact-unavailable" aria-disabled="true" title="Файл резюме ещё не добавлен">Резюме</span>
           {author.contacts.map(contact => (
             <a
               key={contact.label}
@@ -16,9 +16,6 @@ export function AuthorPanel() {
               {...(contact.href.startsWith('https:') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
             >
               {contact.label}
-              <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M4 12 12 4M4 4h8v8" stroke="currentColor" strokeWidth="1.5" />
-              </svg>
             </a>
           ))}
         </nav>

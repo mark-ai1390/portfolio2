@@ -4,30 +4,34 @@ export interface Project {
   summary: string;
   path: string;
   figmaNode: string;
+  tags: string[];
   cover?: { src: string; alt: string };
 }
 
-// Copy reflects the implementation plan; exact homepage copy still needs Figma verification.
+// Copy verified against Page 3, homepage 296:259684 and card set 417:144766.
 // Do not connect case links until the actual pages exist.
 export const projects: Project[] = [
   {
     id: 'primekraft',
-    title: 'Prime Kraft',
-    summary: 'Аудит и гипотезы, интернет-магазин, фирменный стиль.',
+    title: 'PrimeKraft',
+    summary: 'Концепция редизайна интернет-магазина: аудит, структура, карточка товара, корзина и развитие визуального языка бренда.',
+    tags: ['E-commerce', 'UI/UX', 'Brand System'],
     path: '/projects/primekraft',
     figmaNode: '342:125764',
   },
   {
     id: 'copterdrone',
     title: 'CopterDrone',
-    summary: 'UX-исследование, интернет-магазин, логотип и айдентика.',
+    summary: 'Редизайн интернет-магазина радиоуправляемых моделей',
+    tags: ['E-commerce', 'UI/UX', 'Mobile-first'],
     path: '/projects/copterdrone',
     figmaNode: '296:239537',
   },
   {
     id: '4sales',
-    title: '4sales CRM',
-    summary: 'Архитектура, интерфейсы CRM, система компонентов и браузерный прототип.',
+    title: '4SALES CRM',
+    summary: 'Редизайн CRM-системы для работы с клиентами, заказами, товарами, менеджерами и внутренними процессами.',
+    tags: ['CRM', 'Product design'],
     path: '/projects/4sales',
     figmaNode: '306:102823',
   },
@@ -37,6 +41,7 @@ export const author = {
   name: 'Марк Сангинов',
   discipline: 'Product Design',
   areas: ['B2B', 'Desktop', 'Mobile'],
+  description: 'Проектирую e-commerce и сложные web-интерфейсы от UX-аудита и структуры\nдо UI и передачи в разработку',
   contacts: [
     { label: 'Email', href: 'mailto:ligeon199815@gmail.com' },
     { label: 'Telegram', href: 'https://t.me/Markro1998' },

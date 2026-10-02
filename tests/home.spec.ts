@@ -3,7 +3,7 @@ import { expect, test } from '@playwright/test';
 test('проекты идут в заданном порядке; контакты ведут к автору', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByRole('article')).toHaveCount(3);
-  await expect(page.getByRole('heading', { level: 2 })).toHaveText(['Prime Kraft', 'CopterDrone', '4sales CRM']);
+  await expect(page.getByRole('heading', { level: 2 })).toHaveText(['PrimeKraft', 'CopterDrone', '4SALES CRM']);
   await expect(page.getByRole('link', { name: 'Email' })).toHaveAttribute('href', 'mailto:ligeon199815@gmail.com');
   await expect(page.getByRole('link', { name: 'Telegram' })).toHaveAttribute('href', 'https://t.me/Markro1998');
   await expect(page.getByRole('link', { name: 'Telegram' })).toHaveAttribute('rel', 'noopener noreferrer');
@@ -16,7 +16,7 @@ for (const width of [1440, 1280, 1024, 768, 390, 375]) {
     await expect(page.getByRole('link', { name: 'Email' })).toBeInViewport();
     await expect(page.getByRole('link', { name: 'Telegram' })).toBeInViewport();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
-    for (const title of ['Prime Kraft', 'CopterDrone', '4sales CRM']) {
+    for (const title of ['PrimeKraft', 'CopterDrone', '4SALES CRM']) {
       await page.getByRole('heading', { name: title }).scrollIntoViewIfNeeded();
       await expect(page.getByRole('heading', { name: title })).toBeInViewport();
     }

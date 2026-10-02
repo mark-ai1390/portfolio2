@@ -2,7 +2,7 @@ import type { Project } from '../data/portfolio';
 
 export function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="project-card" aria-labelledby={`${project.id}-title`}>
+    <article className={`project-card project-card--${project.id}`} aria-labelledby={`${project.id}-title`}>
       {project.cover ? (
         <img
           className="project-cover"
@@ -19,6 +19,9 @@ export function ProjectCard({ project }: { project: Project }) {
       <div className="project-copy">
         <h2 id={`${project.id}-title`}>{project.title}</h2>
         <p>{project.summary}</p>
+        <ul className="project-tags" aria-label="Направления проекта">
+          {project.tags.map(tag => <li key={tag}>{tag}</li>)}
+        </ul>
       </div>
     </article>
   );
