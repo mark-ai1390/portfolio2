@@ -4,6 +4,9 @@ test('задача выделяет три ключевые фразы и сох
   await page.goto('/projects/copterdrone');
   const task = page.getByRole('region', { name: 'Задача', exact: true });
   await task.scrollIntoViewIfNeeded();
+  await expect(task.locator('.rough-annotation path')).toHaveCount(0);
+  await page.waitForTimeout(1200);
+  await expect(task.locator('.rough-annotation path')).toHaveCount(0);
   await expect(task.locator('p')).toHaveText('Упростить поиск и выбор радиоуправляемых моделей, сделать оформление заказа понятнее и обновить визуальный стиль магазина.');
   await expect(task.locator('.rough-annotation')).toHaveCount(3);
   await expect.poll(() => task.locator('.rough-annotation path').count()).toBeGreaterThanOrEqual(3);

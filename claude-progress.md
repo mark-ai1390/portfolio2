@@ -98,3 +98,11 @@
 - Компонент Highlighter адаптирован из официального Magic UI registry https://magicui.design/r/highlighter.json: rough-notation 0.5.1, native IntersectionObserver вместо motion, обычный CSS вместо Tailwind. Сохранена лицензия Magic UI MIT в src/components/ui/Highlighter.LICENSE.txt. Не менялся стек проекта.
 - «поиск и выбор» — marker #17685C; «оформление заказа» — underline #1FB59C; «визуальный стиль» — marker #245C55. Прорисовка 650ms при появлении каждой фразы в viewport; multiline поддерживает переносы. ResizeObserver/готовность шрифтов обновляют геометрию без повторной анимации; cleanup удаляет SVG и observers; reduced motion показывает статичные выделения.
 - ./init.sh прошёл npm ci, build и 24/24 существующих теста; после добавления проверки нового блока npm test — 25/25 passed. Проверены три аннотации, полный текст, resize на 375px без overflow, отсутствие анимации reduced motion. Снимки 1440/375 просмотрены.
+
+
+## Сессия 008 — задача fill, общий H2 и задержка подсветки
+
+- У «Задачи» убраны зелёная подложка, рамка, радиус и внутренние padding. Блок и абзац занимают 100% case-main; центрирование сохранено.
+- Введён общий CaseHeading для H2 задачи/исследования: 32px, Rubik 700, line-height 1.15 и letter-spacing -.025em. Устранён отдельный H2 24px.
+- Highlighter поддерживает delay; все три выделения стартуют через 2000ms от появления группы data-highlight-group, а не каждой фразы отдельно. При выходе группы из viewport до старта таймер отменяется; cleanup также удаляет таймер. Reduced motion показывает подсветку сразу без ожидания/анимации.
+- ./init.sh прошёл npm ci, typecheck/build и 25/25 браузерных проверок. Уточнённый тест задержки отдельно прошёл: до 1200ms пути подсветки отсутствуют, после задержки три выделения появляются; resize и reduced motion сохранены. Финальные снимки 1440/375 просмотрены.

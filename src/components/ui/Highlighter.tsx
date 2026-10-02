@@ -8,9 +8,10 @@ type HighlighterProps = {
   action?: 'highlight' | 'underline';
   color?: string;
   isView?: boolean;
+  delay?: number;
 };
 
-export function Highlighter({ children, action = 'highlight', color = '#17685c', isView = false }: HighlighterProps) {
+export function Highlighter({ children, action = 'highlight', color = '#17685c', isView = false, delay = 0 }: HighlighterProps) {
   const elementRef = useRef<HTMLSpanElement>(null);
 
   useLayoutEffect(() => {
@@ -23,7 +24,17 @@ export function Highlighter({ children, action = 'highlight', color = '#17685c',
     let shown = false;
     let disposed = false;
     let frame = 0;
+    let timer: number | undefined;
     const show = () => { shown = true; annotation.show(); };
+    const cancelDelay = () => { window.clearTimeout(timer); timer = undefined; };
+    const begin = () => {
+      if (shown || timer !== undefined) return;
+      if (reduced.matches || delay === 0) { show(); intersection.disconnect(); }
+      else timer = window.setTimeout(() => {
+        timer = undefined;
+        if (!disposed) { show(); intersection.disconnect(); }
+      }, delay);
+    };
     const redraw = () => {
       if (!shown || disposed) return;
       cancelAnimationFrame(frame);
@@ -35,28 +46,30 @@ export function Highlighter({ children, action = 'highlight', color = '#17685c',
       });
     };
     const intersection = new IntersectionObserver(entries => {
-      if (entries.some(entry => entry.isIntersecting)) { show(); intersection.disconnect(); }
+      if (entries.some(entry => entry.isIntersecting)) begin();
+      else if (!shown) cancelDelay();
     }, { rootMargin: '0px 0px -10% 0px' });
-    if (!isView || reduced.matches) show();
-    else intersection.observe(element);
+    if (!isView || reduced.matches) begin();
+    else intersection.observe(element.closest('[data-highlight-group]') ?? element);
     const resize = new ResizeObserver(redraw);
     resize.observe(element.parentElement!);
     void document.fonts.ready.then(redraw);
     const motionChanged = () => {
       annotation.animate = !reduced.matches;
-      if (reduced.matches && !shown) { show(); intersection.disconnect(); }
+      if (reduced.matches && !shown) { cancelDelay(); show(); intersection.disconnect(); }
       redraw();
     };
     reduced.addEventListener('change', motionChanged);
     return () => {
       disposed = true;
+      cancelDelay();
       cancelAnimationFrame(frame);
       intersection.disconnect();
       resize.disconnect();
       reduced.removeEventListener('change', motionChanged);
       annotation.remove();
     };
-  }, [action, color, isView]);
+  }, [action, color, isView, delay]);
 
   return <span ref={elementRef} className="case-highlighter">{children}</span>;
 }

@@ -8,9 +8,9 @@
 .case-intro { position: relative; padding: 44px 0 140px; width: 100%; text-align: center; }
 .case-intro h1 { font-size: 52px; font-weight: 700; line-height: 1.12; letter-spacing: -.03em; }
 .case-intro p { max-width: 900px; font-size: 20px; line-height: 1.45; color: #cacad2; margin: 24px auto 0; }
-.case-task { max-width: 900px; margin: 48px auto 0; padding: 28px 32px; background: rgba(31, 181, 156, .045); border: 1px solid rgba(31, 181, 156, .15); border-radius: 18px; }
-.case-task h2 { margin: 0; font-size: 24px; line-height: 1.25; font-weight: 600; }
-.case-task p { margin: 16px 0 0; line-height: 1.7; color: #e4e4e9; }
+.case-task { width: 100%; margin: 48px 0 0; }
+.case-heading { font-size: 32px; font-weight: 700; line-height: 1.15; margin: 0; letter-spacing: -.025em; }
+.case-task p { max-width: none; margin: 16px 0 0; line-height: 1.7; color: #e4e4e9; }
 .case-highlighter { position: relative; isolation: isolate; background: transparent; }
 .case-scroll-cue { position: absolute; left: 50%; bottom: 52px; translate: -50% 0; display: block; color: #cacad2; }
 .case-scroll-cue svg { display: block; }
@@ -19,7 +19,7 @@
   50% { transform: translateY(5px); opacity: 1; }
 }
 .case-eyebrow { font-size: 14px; font-weight: 600; color: var(--case-accent); margin: 0 0 16px; }
-.research h2 { font-size: 32px; font-weight: 700; line-height: 1.15; margin: 0 0 48px; letter-spacing: -.025em; }
+.research .case-heading { margin-bottom: 48px; }
 .research-window { padding: 8px; margin: -8px; }
 .research-track { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 40px; row-gap: 56px; margin: 0; padding: 0; list-style: none; }
 .research-step { min-width: 0; }
@@ -64,9 +64,9 @@
   .case-header span { display: none; }
   .case-intro h1 { font-size: 32px; }
   .case-intro p { font-size: 20px; margin-top: 20px; }
-  .case-task { margin-top: 32px; padding: 24px 16px; }
+  .case-task { margin-top: 32px; }
   .case-task p { margin-top: 16px; }
-  .research h2 { margin-bottom: 32px; }
+  .research .case-heading { margin-bottom: 32px; }
   .research-track { grid-template-columns: minmax(0, 1fr); gap: 0; }
   .research-step { position: relative; padding: 0 0 48px 44px; }
   .research-step::before { content: ''; position: absolute; left: 15px; top: 36px; bottom: 0; width: 2px; background: var(--case-accent); opacity: .45; }
