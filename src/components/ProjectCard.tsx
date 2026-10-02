@@ -3,7 +3,7 @@ import type { Project } from '../data/portfolio';
 export function ProjectCard({ project }: { project: Project }) {
   return (
     <article className={`project-card project-card--${project.id}`} aria-labelledby={`${project.id}-title`}>
-      {project.id === 'copterdrone' && <a className="project-card-link" href={project.path} aria-labelledby={`${project.id}-title`} />}
+      <a className="project-card-link" href={project.path} aria-labelledby={`${project.id}-title`} />
       <div className="project-media">
         <img
           className="project-cover"

@@ -77,7 +77,7 @@ for (const width of [1440, 1280, 1024, 768, 390, 375]) {
     await expect(page.locator('.case-scroll-cue')).toHaveCount(0);
     const concepts = page.getByRole('region', { name: 'Готовые концепты CopterDrone', exact: true });
     await concepts.scrollIntoViewIfNeeded();
-    await expect.poll(() => concepts.locator('img').evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth === 1160 && img.naturalHeight === 625)).toBe(true);
+    await expect.poll(() => concepts.locator('img').evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth === 2048 && img.naturalHeight === 755)).toBe(true);
     const geometry = await concepts.locator('img').evaluate(element => {
       const rect = element.getBoundingClientRect();
       const hero = document.querySelector('.case-hero')!;

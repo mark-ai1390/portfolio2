@@ -3,6 +3,8 @@ import { ProjectCard } from './components/ProjectCard';
 import { projects } from './data/portfolio';
 import { CopterDroneCase } from './components/CopterDroneCase';
 import { useEffect } from 'react';
+import { CasePage } from './components/CasePage';
+import { caseIntroductions } from './data/case-introductions';
 
 export function App() {
   useEffect(() => {
@@ -12,6 +14,8 @@ export function App() {
   if (window.location.pathname.replace(/\/$/, '') === '/projects/copterdrone') {
     return <CopterDroneCase />;
   }
+  const caseId = window.location.pathname.replace(/\/$/, '').match(/^\/projects\/(primekraft|4sales)$/)?.[1];
+  if (caseId) return <CasePage project={caseIntroductions[caseId]} />;
   if (window.location.pathname !== '/') {
     return (
       <main className="not-found">

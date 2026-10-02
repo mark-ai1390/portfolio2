@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { copterdrone } from '../data/copterdrone';
-import './case.css';
+import { CasePage } from './CasePage';
+import { caseIntroductions } from '../data/case-introductions';
 import TextBlockAnimation from './ui/text-block-animation';
 import { CaseHeading } from './CaseHeading';
 
@@ -89,47 +90,15 @@ function ResearchTimeline() {
 }
 
 export function CopterDroneCase() {
-  useEffect(() => {
-    const previous = document.title;
-    document.title = 'CopterDrone — Марк Сангинов';
-    return () => { document.title = previous; };
-  }, []);
-
   return (
-    <div className="case-page">
-      <a className="skip-link" href="#case-main">К содержанию кейса</a>
-      <header className="case-header">
-        <a href="/#copterdrone-title">← На главную</a>
-        <span>Марк Сангинов</span>
-        <a href={copterdrone.figma} target="_blank" rel="noopener noreferrer">Макет в Figma ↗</a>
-      </header>
-      <main id="case-main" className="case-main" tabIndex={-1}>
-        <section className="case-hero" aria-label="Обложка проекта">
-          <img className="case-cover" src="/assets/copterdrone-normal.webp" alt="Редизайн CopterDrone на ноутбуке и телефоне" width="2048" height="1227" fetchPriority="high" />
-          <TextBlockAnimation className="case-title-animation" animateOnScroll={false} delay={.2} blockColor="#1fb59c">
-            <h1>{copterdrone.titleLead}{' '}<br /><span className="case-company">{copterdrone.company}</span></h1>
-          </TextBlockAnimation>
-        </section>
-        <section className="case-concepts" aria-label="Готовые концепты CopterDrone">
-          <a href={copterdrone.concepts.image} target="_blank" rel="noopener noreferrer" aria-label="Открыть готовые концепты CopterDrone в полном размере">
-            <img src={copterdrone.concepts.image} alt={copterdrone.concepts.alt} width={copterdrone.concepts.width} height={copterdrone.concepts.height} loading="lazy" />
-          </a>
-        </section>
-        <section className="case-task" aria-labelledby="task-title">
-          <TextBlockAnimation blockColor="#1fb59c" stagger={.08}>
-            <CaseHeading id="task-title">Задача</CaseHeading>
-            {copterdrone.task.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
-          </TextBlockAnimation>
-        </section>
-        <div className="case-research-intro">
-          <TextBlockAnimation blockColor="#1fb59c">
-            <p className="case-eyebrow">01 / COPTERDRONE</p>
-            <CaseHeading id="research-title">UX-исследование</CaseHeading>
-          </TextBlockAnimation>
-        </div>
-        <ResearchTimeline />
-        <footer className="case-footer"><a href="/#copterdrone-title">На главную</a><a href={copterdrone.figma} target="_blank" rel="noopener noreferrer">Полный кейс в Figma ↗</a></footer>
-      </main>
-    </div>
+    <CasePage project={caseIntroductions.copterdrone}>
+      <div className="case-research-intro">
+        <TextBlockAnimation blockColor="#1fb59c">
+          <p className="case-eyebrow">01 / COPTERDRONE</p>
+          <CaseHeading id="research-title">UX-исследование</CaseHeading>
+        </TextBlockAnimation>
+      </div>
+      <ResearchTimeline />
+    </CasePage>
   );
 }

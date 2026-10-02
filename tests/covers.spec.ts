@@ -31,12 +31,14 @@ test('reduced motion отключает переход изображений', 
   await expect(hoverImage).toHaveCSS('opacity', '1');
 });
 
-test('сенсорный экран сохраняет обычную обложку после касания', async ({ browser }) => {
+test('сенсорный экран показывает normal и открывает кейс первым касанием', async ({ browser }) => {
   const context = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
   try {
     const page = await context.newPage();
     await page.goto('http://127.0.0.1:4173/');
-    await page.getByRole('article').first().tap();
     await expect(page.locator('.project-cover--hover').first()).toHaveCSS('opacity', '0');
+    await page.getByRole('article').first().tap();
+    await expect(page).toHaveURL(/\/projects\/primekraft$/);
+    await expect(page.getByRole('heading', { level: 1 })).toHaveAccessibleName('Редизайн интернет-магазина Prime Kraft');
   } finally { await context.close(); }
 });

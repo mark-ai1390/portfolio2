@@ -9,7 +9,7 @@ export interface Project {
 }
 
 // Copy verified against Page 3, homepage 296:259684 and card set 417:144766.
-// Do not connect case links until the actual pages exist.
+// Each card links to the implemented beginning of its case.
 export const projects: Project[] = [
   {
     id: 'primekraft',
