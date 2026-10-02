@@ -87,7 +87,7 @@ for (const width of [1440, 1280, 1024, 768, 390, 375]) {
         beforeTask: Boolean(element.compareDocumentPosition(task) & Node.DOCUMENT_POSITION_FOLLOWING) };
     });
     expect(geometry.width).toBeCloseTo(geometry.mainWidth, 1);
-    expect(geometry.width / geometry.height).toBeCloseTo(1160 / 625, 2);
+    expect(geometry.width / geometry.height).toBeCloseTo(1160 / 428, 2);
     expect(geometry.afterHero && geometry.beforeTask).toBe(true);
     await page.getByRole('link', { name: 'Полный кейс в Figma ↗' }).scrollIntoViewIfNeeded();
     await expect(page.locator('.research-step')).toHaveCount(4);

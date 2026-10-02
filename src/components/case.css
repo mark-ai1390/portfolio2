@@ -14,8 +14,8 @@
 .text-block-animation { position: relative; }
 .text-block-line-mask { position: relative; overflow: hidden; }
 .block-revealer { position: absolute; inset: 0; z-index: 2; transform: scaleX(0); transform-origin: left center; pointer-events: none; }
-.case-concepts a { display: block; border-radius: 14px; }
-.case-concepts img { display: block; width: 100%; height: auto; border-radius: 14px; }
+.case-concepts a { display: block; aspect-ratio: 1160 / 428; border-radius: 14px; overflow: hidden; }
+.case-concepts img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: 14px; }
 .case-task { width: 100%; padding: 64px 0; text-align: left; }
 .case-heading { font-size: 32px; font-weight: 700; line-height: 1.15; margin: 0; letter-spacing: -.025em; }
 .case-task p { margin: 24px 0 0; font-size: 20px; line-height: 1.6; color: #cacad2; }
