@@ -1,29 +1,25 @@
 #!/usr/bin/env bash
-
 set -euo pipefail
-
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$ROOT_DIR"
 
-# Replace these commands with the correct commands for your repository.
-INSTALL_CMD=(npm install)
-VERIFY_CMD=(npm test)
-START_CMD=(npm run dev)
+echo "==> Portfolio: $PWD"
+node -e 'const [major, minor] = process.versions.node.split(".").map(Number); if (major < 22 || (major === 22 && minor < 12)) { console.error("Node.js >=22.12.0 required"); process.exit(1); }'
+npm ci --no-audit --no-fund
 
-echo "==> Working directory: $PWD"
-echo "==> Syncing dependencies"
-"${INSTALL_CMD[@]}"
-
-echo "==> Running baseline verification"
-"${VERIFY_CMD[@]}"
-
-echo "==> Startup command"
-printf '    %q' "${START_CMD[@]}"
-printf '\n'
-
-if [ "${RUN_START_COMMAND:-0}" = "1" ]; then
-  echo "==> Starting the app"
-  exec "${START_CMD[@]}"
+# Use an explicit browser, installed system Chromium, or Playwright's pinned browser.
+if [ -z "${PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH:-}" ]; then
+  if command -v chromium >/dev/null 2>&1; then
+    export PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH="$(command -v chromium)"
+  else
+    npx playwright install chromium
+  fi
 fi
 
-echo "Set RUN_START_COMMAND=1 if you want init.sh to launch the app directly."
+npm run build
+npm test
+
+if [ "${RUN_START_COMMAND:-0}" = "1" ]; then
+  exec npm run dev -- --port "${PORT:-5173}" --strictPort
+fi
+echo "Verified. Start: RUN_START_COMMAND=1 ./init.sh (default port 5173)"
