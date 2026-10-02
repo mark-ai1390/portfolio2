@@ -5,23 +5,26 @@ for (const width of [1440, 375]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto('/projects/copterdrone');
     const stage = page.locator('.research-stage');
-    const scrollStageTo = async (top: number) => {
-      await page.locator('.research').evaluate((element, offset) => scrollTo(0, element.getBoundingClientRect().top + scrollY - offset), top);
+    const scrollButtonsTo = async (top: number) => {
+      await page.locator('.case-cover').evaluate((element, offset) => {
+        const bounds = element.getBoundingClientRect();
+        scrollTo(0, bounds.top + scrollY + bounds.height * (700 / 1227) - offset);
+      }, top);
     };
-    await scrollStageTo(600);
+    await scrollButtonsTo(20);
     await expect.poll(() => stage.evaluate(element => Number(getComputedStyle(element).opacity))).toBe(0);
-    await scrollStageTo(375);
+    await scrollButtonsTo(-120);
     await expect.poll(() => stage.evaluate(element => Number(getComputedStyle(element).opacity))).toBeGreaterThan(.3);
     expect(await stage.evaluate(element => Number(getComputedStyle(element).opacity))).toBeLessThan(.8);
-    await scrollStageTo(180);
+    await scrollButtonsTo(-250);
     await expect.poll(() => stage.evaluate(element => getComputedStyle(element).opacity)).toBe('1');
     await expect.poll(() => stage.evaluate(element => getComputedStyle(element).filter)).toBe('blur(0px)');
-    await scrollStageTo(600);
+    await scrollButtonsTo(20);
     await page.locator('.research-image').first().focus();
     await expect.poll(() => stage.evaluate(element => getComputedStyle(element).opacity)).toBe('1');
     await page.locator('.research-image').first().evaluate(element => (element as HTMLElement).blur());
     await page.emulateMedia({ reducedMotion: 'reduce' });
-    await scrollStageTo(600);
+    await scrollButtonsTo(20);
     await expect.poll(() => stage.evaluate(element => getComputedStyle(element).opacity)).toBe('1');
     expect(await stage.evaluate(element => getComputedStyle(element).filter)).toBe('none');
     expect(await page.locator('.case-scroll-cue svg').evaluate(element => getComputedStyle(element).animationName)).toBe('none');

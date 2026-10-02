@@ -5,9 +5,9 @@
 .case-header a:hover, .case-footer a:hover { color: var(--case-accent); }
 .case-header span { font-weight: 600; }
 .case-cover { display: block; width: 100%; height: auto; border-radius: 14px; }
-.case-intro { position: relative; padding: 44px 0 140px; max-width: 1000px; }
+.case-intro { position: relative; padding: 44px 0 140px; width: 100%; text-align: center; }
 .case-intro h1 { font-size: 52px; font-weight: 700; line-height: 1.12; letter-spacing: -.03em; }
-.case-intro p { max-width: 900px; font-size: 20px; line-height: 1.45; color: #cacad2; margin: 24px 0 0; }
+.case-intro p { max-width: 900px; font-size: 20px; line-height: 1.45; color: #cacad2; margin: 24px auto 0; }
 .case-scroll-cue { position: absolute; left: 50%; bottom: 52px; translate: -50% 0; display: block; color: #cacad2; }
 .case-scroll-cue svg { display: block; }
 @keyframes case-arrow-down {
