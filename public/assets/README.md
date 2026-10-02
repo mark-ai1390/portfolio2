@@ -15,3 +15,13 @@
 Обложки — готовые композиции. CSS меняет opacity hover-изображения за 300ms (ease-out для PrimeKraft/CopterDrone, linear для CRM). Это crossfade; отдельные слои Smart Animate не воспроизводятся. На touch сохраняется normal; reduced motion отключает transition.
 
 Портрет кадрируется только в CSS в круг 153px, исходное фото сохранено целиком. Резюме пока нет по сообщению пользователя; временные ссылки и фиктивный файл не добавлены.
+
+
+### CopterDrone — миниатюры исследования
+
+Оригинальные экспорты из Page 3, файл yojJb08rcCuEd3ZTZZYsgA. PNG, exportAsync с constraint WIDTH; figma.io.write доставил бинарные данные.
+- copter-research.png — 296:239694, 800×361.
+- copter-scenarios.png — 296:239734, 600×437, также иллюстрирует бенчмаркинг исходными референсами.
+- copter-architecture.png — 296:239735, 800×1155.
+
+Все миниатюры показаны через object-fit: contain, без дополнительного кадрирования, и открываются отдельным изображением.

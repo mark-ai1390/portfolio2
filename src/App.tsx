@@ -1,8 +1,17 @@
 import { AuthorPanel } from './components/AuthorPanel';
 import { ProjectCard } from './components/ProjectCard';
 import { projects } from './data/portfolio';
+import { CopterDroneCase } from './components/CopterDroneCase';
+import { useEffect } from 'react';
 
 export function App() {
+  useEffect(() => {
+    const target = window.location.hash.slice(1);
+    if (target) document.getElementById(target)?.scrollIntoView();
+  }, []);
+  if (window.location.pathname.replace(/\/$/, '') === '/projects/copterdrone') {
+    return <CopterDroneCase />;
+  }
   if (window.location.pathname !== '/') {
     return (
       <main className="not-found">

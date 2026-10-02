@@ -68,7 +68,8 @@ h1 { margin: 0; font-size: 32px; font-weight: 600; line-height: 1; }
 .author-portrait img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 30% center; transform: scale(3.3); transform-origin: 21% 65%; }
 
 .project-list { display: grid; gap: 24px; min-width: 0; align-content: start; }
-.project-card { background: var(--surface); padding: 20px; border-radius: 32px; min-width: 0; }
+.project-card { position: relative; background: var(--surface); padding: 20px; border-radius: 32px; min-width: 0; }
+.project-card-link { position: absolute; inset: 0; z-index: 1; border-radius: inherit; }
 .project-card--primekraft { background: rgba(30, 32, 37, .4); }
 .project-media {
   position: relative;

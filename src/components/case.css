@@ -1,0 +1,66 @@
+.case-page { --case-accent: #1fb59c; max-width: 1440px; margin: auto; padding: 24px 40px 48px; }
+.case-header, .case-main { max-width: 1160px; margin: auto; }
+.case-header { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 44px; margin-bottom: 40px; font-size: 16px; }
+.case-header a, .case-footer a { text-decoration: none; padding: 12px 0; }
+.case-header a:hover, .case-footer a:hover { color: var(--case-accent); }
+.case-header span { font-weight: 600; }
+.case-cover { display: block; width: 100%; height: auto; border-radius: 14px; }
+.case-intro { padding: 64px 0 80px; max-width: 1000px; }
+.case-intro h1 { font-size: clamp(32px, 4vw, 56px); font-weight: 700; line-height: 1.12; letter-spacing: -.03em; }
+.case-intro p { max-width: 900px; font-size: 24px; line-height: 1.45; color: #cacad2; margin: 24px 0 0; }
+.case-eyebrow { font-size: 14px; font-weight: 600; color: var(--case-accent); margin: 0 0 16px; }
+.research h2 { font-size: clamp(32px, 4vw, 48px); font-weight: 700; line-height: 1.15; margin: 0 0 48px; letter-spacing: -.025em; }
+.research-window { padding: 8px; margin: -8px; }
+.research-track { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 40px; row-gap: 56px; margin: 0; padding: 0; list-style: none; }
+.research-step { min-width: 0; }
+.research-marker { position: relative; display: flex; align-items: center; height: 36px; margin-bottom: 24px; }
+.research-marker::before { content: ''; position: absolute; left: 0; right: -40px; height: 2px; background: var(--case-accent); opacity: .35; }
+.research-marker span { position: relative; display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid var(--case-accent); border-radius: 50%; background: #121213; color: var(--case-accent); font-size: 12px; font-weight: 600; transition: background .3s, color .3s; }
+.research-step.is-active .research-marker span { background: var(--case-accent); color: #121213; }
+.research-step:nth-child(even) .research-marker::before { right: 0; }
+.research-step h3 { margin: 0 0 16px; font-size: 26px; font-weight: 600; line-height: 1.2; }
+.research-step p { color: #cacad2; font-size: 18px; line-height: 1.5; margin: 0 0 24px; }
+.research-image { display: flex; align-items: center; justify-content: center; height: 240px; padding: 12px; background: #1c1d20; border-radius: 14px; }
+.research-image img { display: block; width: 100%; height: 100%; object-fit: contain; border-radius: 8px; }
+.case-footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; border-top: 1px solid #333339; margin-top: 80px; padding-top: 24px; }
+@media (min-width: 1024px) and (min-height: 740px) and (prefers-reduced-motion: no-preference) {
+  .research--pinned { height: 2200px; }
+  .research--pinned .research-stage { position: sticky; top: 80px; height: 580px; }
+  .research--pinned .research-window { overflow: hidden; }
+  .research--pinned .research-track { display: flex; gap: 40px; will-change: transform; }
+  .research--pinned .research-step { flex: 0 0 460px; }
+  .research--pinned .research-step p { min-height: 135px; }
+  .research--pinned .research-image { height: 210px; }
+  .research--pinned .research-marker::before { right: -40px; }
+  .research--pinned .research-step:last-child .research-marker::before { right: 0; }
+  .research--pinned .research-marker::after { content: ''; position: absolute; left: 0; right: -40px; height: 2px; background: var(--case-accent); transform: scaleX(clamp(0, calc(var(--progress) * 4 - var(--step)), 1)); transform-origin: left; }
+  .research--pinned .research-marker span { z-index: 1; }
+  .research--pinned .research-step:last-child .research-marker::after { right: 0; }
+  .research-step:nth-child(1) { --step: 0; }
+  .research-step:nth-child(2) { --step: 1; }
+  .research-step:nth-child(3) { --step: 2; }
+  .research-step:nth-child(4) { --step: 3; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .research-step h3, .research-step p, .research-image { transition: opacity .45s ease, translate .45s ease; }
+  .research-step:not(.is-active) h3, .research-step:not(.is-active) p, .research-step:not(.is-active) .research-image { opacity: .65; translate: 0 12px; }
+}
+@media (max-width: 767px) {
+  .case-page { padding: 16px 20px 32px; }
+  .case-header { flex-wrap: wrap; gap: 8px 20px; margin-bottom: 24px; font-size: 14px; }
+  .case-header span { display: none; }
+  .case-intro { padding: 40px 0 56px; }
+  .case-intro p { font-size: 20px; margin-top: 20px; }
+  .research h2 { margin-bottom: 32px; }
+  .research-track { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .research-step { position: relative; padding: 0 0 48px 44px; }
+  .research-step::before { content: ''; position: absolute; left: 15px; top: 36px; bottom: 0; width: 2px; background: var(--case-accent); opacity: .45; }
+  .research-step:last-child::before { display: none; }
+  .research-marker { position: absolute; left: 0; top: 0; margin: 0; }
+  .research-marker::before { display: none; }
+  .research-marker span { width: 32px; height: 32px; }
+  .research-step h3 { font-size: 24px; padding-top: 2px; }
+  .research-step p { font-size: 16px; }
+  .research-image { height: 200px; padding: 8px; }
+  .case-footer { margin-top: 24px; }
+}
