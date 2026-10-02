@@ -74,6 +74,21 @@ for (const width of [1440, 1280, 1024, 768, 390, 375]) {
     const errors: string[] = [];
     page.on('pageerror', error => errors.push(error.message));
     await page.goto('/projects/copterdrone');
+    await expect(page.locator('.case-scroll-cue')).toHaveCount(0);
+    const concepts = page.getByRole('region', { name: 'Готовые концепты CopterDrone', exact: true });
+    await concepts.scrollIntoViewIfNeeded();
+    await expect.poll(() => concepts.locator('img').evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth === 1160 && img.naturalHeight === 625)).toBe(true);
+    const geometry = await concepts.locator('img').evaluate(element => {
+      const rect = element.getBoundingClientRect();
+      const hero = document.querySelector('.case-hero')!;
+      const task = document.querySelector('.case-task')!;
+      return { width: rect.width, height: rect.height, mainWidth: document.querySelector('.case-main')!.getBoundingClientRect().width,
+        afterHero: Boolean(hero.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_FOLLOWING),
+        beforeTask: Boolean(element.compareDocumentPosition(task) & Node.DOCUMENT_POSITION_FOLLOWING) };
+    });
+    expect(geometry.width).toBeCloseTo(geometry.mainWidth, 1);
+    expect(geometry.width / geometry.height).toBeCloseTo(1160 / 625, 2);
+    expect(geometry.afterHero && geometry.beforeTask).toBe(true);
     await page.getByRole('link', { name: 'Полный кейс в Figma ↗' }).scrollIntoViewIfNeeded();
     await expect(page.locator('.research-step')).toHaveCount(4);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);

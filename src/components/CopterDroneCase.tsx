@@ -109,11 +109,11 @@ export function CopterDroneCase() {
           <TextBlockAnimation className="case-title-animation" animateOnScroll={false} delay={.2} blockColor="#1fb59c">
             <h1>{copterdrone.titleLead}{' '}<br /><span className="case-company">{copterdrone.company}</span></h1>
           </TextBlockAnimation>
-          <span className="case-scroll-cue" aria-hidden="true">
-            <svg width="24" height="32" viewBox="0 0 24 32" fill="none">
-              <path d="M12 3v24m-7-7 7 7 7-7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </span>
+        </section>
+        <section className="case-concepts" aria-label="Готовые концепты CopterDrone">
+          <a href={copterdrone.concepts.image} target="_blank" rel="noopener noreferrer" aria-label="Открыть готовые концепты CopterDrone в полном размере">
+            <img src={copterdrone.concepts.image} alt={copterdrone.concepts.alt} width={copterdrone.concepts.width} height={copterdrone.concepts.height} loading="lazy" />
+          </a>
         </section>
         <section className="case-task" aria-labelledby="task-title">
           <TextBlockAnimation blockColor="#1fb59c" stagger={.08}>

@@ -4,7 +4,7 @@
 .case-header a, .case-footer a { text-decoration: none; padding: 12px 0; }
 .case-header a:hover, .case-footer a:hover { color: var(--case-accent); }
 .case-header span { font-weight: 600; }
-.case-hero { position: relative; display: flex; flex-direction: column; align-items: stretch; gap: 44px; padding: 0 0 88px; }
+.case-hero { position: relative; display: flex; flex-direction: column; align-items: stretch; gap: 44px; padding: 0 0 40px; }
 .case-cover { display: block; width: 100%; height: auto; border-radius: 14px; }
 .case-title-animation { width: 100%; text-align: left; }
 .case-title-animation h1 { font-size: 52px; font-weight: 700; line-height: 1.2; letter-spacing: -.03em; }
@@ -14,16 +14,12 @@
 .text-block-animation { position: relative; }
 .text-block-line-mask { position: relative; overflow: hidden; }
 .block-revealer { position: absolute; inset: 0; z-index: 2; transform: scaleX(0); transform-origin: left center; pointer-events: none; }
+.case-concepts a { display: block; border-radius: 14px; }
+.case-concepts img { display: block; width: 100%; height: auto; border-radius: 14px; }
 .case-task { width: 100%; padding: 64px 0; text-align: left; }
 .case-heading { font-size: 32px; font-weight: 700; line-height: 1.15; margin: 0; letter-spacing: -.025em; }
 .case-task p { margin: 24px 0 0; font-size: 20px; line-height: 1.6; color: #cacad2; }
 .case-research-intro { padding: 80px 0 48px; }
-.case-scroll-cue { position: absolute; left: 50%; bottom: 52px; translate: -50% 0; display: block; color: #cacad2; }
-.case-scroll-cue svg { display: block; }
-@keyframes case-arrow-down {
-  0%, 100% { transform: translateY(-4px); opacity: .45; }
-  50% { transform: translateY(5px); opacity: 1; }
-}
 .case-eyebrow { font-size: 14px; font-weight: 600; color: var(--case-accent); margin: 0 0 16px; }
 .research-window { padding: 8px; margin: -8px; }
 .research-track { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 40px; row-gap: 56px; margin: 0; padding: 0; list-style: none; }
@@ -57,7 +53,6 @@
   .research-step:nth-child(4) { --step: 3; }
 }
 @media (prefers-reduced-motion: no-preference) {
-  .case-scroll-cue svg { animation: case-arrow-down 1.8s ease-in-out infinite; }
   .research--reveal .research-stage { opacity: var(--reveal, 1); filter: blur(calc((1 - var(--reveal, 1)) * 12px)); translate: 0 calc((1 - var(--reveal, 1)) * 20px); }
   .research--reveal:focus-within .research-stage { opacity: 1; filter: none; translate: 0 0; }
   .research-step h3, .research-step p, .research-image { transition: opacity .45s ease, translate .45s ease; }
