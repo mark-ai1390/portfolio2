@@ -1,5 +1,33 @@
 import { expect, test } from '@playwright/test';
 
+for (const width of [1440, 375]) {
+  test(`исследование плавно проявляется при прокрутке ${width}px; фокус и reduced motion сохраняют доступ`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('/projects/copterdrone');
+    const stage = page.locator('.research-stage');
+    const scrollStageTo = async (top: number) => {
+      await page.locator('.research').evaluate((element, offset) => scrollTo(0, element.getBoundingClientRect().top + scrollY - offset), top);
+    };
+    await scrollStageTo(600);
+    await expect.poll(() => stage.evaluate(element => Number(getComputedStyle(element).opacity))).toBe(0);
+    await scrollStageTo(375);
+    await expect.poll(() => stage.evaluate(element => Number(getComputedStyle(element).opacity))).toBeGreaterThan(.3);
+    expect(await stage.evaluate(element => Number(getComputedStyle(element).opacity))).toBeLessThan(.8);
+    await scrollStageTo(180);
+    await expect.poll(() => stage.evaluate(element => getComputedStyle(element).opacity)).toBe('1');
+    await expect.poll(() => stage.evaluate(element => getComputedStyle(element).filter)).toBe('blur(0px)');
+    await scrollStageTo(600);
+    await page.locator('.research-image').first().focus();
+    await expect.poll(() => stage.evaluate(element => getComputedStyle(element).opacity)).toBe('1');
+    await page.locator('.research-image').first().evaluate(element => (element as HTMLElement).blur());
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await scrollStageTo(600);
+    await expect.poll(() => stage.evaluate(element => getComputedStyle(element).opacity)).toBe('1');
+    expect(await stage.evaluate(element => getComputedStyle(element).filter)).toBe('none');
+    expect(await page.locator('.case-scroll-cue svg').evaluate(element => getComputedStyle(element).animationName)).toBe('none');
+  });
+}
+
 test('CopterDrone открывается с главной, обновляется и возвращает к карточке', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('link', { name: 'CopterDrone', exact: true }).click();

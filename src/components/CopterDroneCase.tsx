@@ -15,6 +15,11 @@ function ResearchTimeline() {
     const update = () => {
       frame = 0;
       root.classList.toggle('research--pinned', desktop.matches);
+      root.classList.toggle('research--reveal', !reduced.matches);
+      const revealDistance = Math.min(240, window.innerHeight * .3);
+      const reveal = Math.max(0, Math.min(1, (window.innerHeight * .55 - root.getBoundingClientRect().top) / revealDistance));
+      // Smooth the reveal without adding a delayed transition to scroll updates.
+      root.style.setProperty('--reveal', String(reduced.matches || root.matches(':focus-within') ? 1 : reveal * reveal * (3 - 2 * reveal)));
       if (desktop.matches) {
         const distance = root.offsetHeight - root.querySelector<HTMLElement>('.research-stage')!.offsetHeight;
         const progress = Math.max(0, Math.min(1, (80 - root.getBoundingClientRect().top) / distance));
@@ -104,6 +109,11 @@ export function CopterDroneCase() {
         <div className="case-intro">
           <h1>{copterdrone.title}</h1>
           <p>{copterdrone.introduction}</p>
+          <span className="case-scroll-cue" aria-hidden="true">
+            <svg width="24" height="32" viewBox="0 0 24 32" fill="none">
+              <path d="M12 3v24m-7-7 7 7 7-7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </span>
         </div>
         <ResearchTimeline />
         <footer className="case-footer"><a href="/#copterdrone-title">На главную</a><a href={copterdrone.figma} target="_blank" rel="noopener noreferrer">Полный кейс в Figma ↗</a></footer>
