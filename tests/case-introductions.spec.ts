@@ -21,7 +21,7 @@ for (const item of cases) {
       expect(geometry!.width).toBeCloseTo(main!.width, 1);
       expect(geometry!.width / geometry!.height).toBeCloseTo(1160 / 428, 2);
       if (width === 1440) expect(geometry!.height).toBe(428);
-      expect(await page.locator('main > section').evaluateAll(elements => elements.map(element => element.className))).toEqual(['case-hero', 'case-concepts', 'case-task', expect.stringContaining('research')]);
+      expect(await page.locator('main > section').evaluateAll(elements => elements.map(element => element.className))).toEqual(['case-hero', 'case-concepts', 'case-task', expect.stringContaining('research'), 'case-contacts']);
       await page.locator('.case-task').evaluate(element => scrollTo(0, element.getBoundingClientRect().top + scrollY - innerHeight * .3));
       await expect.poll(() => page.locator('.case-task .text-block-line').evaluateAll(lines => lines.length > 0 && lines.every(line => getComputedStyle(line).opacity === '1'))).toBe(true);
       await expect(page.locator('.case-task p').first()).toHaveAttribute('aria-label', item.task);

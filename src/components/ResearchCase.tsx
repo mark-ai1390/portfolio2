@@ -1,5 +1,7 @@
 import { CasePage } from './CasePage';
 import { CaseFollowups } from './CaseFollowups';
+import { CaseContent } from './CaseContent';
+import { CaseIllustration } from './CaseIllustration';
 import { CaseHeading } from './CaseHeading';
 import { ResearchTimeline } from './ResearchTimeline';
 import TextBlockAnimation from './ui/text-block-animation';
@@ -19,7 +21,9 @@ export function ResearchCase({ id }: { id: string }) {
         </TextBlockAnimation>
       </div>
       <ResearchTimeline steps={research.steps} />
+      {id === '4sales' && <div className="case-benchmark"><CaseIllustration nodeId="306:102876" src="/assets/cases/306-102876.webp" alt="Бенчмаркинг — сравнение подходов retailCRM и 4sales" width={1160} height={1010.568} /></div>}
       <CaseFollowups id={id} />
+      <CaseContent id={id} />
     </CasePage>
   );
 }

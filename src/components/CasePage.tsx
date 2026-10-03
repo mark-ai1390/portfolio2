@@ -5,6 +5,7 @@ import { CaseHeading } from './CaseHeading';
 import TextBlockAnimation from './ui/text-block-animation';
 import { MaskButtonLink } from './ui/mask-button';
 import { author } from '../data/portfolio';
+import { CaseContacts } from './CaseContacts';
 import './case.css';
 
 export function CasePage({ project, children }: { project: CaseIntroductionData; children?: ReactNode }) {
@@ -45,6 +46,7 @@ export function CasePage({ project, children }: { project: CaseIntroductionData;
           </TextBlockAnimation>
         </section>
         {children}
+        <CaseContacts />
         <footer className="case-footer">
           <a href={back}>На главную</a>
           <a href={project.figma} target="_blank" rel="noopener noreferrer">Полный кейс в Figma ↗</a>

@@ -81,6 +81,34 @@
 .case-followups { margin-top: 48px; display: grid; gap: 40px; }
 .case-followup, .case-blur-reveal { display: flex; flex-direction: column; gap: 22px; }
 .case-followup { padding: 20px 0; }
+.case-content { display: flex; flex-direction: column; gap: 40px; margin-top: 40px; }
+.case-content-text { display: flex; flex-direction: column; gap: 22px; padding: 20px 0; }
+.case-content-text p { margin: 0; color: #cacad2; font-size: 20px; line-height: 1.45; white-space: pre-line; }
+.case-content-text .case-eyebrow { color: var(--case-accent); font-size: 14px; }
+.case-content-text a, .case-content-link a { color: var(--case-accent); font-size: 18px; line-height: 1.45; font-weight: 500; }
+.case-content-chapter { gap: 24px; padding: 60px 0 30px; }
+.case-content-panel { padding: 40px; border-radius: 14px; background: rgba(30,32,37,.4); gap: 20px; }
+.case-content-panel.case-content-chapter { padding: 40px; }
+.case-status-label { color: var(--case-accent); }
+.case-content-text .case-prototype-note { font-size: 16px; }
+.case-content-text .case-components-list { font-size: 24px; font-weight: 500; }
+.case-illustration { margin: 0; min-width: 0; }
+.case-illustration a, .case-illustration img { display: block; width: 100%; }
+.case-illustration img { height: auto; border-radius: 14px; }
+.case-illustration--wide { width: min(1440px, 100vw); margin-left: calc((100% - min(1440px, 100vw)) / 2); }
+.case-illustration--wide img { border-radius: 0; }
+.case-benchmark { margin-top: 48px; }
+.case-contacts { padding: 60px 0 80px; display: flex; flex-direction: column; gap: 40px; }
+.case-contacts p { font-size: 18px; line-height: 1.4; margin: 0; }
+.case-contact-links { display: flex; flex-wrap: wrap; gap: 24px; margin-top: -16px; }
+.case-contact-links a { display: flex; align-items: center; gap: 12px; text-decoration: none; font-size: 18px; font-weight: 500; }
+.case-contact-icon { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; background: rgba(24,102,180,.06); flex-shrink: 0; }
+.case-contacts + .case-footer { margin-top: 0; }
+@media (max-width: 767px) {
+  .case-content-panel, .case-content-panel.case-content-chapter { padding: 24px; }
+  .case-content-chapter { padding-top: 40px; }
+  .case-contact-links a { font-size: 16px; }
+}
 .case-followup p { margin: 0; font-size: 20px; line-height: 1.45; color: #cacad2; overflow-wrap: break-word; }
 .text-animate-character { display: inline-block; white-space: pre; }
 .text-animate-word { display: inline-block; white-space: nowrap; }
