@@ -97,7 +97,31 @@
 .case-illustration img { height: auto; border-radius: 14px; }
 .case-illustration--wide { width: min(1440px, 100vw); margin-left: calc((100% - min(1440px, 100vw)) / 2); }
 .case-illustration--wide img { border-radius: 0; }
-.case-benchmark { margin-top: 48px; }
+.case-illustration--wide a { overflow: hidden; }
+/* Cover the raster export's outer antialiased edge, retaining its composition. */
+.case-illustration--wide img { clip-path: inset(1px); transform: scale(1.003); }
+.crm-benchmark { min-width: 0; padding: 24px; background: rgba(30,32,37,.4); border: 1px solid #303138; border-radius: 14px; }
+.crm-benchmark table { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 18px; line-height: 1.45; text-align: left; }
+.crm-benchmark caption { margin-bottom: 24px; text-align: left; font-size: 20px; font-weight: 600; }
+.crm-benchmark th, .crm-benchmark td { padding: 18px 20px; border-bottom: 1px solid #303138; overflow-wrap: anywhere; vertical-align: top; }
+.crm-benchmark thead th { color: var(--case-accent); background: rgba(30,32,37,.4); }
+.crm-benchmark tbody th { font-weight: 500; }
+.crm-benchmark td { color: #cacad2; }
+.crm-benchmark tbody tr:last-child > * { border-bottom: 0; }
+.interactive-hover-button { position: relative; isolation: isolate; display: inline-flex; align-items: center; justify-content: center; overflow: hidden; width: auto; min-height: 44px; padding: 10px 24px; border: 1px solid #dedee2; border-radius: 999px; background: #fff; color: #272727; font: inherit; font-size: 16px; font-weight: 600; cursor: pointer; }
+.interactive-hover-rest { display: flex; align-items: center; justify-content: center; gap: 8px; }
+.interactive-hover-dot { width: 8px; height: 8px; border-radius: 50%; background: #272727; transition: transform .3s ease; }
+.interactive-hover-label { position: relative; transition: transform .3s ease, opacity .3s ease; }
+.interactive-hover-active { position: absolute; inset: 0; z-index: 1; display: flex; align-items: center; justify-content: center; gap: 8px; color: #fff; opacity: 0; transform: translateX(48px); transition: transform .3s ease, opacity .3s ease; }
+.interactive-hover-button:focus-visible .interactive-hover-dot { transform: scale(100.8); }
+.interactive-hover-button:focus-visible .interactive-hover-label { transform: translateX(48px); opacity: 0; }
+.interactive-hover-button:focus-visible .interactive-hover-active { transform: translateX(0); opacity: 1; }
+.case-back-to-top { position: fixed; z-index: 20; right: max(24px, calc((100vw - 1440px) / 2 + 24px)); bottom: calc(24px + env(safe-area-inset-bottom, 0px)); box-shadow: 0 4px 24px #0005; }
+@media (hover: hover) {
+  .interactive-hover-button:hover .interactive-hover-dot { transform: scale(100.8); }
+  .interactive-hover-button:hover .interactive-hover-label { transform: translateX(48px); opacity: 0; }
+  .interactive-hover-button:hover .interactive-hover-active { transform: translateX(0); opacity: 1; }
+}
 .case-contacts { padding: 60px 0 80px; display: flex; flex-direction: column; gap: 40px; }
 .case-contacts p { font-size: 18px; line-height: 1.4; margin: 0; }
 .case-contact-links { display: flex; flex-wrap: wrap; gap: 24px; margin-top: -16px; }
@@ -105,6 +129,11 @@
 .case-contact-icon { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; background: rgba(24,102,180,.06); flex-shrink: 0; }
 .case-contacts + .case-footer { margin-top: 0; }
 @media (max-width: 767px) {
+  .crm-benchmark { padding: 16px 12px; }
+  .crm-benchmark caption { font-size: 18px; }
+  .crm-benchmark table { font-size: 14px; }
+  .crm-benchmark th, .crm-benchmark td { padding: 14px 8px; }
+  .case-back-to-top { right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
   .case-content-panel, .case-content-panel.case-content-chapter { padding: 24px; }
   .case-content-chapter { padding-top: 40px; }
   .case-contact-links a { font-size: 16px; }
@@ -114,5 +143,6 @@
 .text-animate-word { display: inline-block; white-space: nowrap; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 @media (prefers-reduced-motion: reduce) {
+  .interactive-hover-button * { transition: none; }
   .case-blur-reveal { opacity: 1 !important; filter: none !important; transform: none !important; }
 }

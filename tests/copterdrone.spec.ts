@@ -89,7 +89,7 @@ for (const width of [1440, 1280, 1024, 768, 390, 375]) {
     expect(geometry.width).toBeCloseTo(geometry.mainWidth, 1);
     expect(geometry.width / geometry.height).toBeCloseTo(1160 / 428, 2);
     expect(geometry.afterHero && geometry.beforeTask).toBe(true);
-    await page.getByRole('link', { name: 'Полный кейс в Figma ↗' }).scrollIntoViewIfNeeded();
+    await page.getByRole('link', { name: 'Макеты проекта в Figma ↗' }).scrollIntoViewIfNeeded();
     await expect(page.locator('.research-step')).toHaveCount(4);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     for (const link of await page.locator('.research-image').all()) {

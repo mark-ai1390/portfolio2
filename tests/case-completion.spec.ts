@@ -36,14 +36,16 @@ for (const [id, titles] of Object.entries(sections)) {
     });
   }
 }
-test('CRM: бенчмаркинг перед принципом отбора и рабочие ссылки', async ({ page }) => {
+test('CRM: принцип отбора над текстовой таблицей и рабочие ссылки', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/projects/4sales');
-  const benchmark = page.getByRole('img', { name: 'Бенчмаркинг — сравнение подходов retailCRM и 4sales', exact: true });
+  const benchmark = page.getByRole('table', { name: 'Бенчмаркинг — сравнение подходов retailCRM и 4sales', exact: true });
   await benchmark.scrollIntoViewIfNeeded();
   const bounds = await benchmark.boundingBox();
   const principle = await page.getByRole('heading', { name: 'Принцип отбора решений', exact: true }).evaluate(e => e.getBoundingClientRect().top);
-  expect(bounds!.y + bounds!.height).toBeLessThan(principle);
+  expect(principle).toBeLessThan(bounds!.y);
+  await expect(benchmark.getByRole('row')).toHaveCount(6);
+  await expect(page.locator('img[src="/assets/cases/306-102876.webp"]')).toHaveCount(0);
   await expect(page.getByRole('link', { name: 'Рассмотреть архитектуру в Figma ↗', exact: true })).toHaveAttribute('href', 'https://www.figma.com/design/ufCGdzahHmwbLQWYjeAzNp?node-id=2-22093');
   await expect(page.getByRole('link', { name: 'Открыть компоненты и макеты ↗', exact: true })).toHaveAttribute('href', 'https://www.figma.com/design/ufCGdzahHmwbLQWYjeAzNp?node-id=394-13480');
   await expect(page.locator('[data-figma-node="306:103320"] a')).toHaveAttribute('href', 'https://4sales-about.mark-sanginov.workers.dev/');
