@@ -2,6 +2,8 @@ import { useEffect, type CSSProperties, type ReactNode } from 'react';
 import type { CaseIntroductionData } from '../data/case-introductions';
 import { CaseHeading } from './CaseHeading';
 import TextBlockAnimation from './ui/text-block-animation';
+import { MaskButtonLink } from './ui/mask-button';
+import { author } from '../data/portfolio';
 import './case.css';
 
 export function CasePage({ project, children }: { project: CaseIntroductionData; children?: ReactNode }) {
@@ -18,11 +20,14 @@ export function CasePage({ project, children }: { project: CaseIntroductionData;
       <header className="case-header">
         <a href={back}>← На главную</a>
         <span>Марк Сангинов</span>
-        <a href={project.figma} target="_blank" rel="noopener noreferrer">Макет в Figma ↗</a>
+        <MaskButtonLink className="case-telegram" href={author.contacts.find(contact => contact.label === 'Telegram')!.href} target="_blank" rel="noopener noreferrer">Телеграм<img src="/assets/arrow-up-right.svg" alt="" width="20" height="20" /></MaskButtonLink>
       </header>
       <main id="case-main" className="case-main" tabIndex={-1}>
         <section className="case-hero" aria-label="Обложка проекта">
-          <img className="case-cover" src={project.cover.src} alt={project.cover.alt} width="2048" height="1227" fetchPriority="high" />
+          <img className="case-cover" src={project.cover.src} alt={project.cover.alt} width="2048" height="1225" fetchPriority="high" />
+          <div className="case-cover-actions">
+            <a className="case-figma-link" href={project.figma} target="_blank" rel="noopener noreferrer">Макеты Figma</a>
+          </div>
           <TextBlockAnimation className="case-title-animation" animateOnScroll={false} delay={.2} blockColor={project.accent}>
             <h1>{project.titleLead}{' '}<br /><span className="case-company">{project.company}</span></h1>
           </TextBlockAnimation>

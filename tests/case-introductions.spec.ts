@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 const cases = [
-  { id: 'primekraft', card: 'PrimeKraft', company: 'Prime Kraft', title: 'Редизайн интернет-магазина Prime Kraft', task: /Объединить узнаваемость Prime Kraft/ },
+  { id: 'primekraft', card: 'PrimeKraft', company: 'PRIMEKRAFT', title: 'Редизайн интернет-магазина PRIMEKRAFT', task: /Объединить узнаваемость Prime Kraft/ },
   { id: '4sales', card: '4SALES CRM', company: '4sales', title: 'CRM для ежедневной работы с продажами 4sales', task: /Сохранить возможности 4sales/ },
 ];
 

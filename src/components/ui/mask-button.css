@@ -1,0 +1,42 @@
+:root {
+  --button-py-sm: .5rem;
+  --button-px-sm: 1rem;
+  --button-text-sm: .875rem;
+  --button-leading-sm: 1.25rem;
+  --button-radius-sm: 14px;
+  --button-py-md: .75rem;
+  --button-px-md: 1.5rem;
+  --button-text-md: .875rem;
+  --button-leading-md: 1.25rem;
+  --button-radius-md: 16px;
+  --button-py-lg: 1rem;
+  --button-px-lg: 2rem;
+  --button-text-lg: 1rem;
+  --button-leading-lg: 1.5rem;
+  --button-radius-lg: 20px;
+  --ring: var(--focus);
+}
+@theme {
+  --color-background: #e9e9ed;
+  --color-foreground: #272727;
+  --color-border: transparent;
+  --color-primary: #fff;
+  --color-primary-foreground: #272727;
+  --color-secondary: #fff;
+  --color-secondary-foreground: #272727;
+  --animate-mask-nature-in: mask-button-in .7s steps(22) forwards;
+  --animate-mask-nature-out: mask-button-out .7s steps(22) forwards;
+  --animate-mask-urban-in: mask-button-in .7s steps(29) forwards;
+  --animate-mask-urban-out: mask-button-out .7s steps(29) forwards;
+  --animate-mask-forest-in: mask-button-in .7s steps(70) forwards;
+  --animate-mask-forest-out: mask-button-out .7s steps(70) forwards;
+}
+@keyframes mask-button-in {
+  from { -webkit-mask-position: 0 0; mask-position: 0 0; }
+  to { -webkit-mask-position: 100% 0; mask-position: 100% 0; }
+}
+@keyframes mask-button-out {
+  from { -webkit-mask-position: 100% 0; mask-position: 100% 0; }
+  to { -webkit-mask-position: 0 0; mask-position: 0 0; }
+}
+.mask-button { text-decoration: none; font-family: inherit; color: #272727; background: #e9e9ed; }

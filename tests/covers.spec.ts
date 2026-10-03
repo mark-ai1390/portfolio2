@@ -39,6 +39,6 @@ test('сенсорный экран показывает normal и открыв�
     await expect(page.locator('.project-cover--hover').first()).toHaveCSS('opacity', '0');
     await page.getByRole('article').first().tap();
     await expect(page).toHaveURL(/\/projects\/primekraft$/);
-    await expect(page.getByRole('heading', { level: 1 })).toHaveAccessibleName('Редизайн интернет-магазина Prime Kraft');
+    await expect(page.getByRole('heading', { level: 1 })).toHaveAccessibleName('Редизайн интернет-магазина PRIMEKRAFT');
   } finally { await context.close(); }
 });

@@ -18,10 +18,10 @@ const figma = (id: string) => `https://www.figma.com/design/yojJb08rcCuEd3ZTZZYs
 // Introduction and task copy verified against Page 3; the remaining case
 // sections are separate work, not invented to fill these initial pages.
 export const caseIntroductions: Record<string, CaseIntroductionData> = {
-  copterdrone: { ...copterdrone, id: 'copterdrone', accent: '#1fb59c', cover: project('copterdrone').cover },
+  copterdrone: { ...copterdrone, id: 'copterdrone', accent: '#1fb59c', cover: { src: '/assets/copterdrone-case-cover.webp', alt: project('copterdrone').cover.alt } },
   primekraft: {
-    id: 'primekraft', company: 'Prime Kraft', titleLead: 'Редизайн интернет-магазина', accent: '#ffd500',
-    figma: figma('primekraft'), cover: project('primekraft').cover,
+    id: 'primekraft', company: 'PRIMEKRAFT', titleLead: 'Редизайн интернет-магазина', accent: '#ffd500',
+    figma: figma('primekraft'), cover: { src: '/assets/primekraft-case-cover.webp', alt: 'Новый дизайн PRIMEKRAFT и развитие фирменного стиля с персонажем Рафтом' },
     concepts: { image: '/assets/primekraft-concepts.png', width: 2048, height: 755,
       alt: 'Готовые концепты Prime Kraft: композиция экранов магазина спортивного питания' },
     task: [
@@ -31,7 +31,7 @@ export const caseIntroductions: Record<string, CaseIntroductionData> = {
   },
   '4sales': {
     id: '4sales', company: '4sales', titleLead: 'CRM для ежедневной работы с продажами', accent: '#8097ff',
-    figma: figma('4sales'), cover: project('4sales').cover,
+    figma: figma('4sales'), cover: { src: '/assets/4sales-case-cover.webp', alt: project('4sales').cover.alt },
     concepts: { image: '/assets/4sales-concepts.png', width: 2048, height: 755,
       alt: 'Готовые концепты 4sales: дашборд, заказы, клиенты, товары и менеджеры' },
     task: [
