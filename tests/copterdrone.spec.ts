@@ -118,3 +118,21 @@ test('прокрутка последовательно двигает лини�
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   await expect(section).not.toHaveClass(/research--pinned/);
 });
+
+for (const width of [1440, 375]) {
+  test(`обновлённые выводы и равномерная рамка интервью при ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('/projects/copterdrone');
+    await expect(page.locator('.research-step h3')).toHaveText(['UX-интервью', 'Навигация и поиск', 'Визуальная иерархия', 'Поддержка и оформление']);
+    await expect(page.locator('.research-image')).toHaveCount(1);
+    const image = page.locator('.research-image');
+    await image.focus();
+    await expect.poll(() => image.locator('img').evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true);
+    const gaps = await image.evaluate(element => {
+      const outer = element.getBoundingClientRect();
+      const inner = element.querySelector('img')!.getBoundingClientRect();
+      return [inner.left - outer.left, outer.right - inner.right, inner.top - outer.top, outer.bottom - inner.bottom];
+    });
+    for (const gap of gaps) expect(gap).toBeCloseTo(12, 1);
+  });
+}
