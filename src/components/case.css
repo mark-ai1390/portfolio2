@@ -4,7 +4,7 @@
 .case-header a, .case-footer a { text-decoration: none; padding: 12px 0; }
 .case-header a:hover, .case-footer a:hover { color: var(--case-accent); }
 .case-header > span { font-weight: 600; }
-.case-hero { position: relative; display: flex; flex-direction: column; align-items: stretch; gap: 44px; padding: 0 0 40px; }
+.case-hero { position: relative; display: flex; flex-direction: column; align-items: stretch; gap: 44px; padding: 0 0 60px; }
 .case-cover { display: block; width: 100%; height: 550px; object-fit: cover; object-position: center; border-radius: 14px; }
 .case-cover-actions { display: flex; justify-content: flex-end; margin-top: -34px; }
 .case-figma-link { display: inline-flex; align-items: center; justify-content: center; width: 234px; padding: 10px 16px; min-height: 36px; border-radius: 14px; background: rgba(40,40,51,.67); color: #fff; font-size: 16px; line-height: 1; font-weight: 700; text-decoration: none; }
@@ -13,7 +13,6 @@
 .case-header .case-telegram:hover { color: #272727; }
 .case-telegram .mask-button-label, .case-telegram .mask-button-fill { gap: 4px; }
 .case-title-animation { width: 100%; text-align: left; }
-.case-title-animation h1 { font-size: 52px; font-weight: 700; line-height: 1.2; letter-spacing: -.03em; }
 .case-company { display: inline-block; padding: 2px 16px 6px; margin-top: 12px; border: 1px solid transparent; border-radius: 8px; color: #fff; }
 .case-title-animation.text-block--revealed .case-company { animation: case-company-fill .3s ease-out .5s forwards; }
 @keyframes case-company-fill { to { color: #121213; border-color: #fff; background-color: #fff; } }
@@ -23,7 +22,6 @@
 .case-concepts a { display: block; aspect-ratio: 1160 / 428; border-radius: 14px; overflow: hidden; }
 .case-concepts img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: 14px; }
 .case-task { width: 100%; padding: 64px 0; text-align: left; }
-.case-heading { font-size: 32px; font-weight: 700; line-height: 1.15; margin: 0; letter-spacing: -.025em; }
 .case-task p { margin: 24px 0 0; font-size: 20px; line-height: 1.6; color: #cacad2; }
 .case-research-intro { padding: 80px 0 48px; }
 .case-eyebrow { font-size: 14px; font-weight: 600; color: var(--case-accent); margin: 0 0 16px; }
@@ -35,7 +33,7 @@
 .research-marker span { position: relative; display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid var(--case-accent); border-radius: 50%; background: #121213; color: var(--case-accent); font-size: 12px; font-weight: 600; transition: background .3s, color .3s; }
 .research-step.is-active .research-marker span { background: var(--case-accent); color: #121213; }
 .research-step:nth-child(even) .research-marker::before { right: 0; }
-.research-step h3 { margin: 0 0 16px; font-size: 26px; font-weight: 600; line-height: 1.2; }
+.research-step .heading { margin-bottom: 16px; }
 .research-step p { color: #cacad2; font-size: 18px; line-height: 1.5; margin: 0 0 24px; }
 .research-image { display: flex; align-items: center; justify-content: center; height: 240px; padding: 12px; background: #1c1d20; border-radius: 14px; }
 .research-image img { display: block; width: 100%; height: 100%; object-fit: contain; border-radius: 8px; }
@@ -68,7 +66,6 @@
   .case-page { padding: 16px 20px 32px; }
   .case-header { flex-wrap: wrap; gap: 8px 20px; margin-bottom: 24px; font-size: 14px; }
   .case-header > span { display: none; }
-  .case-title-animation h1 { font-size: 32px; }
   .case-company { padding: 2px 10px 4px; }
   .case-task { padding: 48px 0; }
   .case-research-intro { padding: 48px 0 32px; }
@@ -79,7 +76,7 @@
   .research-marker { position: absolute; left: 0; top: 0; margin: 0; }
   .research-marker::before { display: none; }
   .research-marker span { width: 32px; height: 32px; }
-  .research-step h3 { font-size: 24px; padding-top: 2px; }
+  .research-step .heading { padding-top: 2px; }
   .research-step p { font-size: 16px; }
   .research-image { height: 200px; padding: 8px; }
   .case-footer { margin-top: 24px; }

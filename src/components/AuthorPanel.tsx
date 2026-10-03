@@ -1,10 +1,11 @@
+import { Heading } from './ui/heading';
 import { author } from '../data/portfolio';
 
 export function AuthorPanel() {
   return (
     <header className="author-panel">
       <div className="author-intro">
-        <h1>{author.discipline}</h1>
+        <Heading level={2}>{author.discipline}</Heading>
         <p className="specialties">{author.areas.join(', ')}</p>
         <p className="author-description">{author.description}</p>
         <nav className="contacts" aria-label="Связаться с Марком">

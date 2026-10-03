@@ -1,5 +1,6 @@
 import { useEffect, type CSSProperties, type ReactNode } from 'react';
 import type { CaseIntroductionData } from '../data/case-introductions';
+import { Heading } from './ui/heading';
 import { CaseHeading } from './CaseHeading';
 import TextBlockAnimation from './ui/text-block-animation';
 import { MaskButtonLink } from './ui/mask-button';
@@ -24,12 +25,12 @@ export function CasePage({ project, children }: { project: CaseIntroductionData;
       </header>
       <main id="case-main" className="case-main" tabIndex={-1}>
         <section className="case-hero" aria-label="Обложка проекта">
-          <img className="case-cover" src={project.cover.src} alt={project.cover.alt} width="2048" height="1225" fetchPriority="high" />
+          <img className="case-cover" src={project.cover.src} alt={project.cover.alt} width="2048" height={project.cover.height ?? 1225} fetchPriority="high" />
           <div className="case-cover-actions">
             <a className="case-figma-link" href={project.figma} target="_blank" rel="noopener noreferrer">Макеты Figma</a>
           </div>
           <TextBlockAnimation className="case-title-animation" animateOnScroll={false} delay={.2} blockColor={project.accent}>
-            <h1>{project.titleLead}{' '}<br /><span className="case-company">{project.company}</span></h1>
+            <Heading level={1}>{project.titleLead}{' '}<br /><span className="case-company">{project.company}</span></Heading>
           </TextBlockAnimation>
         </section>
         <section className="case-concepts" aria-label={`Готовые концепты ${project.company}`}>

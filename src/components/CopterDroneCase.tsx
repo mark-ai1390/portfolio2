@@ -1,3 +1,4 @@
+import { Heading } from './ui/heading';
 import { useEffect, useRef } from 'react';
 import { copterdrone } from '../data/copterdrone';
 import { CasePage } from './CasePage';
@@ -75,7 +76,7 @@ function ResearchTimeline() {
             {copterdrone.steps.map((step, index) => (
               <li className="research-step" key={step.title}>
                 <div className="research-marker" aria-hidden="true"><span>{String(index + 1).padStart(2, '0')}</span></div>
-                <h3>{step.title}</h3>
+                <Heading level={3}>{step.title}</Heading>
                 <p>{step.text}</p>
                 <a className="research-image" href={step.image} target="_blank" rel="noopener noreferrer" aria-label={`Открыть иллюстрацию: ${step.title}`}>
                   <img src={step.image} alt={step.alt} width={step.width} height={step.height} loading="lazy" />

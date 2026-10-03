@@ -13,6 +13,9 @@
   --media-space: #232325;
   --muted: #d8d8d8;
   --focus: #c4c2ff;
+  --heading-h1: 48px;
+  --heading-h2: 32px;
+  --heading-h3: 24px;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -47,7 +50,11 @@ a:focus-visible, [tabindex]:focus-visible {
   gap: 48px;
 }
 
-h1 { margin: 0; font-size: 32px; font-weight: 600; line-height: 1; }
+.heading { margin: 0; font-family: inherit; font-weight: 700; overflow-wrap: anywhere; }
+.heading--1 { font-size: var(--heading-h1); line-height: 1.2; letter-spacing: -.03em; }
+.heading--2 { font-size: var(--heading-h2); line-height: 1.15; letter-spacing: -.025em; }
+.heading--3 { font-size: var(--heading-h3); line-height: 1.2; letter-spacing: -.02em; }
+@media (max-width: 767px) { :root { --heading-h1: 32px; } }
 .specialties { margin: 2px 0 0; font-size: 32px; line-height: 1; }
 .author-description { margin: 12px 0 0; font-size: 16px; line-height: 1.4; color: var(--muted); white-space: pre-line; }
 .contacts { display: flex; gap: 16px; margin-top: 32px; }
@@ -103,7 +110,7 @@ h1 { margin: 0; font-size: 32px; font-weight: 600; line-height: 1; }
 }
 .project-card:focus-within .project-cover--hover { opacity: 1; }
 .project-copy { display: flex; flex-direction: column; gap: 12px; padding-top: 20px; }
-.project-copy h2 { margin: 0; font-size: 20px; font-weight: 600; line-height: 1; letter-spacing: -.3px; text-transform: uppercase; }
+.project-copy .heading { text-transform: uppercase; }
 .project-copy p { margin: 0; font-size: 16px; line-height: 1.4; }
 .project-tags { display: flex; flex-wrap: wrap; gap: 12px; padding: 0; margin: 0; list-style: none; }
 .project-tags li { padding: 4px 10px; border-radius: 8px; background: #0d2643; color: rgba(177, 178, 212, .88); font-size: 13px; font-weight: 600; line-height: 1; }

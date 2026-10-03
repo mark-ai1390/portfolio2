@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
+import { Heading } from './ui/heading';
 
 export function CaseHeading({ id, children }: { id: string; children: ReactNode }) {
-  return <h2 id={id} className="case-heading">{children}</h2>;
+  return <Heading level={2} id={id} className="case-heading">{children}</Heading>;
 }

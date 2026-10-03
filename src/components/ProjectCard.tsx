@@ -1,3 +1,4 @@
+import { Heading } from './ui/heading';
 import type { Project } from '../data/portfolio';
 
 export function ProjectCard({ project }: { project: Project }) {
@@ -24,7 +25,7 @@ export function ProjectCard({ project }: { project: Project }) {
         />
       </div>
       <div className="project-copy">
-        <h2 id={`${project.id}-title`}>{project.title}</h2>
+        <Heading level={2} id={`${project.id}-title`}>{project.title}</Heading>
         <p>{project.summary}</p>
         <ul className="project-tags" aria-label="Направления проекта">
           {project.tags.map(tag => <li key={tag}>{tag}</li>)}

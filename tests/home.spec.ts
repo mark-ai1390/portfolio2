@@ -3,7 +3,7 @@ import { expect, test } from '@playwright/test';
 test('проекты идут в заданном порядке; контакты ведут к автору', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByRole('article')).toHaveCount(3);
-  await expect(page.getByRole('heading', { level: 2 })).toHaveText(['PrimeKraft', 'CopterDrone', '4SALES CRM']);
+  await expect(page.getByRole('heading', { level: 2 })).toHaveText(['Product Design', 'PrimeKraft', 'CopterDrone', '4SALES CRM']);
   await expect(page.getByRole('link', { name: 'Email' })).toHaveAttribute('href', 'mailto:ligeon199815@gmail.com');
   await expect(page.getByRole('link', { name: 'Telegram' })).toHaveAttribute('href', 'https://t.me/Markro1998');
   await expect(page.getByRole('link', { name: 'Telegram' })).toHaveAttribute('rel', 'noopener noreferrer');

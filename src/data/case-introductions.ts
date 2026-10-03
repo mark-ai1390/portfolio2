@@ -7,7 +7,7 @@ export type CaseIntroductionData = {
   titleLead: string;
   accent: string;
   figma: string;
-  cover: { src: string; alt: string };
+  cover: { src: string; alt: string; height?: number };
   concepts: { image: string; alt: string; width: number; height: number };
   task: readonly string[];
 };
@@ -18,10 +18,10 @@ const figma = (id: string) => `https://www.figma.com/design/yojJb08rcCuEd3ZTZZYs
 // Introduction and task copy verified against Page 3; the remaining case
 // sections are separate work, not invented to fill these initial pages.
 export const caseIntroductions: Record<string, CaseIntroductionData> = {
-  copterdrone: { ...copterdrone, id: 'copterdrone', accent: '#1fb59c', cover: { src: '/assets/copterdrone-case-cover.webp', alt: project('copterdrone').cover.alt } },
+  copterdrone: { ...copterdrone, id: 'copterdrone', accent: '#1fb59c', cover: { src: '/assets/copterdrone-case-cover.webp', height: 970, alt: project('copterdrone').cover.alt } },
   primekraft: {
     id: 'primekraft', company: 'PRIMEKRAFT', titleLead: 'Редизайн интернет-магазина', accent: '#ffd500',
-    figma: figma('primekraft'), cover: { src: '/assets/primekraft-case-cover.webp', alt: 'Новый дизайн PRIMEKRAFT и развитие фирменного стиля с персонажем Рафтом' },
+    figma: figma('primekraft'), cover: { src: '/assets/primekraft-case-cover.webp', height: 970, alt: 'Новый дизайн PRIMEKRAFT и развитие фирменного стиля с персонажем Рафтом' },
     concepts: { image: '/assets/primekraft-concepts.png', width: 2048, height: 755,
       alt: 'Готовые концепты Prime Kraft: композиция экранов магазина спортивного питания' },
     task: [
