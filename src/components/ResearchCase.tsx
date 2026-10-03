@@ -1,4 +1,5 @@
 import { CasePage } from './CasePage';
+import { CaseFollowups } from './CaseFollowups';
 import { CaseHeading } from './CaseHeading';
 import { ResearchTimeline } from './ResearchTimeline';
 import TextBlockAnimation from './ui/text-block-animation';
@@ -18,6 +19,7 @@ export function ResearchCase({ id }: { id: string }) {
         </TextBlockAnimation>
       </div>
       <ResearchTimeline steps={research.steps} />
+      <CaseFollowups id={id} />
     </CasePage>
   );
 }

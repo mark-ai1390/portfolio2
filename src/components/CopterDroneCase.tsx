@@ -1,4 +1,5 @@
 import { ResearchTimeline } from './ResearchTimeline';
+import { CaseFollowups } from './CaseFollowups';
 import { copterdrone } from '../data/copterdrone';
 import { CasePage } from './CasePage';
 import { caseIntroductions } from '../data/case-introductions';
@@ -16,6 +17,7 @@ export function CopterDroneCase() {
         </TextBlockAnimation>
       </div>
       <ResearchTimeline steps={copterdrone.steps} />
+      <CaseFollowups id="copterdrone" />
     </CasePage>
   );
 }

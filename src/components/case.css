@@ -78,3 +78,13 @@
 @media (prefers-reduced-motion: reduce) { .case-company { color: #121213; background: #fff; border-color: #fff; } }
 
 .case-research-description { margin: 24px 0 0; max-width: 900px; font-size: 20px; line-height: 1.6; color: #cacad2; }
+.case-followups { margin-top: 48px; display: grid; gap: 40px; }
+.case-followup, .case-blur-reveal { display: flex; flex-direction: column; gap: 22px; }
+.case-followup { padding: 20px 0; }
+.case-followup p { margin: 0; font-size: 20px; line-height: 1.45; color: #cacad2; overflow-wrap: break-word; }
+.text-animate-character { display: inline-block; white-space: pre; }
+.text-animate-word { display: inline-block; white-space: nowrap; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+@media (prefers-reduced-motion: reduce) {
+  .case-blur-reveal { opacity: 1 !important; filter: none !important; transform: none !important; }
+}
