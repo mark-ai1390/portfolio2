@@ -12,8 +12,8 @@ for (const [id, href] of Object.entries(links)) {
       await page.emulateMedia({ reducedMotion: 'reduce' });
       await page.setViewportSize({ width, height: 900 });
       await page.goto(`/projects/${id}`);
-      await expect(page.getByRole('link', { name: 'Макеты Figma', exact: true })).toHaveAttribute('href', href);
-      await expect(page.getByRole('link', { name: 'Макеты проекта в Figma ↗', exact: true })).toHaveAttribute('href', href);
+      await expect(page.locator('.case-hero').getByRole('link', { name: 'Макеты Figma', exact: true })).toHaveAttribute('href', href);
+      await expect(page.locator('.case-footer').getByRole('link', { name: 'Макеты Figma', exact: true })).toHaveAttribute('href', href);
       const button = page.getByRole('button', { name: 'Наверх, к началу кейса' });
       await expect(button).toHaveCount(0);
       await page.locator('.case-followup').first().scrollIntoViewIfNeeded();

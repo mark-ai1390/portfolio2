@@ -1,0 +1,48 @@
+.case-image-link { position: relative; cursor: zoom-in; }
+.case-image-hint { display: none; }
+.case-image-viewer { width: min(1600px, calc(100vw - 48px)); height: calc(100dvh - 48px); max-width: none; max-height: none; margin: auto; padding: 0; border: 1px solid #3a3a43; border-radius: 18px; background: #121213; color: #fff; box-shadow: 0 24px 90px #0008; }
+.case-image-viewer::backdrop { background: #08080bd9; backdrop-filter: blur(6px); }
+.case-viewer-panel { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; height: 100%; min-height: 0; }
+.case-viewer-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; background: #1b1b20; border-bottom: 1px solid #34343c; }
+.case-viewer-zoom { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.case-viewer-toolbar button { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; min-width: 44px; height: 44px; padding: 8px; border: 1px solid #4a4a54; border-radius: 10px; color: #fff; background: #29292f; font: 500 24px / 1 'Rubik', sans-serif; cursor: pointer; }
+.case-viewer-toolbar button:hover { background: #3a3a43; }
+.case-viewer-toolbar button:disabled { color: #888891; cursor: default; }
+.case-viewer-toolbar button:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.case-viewer-toolbar .case-viewer-fit { font-size: 14px; padding-inline: 12px; }
+.case-viewer-zoom output { min-width: 52px; text-align: center; font-size: 14px; font-variant-numeric: tabular-nums; }
+.case-viewer-viewport { min-width: 0; min-height: 0; overflow: auto; overscroll-behavior: contain; touch-action: none; cursor: grab; outline-offset: -4px; background: #0c0c0e; scrollbar-color: #555561 #16161b; }
+.case-viewer-viewport.is-dragging { cursor: grabbing; }
+.case-viewer-canvas { width: max-content; min-width: 100%; min-height: 100%; padding: 16px; }
+.case-viewer-image { position: relative; }
+.case-viewer-image img { display: block; width: 100%; max-width: none; height: auto; user-select: none; -webkit-user-select: none; }
+.case-viewer-image .case-viewer-preview { position: absolute; inset: 0; height: 100%; }
+.case-viewer-caption { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 6px 20px; padding: 12px 16px; border-top: 1px solid #34343c; background: #1b1b20; font-size: 14px; line-height: 1.5; }
+.case-viewer-caption p { margin: 0; color: #c4c4cd; }
+.case-viewer-caption a { white-space: nowrap; }
+@media (max-width: 767px) {
+  .case-image-link--hint::after { content: ''; position: absolute; inset: var(--case-cue-inset, 0px); border-radius: var(--case-cue-radius, inherit); background: #07070c30; pointer-events: none; }
+  .case-image-hint { position: absolute; z-index: 1; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; gap: 6px; pointer-events: none; }
+  .case-image-pointer { position: relative; width: 52px; height: 60px; }
+  .case-image-pointer svg { position: relative; z-index: 1; filter: drop-shadow(0 3px 8px #0008); animation: case-pointer-tap 2.4s ease-in-out infinite; }
+  .case-image-tap-ring { position: absolute; top: 2px; left: 1px; width: 30px; height: 30px; border: 2px solid #fff; border-radius: 50%; opacity: 0; animation: case-tap-ring 2.4s ease-out infinite; }
+  .case-image-hint-label { padding: 6px 12px; border-radius: 20px; background: #16161dd9; color: #fff; font-size: 14px; line-height: 1.4; font-weight: 500; white-space: nowrap; }
+  .case-image-viewer { width: 100%; height: 100dvh; margin: 0; border: 0; border-radius: 0; }
+  .case-viewer-toolbar { padding: calc(8px + env(safe-area-inset-top, 0px)) 10px 8px; gap: 8px; }
+  .case-viewer-zoom { gap: 6px; }
+  .case-viewer-zoom output { min-width: 44px; }
+  .case-viewer-toolbar .case-viewer-fit { padding-inline: 8px; font-size: 13px; }
+  .case-viewer-caption { padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px)); font-size: 13px; }
+}
+@keyframes case-pointer-tap {
+  0%, 48%, 100% { transform: translate(4px, -4px); }
+  22%, 30% { transform: translate(0, 2px) scale(.92); }
+}
+@keyframes case-tap-ring {
+  0%, 18%, 65%, 100% { opacity: 0; transform: scale(.55); }
+  28% { opacity: .65; transform: scale(.8); }
+  58% { opacity: 0; transform: scale(1.45); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .case-image-pointer svg, .case-image-tap-ring { animation: none; }
+}

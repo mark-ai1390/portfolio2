@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 const cases = [
-  { id: 'primekraft', card: 'PrimeKraft', company: 'PRIMEKRAFT', title: 'Редизайн интернет-магазина PRIMEKRAFT', task: /Объединить узнаваемость Prime Kraft/ },
+  { id: 'primekraft', card: 'PrimeKraft', company: 'PRIMEKRAFT', title: 'Редизайн интернет-магазина PRIMEKRAFT', task: /Сделать покупку удобнее/ },
   { id: '4sales', card: '4SALES CRM', company: '4sales', title: 'CRM для ежедневной работы с продажами 4sales', task: /Сохранить возможности 4sales/ },
 ];
 
@@ -15,11 +15,11 @@ for (const item of cases) {
       await expect(page.getByRole('heading', { level: 1 })).toHaveAccessibleName(item.title);
       const concepts = page.getByRole('region', { name: `Готовые концепты ${item.company}`, exact: true });
       await concepts.scrollIntoViewIfNeeded();
-      await expect.poll(() => concepts.locator('img').evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth === 2048 && img.naturalHeight === 755)).toBe(true);
-      const geometry = await concepts.locator('img').boundingBox();
+      await expect.poll(() => concepts.locator('img:visible').evaluate((img: HTMLImageElement, width) => img.complete && img.naturalWidth > 0 && Math.abs(img.naturalWidth / img.naturalHeight - (width < 768 ? 1125 / 1284 : 2048 / 755)) < .02, width)).toBe(true);
+      const geometry = await concepts.locator('img:visible').boundingBox();
       const main = await page.locator('.case-main').boundingBox();
-      expect(geometry!.width).toBeCloseTo(main!.width, 1);
-      expect(geometry!.width / geometry!.height).toBeCloseTo(1160 / 428, 2);
+      expect(geometry!.width).toBeCloseTo(width < 768 ? width : main!.width, 1);
+      expect(geometry!.width / geometry!.height).toBeCloseTo(width < 768 ? 1125 / 1284 : 1160 / 428, 2);
       if (width === 1440) expect(geometry!.height).toBe(428);
       expect(await page.locator('main > section').evaluateAll(elements => elements.map(element => element.className))).toEqual(['case-hero', 'case-concepts', 'case-task', expect.stringContaining('research'), 'case-contacts']);
       await page.locator('.case-task').evaluate(element => scrollTo(0, element.getBoundingClientRect().top + scrollY - innerHeight * .3));
@@ -37,7 +37,7 @@ for (const item of cases) {
     await expect(page).toHaveURL(new RegExp(`/projects/${item.id}$`));
     await page.reload();
     await expect(page.getByRole('heading', { level: 1 })).toHaveAccessibleName(item.title);
-    await page.getByRole('link', { name: '← На главную' }).click();
+    await page.locator('.case-header').getByRole('link', { name: 'На главную', exact: true }).click();
     await expect(page.getByRole('heading', { name: item.card, exact: true })).toBeInViewport();
   });
 

@@ -52,7 +52,7 @@ test('reduced motion показывает весь текст без масок 
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   await expect(page.locator('.case-task p')).toHaveText([
     'Помочь пользователю ориентироваться в большом ассортименте и пройти путь от поиска товара до оформления заказа.',
-    'Сохранить узнаваемость магазина, усилить визуальную иерархию и сделать ключевые сценарии понятными на desktop и мобильных устройствах.',
+    'Сохранить узнаваемость магазина, выделить основные действия и сделать выбор и покупку понятными на компьютерах и телефонах.',
   ]);
   expect(await page.locator('.case-company').evaluate(element => getComputedStyle(element).backgroundColor)).toBe('rgb(255, 255, 255)');
 });
@@ -64,7 +64,7 @@ test('CopterDrone открывается с главной, обновляетс
   await expect(page.getByRole('heading', { level: 1 })).toHaveAccessibleName('Редизайн интернет-магазина CopterDrone');
   await page.reload();
   await expect(page.getByRole('heading', { name: 'UX-исследование', exact: true })).toBeVisible();
-  await page.getByRole('link', { name: '← На главную' }).click();
+  await page.locator('.case-header').getByRole('link', { name: 'На главную', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'CopterDrone', exact: true })).toBeInViewport();
 });
 
@@ -77,8 +77,8 @@ for (const width of [1440, 1280, 1024, 768, 390, 375]) {
     await expect(page.locator('.case-scroll-cue')).toHaveCount(0);
     const concepts = page.getByRole('region', { name: 'Готовые концепты CopterDrone', exact: true });
     await concepts.scrollIntoViewIfNeeded();
-    await expect.poll(() => concepts.locator('img').evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth === 2048 && img.naturalHeight === 755)).toBe(true);
-    const geometry = await concepts.locator('img').evaluate(element => {
+    await expect.poll(() => concepts.locator('img:visible').evaluate((img: HTMLImageElement, width) => img.complete && img.naturalWidth > 0 && Math.abs(img.naturalWidth / img.naturalHeight - (width < 768 ? 1125 / 1284 : 2048 / 755)) < .02, width)).toBe(true);
+    const geometry = await concepts.locator('img:visible').evaluate(element => {
       const rect = element.getBoundingClientRect();
       const hero = document.querySelector('.case-hero')!;
       const task = document.querySelector('.case-task')!;
@@ -86,16 +86,16 @@ for (const width of [1440, 1280, 1024, 768, 390, 375]) {
         afterHero: Boolean(hero.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_FOLLOWING),
         beforeTask: Boolean(element.compareDocumentPosition(task) & Node.DOCUMENT_POSITION_FOLLOWING) };
     });
-    expect(geometry.width).toBeCloseTo(geometry.mainWidth, 1);
-    expect(geometry.width / geometry.height).toBeCloseTo(1160 / 428, 2);
+    expect(geometry.width).toBeCloseTo(width < 768 ? width : geometry.mainWidth, 1);
+    expect(geometry.width / geometry.height).toBeCloseTo(width < 768 ? 1125 / 1284 : 1160 / 428, 2);
     expect(geometry.afterHero && geometry.beforeTask).toBe(true);
-    await page.getByRole('link', { name: 'Макеты проекта в Figma ↗' }).scrollIntoViewIfNeeded();
+    await page.locator('.case-footer').getByRole('link', { name: 'Макеты Figma', exact: true }).scrollIntoViewIfNeeded();
     await expect(page.locator('.research-step')).toHaveCount(4);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     for (const link of await page.locator('.research-image').all()) {
       await link.focus();
       await expect(link).toBeInViewport();
-      await expect.poll(() => link.locator('img').evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true);
+      await expect.poll(() => link.locator('img').evaluate((img: HTMLImageElement, width) => img.complete && img.naturalWidth > 0)).toBe(true);
     }
     expect(errors).toEqual([]);
   });
@@ -127,7 +127,7 @@ for (const width of [1440, 375]) {
     await expect(page.locator('.research-image')).toHaveCount(1);
     const image = page.locator('.research-image');
     await image.focus();
-    await expect.poll(() => image.locator('img').evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true);
+    await expect.poll(() => image.locator('img').evaluate((img: HTMLImageElement, width) => img.complete && img.naturalWidth > 0)).toBe(true);
     const gaps = await image.evaluate(element => {
       const outer = element.getBoundingClientRect();
       const inner = element.querySelector('img')!.getBoundingClientRect();

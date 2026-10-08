@@ -1,0 +1,134 @@
+.macbook-scroll {
+  --macbook-stage-height: min(88svh, 840px);
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  height: calc(var(--macbook-stage-height) + 75svh);
+  margin: 0;
+}
+
+.macbook-scroll-stage {
+  position: sticky;
+  top: 24px;
+  height: var(--macbook-stage-height);
+  display: grid;
+  place-items: start center;
+  padding: 24px 16px;
+  overflow: clip;
+}
+
+.macbook-scroll-scene {
+  position: relative;
+  width: min(100%, calc((var(--macbook-stage-height) - 96px) * 1.6));
+  aspect-ratio: var(--macbook-screen-ratio);
+  perspective: 1400px;
+}
+
+.macbook-display-link {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  border-radius: 12px;
+  transform-origin: center;
+  transform-style: preserve-3d;
+}
+
+.macbook-display-link img {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: inherit;
+}
+
+.macbook-display-link:focus-visible {
+  transform: none !important;
+  outline: 3px solid var(--case-accent);
+  outline-offset: 8px;
+}
+
+.macbook-screen-frame {
+  position: absolute;
+  inset: -18px -12px -14px;
+  border: 2px solid #77787e;
+  border-radius: 22px;
+  background: #090a0c;
+  box-shadow: 0 24px 70px #0007, inset 0 0 0 2px #26272c;
+  pointer-events: none;
+}
+
+.macbook-camera {
+  position: absolute;
+  top: 5px;
+  left: calc(50% - 3px);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #23313e;
+  box-shadow: inset 0 0 0 1px #45566a;
+}
+
+.macbook-base-position {
+  position: absolute;
+  top: 70%;
+  left: 10%;
+  width: 80%;
+  perspective: 1100px;
+  pointer-events: none;
+}
+
+.macbook-base {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2.2;
+  padding: 3% 9% 0;
+  border: 2px solid #72747a;
+  border-radius: 12px 12px 24px 24px;
+  background: linear-gradient(145deg, #51545b, #2c2e34 55%, #464950);
+  transform: rotateX(68deg);
+  transform-origin: top center;
+  box-shadow: 0 12px 0 -3px #22242a, 0 14px 0 -3px #72747a;
+}
+
+.macbook-keyboard { height: 58%; padding: 1%; border-radius: 6px; background: #18191d; }
+.macbook-key-row { display: flex; gap: .6%; height: 16.66%; padding: .4% 0; }
+.macbook-key {
+  display: grid;
+  place-items: center;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 3px;
+  background: #090a0c;
+  box-shadow: inset 0 0 0 1px #3b3c43, 0 1px 1px #000;
+  font: 500 clamp(3px, .65vw, 9px) / 1 Arial, sans-serif;
+  color: #e2e2e8;
+}
+.macbook-key--wide { flex: 1.45; }
+.macbook-key--space { flex: 5.5; }
+.macbook-trackpad { width: 28%; height: 25%; margin: 3% auto 0; border: 1px solid #191a20; border-radius: 7px; box-shadow: inset 0 0 0 1px #5c5e65; }
+.macbook-speaker { position: absolute; top: 9%; bottom: 34%; width: 4%; background: radial-gradient(#101115 1px, transparent 1px) 0 0 / 3px 3px; }
+.macbook-speaker--left { left: 3%; }
+.macbook-speaker--right { right: 3%; }
+.macbook-base-notch { position: absolute; bottom: -1px; left: 42%; width: 16%; height: 3%; border-radius: 0 0 10px 10px; background: #202228; }
+
+@media (max-width: 767px) {
+  .macbook-scroll {
+    --macbook-stage-height: min(74svh, calc(62.5vw + 72px));
+    height: calc(var(--macbook-stage-height) + 45svh);
+  }
+  .macbook-scroll-stage { padding: 24px 8px; }
+  .macbook-screen-frame { inset: -10px -7px -8px; border-width: 1px; border-radius: 14px; }
+  .macbook-camera { top: 2px; width: 4px; height: 4px; }
+  .macbook-display-link { border-radius: 8px; }
+  .macbook-base { border-width: 1px; border-radius: 6px 6px 12px 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .macbook-scroll { height: auto; }
+  .macbook-scroll-stage { position: static; height: auto; padding: 0; overflow: visible; }
+  .macbook-scroll-scene { width: 100%; }
+  .macbook-display-link { transform: none !important; }
+  .macbook-screen-frame, .macbook-base-position { display: none; }
+}

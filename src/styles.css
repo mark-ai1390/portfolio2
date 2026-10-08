@@ -31,6 +31,7 @@ a:focus-visible, [tabindex]:focus-visible {
 
 .portfolio-layout {
   display: grid;
+  overflow-x: clip;
   grid-template-columns: 360px minmax(0, 856px);
   gap: 64px;
   max-width: 1440px;
@@ -50,13 +51,13 @@ a:focus-visible, [tabindex]:focus-visible {
   gap: 48px;
 }
 
-.heading { margin: 0; font-family: inherit; font-weight: 700; overflow-wrap: anywhere; }
+.heading { margin: 0; font-family: inherit; font-weight: 700; overflow-wrap: normal; word-break: normal; text-wrap: balance; hyphens: none; }
 .heading--1 { font-size: var(--heading-h1); line-height: 1.2; letter-spacing: -.03em; }
 .heading--2 { font-size: var(--heading-h2); line-height: 1.15; letter-spacing: -.025em; }
 .heading--3 { font-size: var(--heading-h3); line-height: 1.2; letter-spacing: -.02em; }
 @media (max-width: 767px) { :root { --heading-h1: 32px; } }
 .specialties { margin: 2px 0 0; font-size: 32px; line-height: 1; }
-.author-description { margin: 12px 0 0; font-size: 16px; line-height: 1.4; color: var(--muted); white-space: pre-line; }
+.author-description { margin: 12px 0 0; font-size: 16px; line-height: 1.5; color: var(--muted); }
 .contacts { display: flex; gap: 16px; margin-top: 32px; }
 .contacts a, .contact-unavailable {
   display: flex;
@@ -111,7 +112,9 @@ a:focus-visible, [tabindex]:focus-visible {
 .project-card:focus-within .project-cover--hover { opacity: 1; }
 .project-copy { display: flex; flex-direction: column; gap: 12px; padding-top: 20px; }
 .project-copy .heading { text-transform: uppercase; }
-.project-copy p { margin: 0; font-size: 16px; line-height: 1.4; }
+.project-copy p { margin: 0; font-size: 16px; line-height: 1.5; }
+
+p { text-wrap: pretty; hyphens: none; }
 .project-tags { display: flex; flex-wrap: wrap; gap: 12px; padding: 0; margin: 0; list-style: none; }
 .project-tags li { padding: 4px 10px; border-radius: 8px; background: #0d2643; color: rgba(177, 178, 212, .88); font-size: 13px; font-weight: 600; line-height: 1; }
 

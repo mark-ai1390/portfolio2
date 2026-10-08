@@ -1,5 +1,5 @@
 export type CaseContentBlock = {
-  id: string; kind: string; name?: string; title?: string; eyebrow?: string | null; paragraphs?: string[]; statusLabel?: string; panel?: boolean; links?: { label: string; href: string }[]; src?: string; alt?: string; width: number; height: number; wide?: boolean;
+  id: string; kind: string; presentation?: 'macbook-scroll' | 'container-scroll'; screenTitle?: string; name?: string; title?: string; eyebrow?: string | null; paragraphs?: string[]; statusLabel?: string; panel?: boolean; gap?: number; headingSize?: number; headingLineHeight?: number; links?: { label: string; href: string }[]; src?: string; alt?: string; width: number; height: number; wide?: boolean; radius?: number;
 };
 
 export const caseContent: Record<string, CaseContentBlock[]> = {
@@ -10,8 +10,9 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "width": 1160,
       "height": 734.43359375,
       "kind": "image",
-      "src": "/assets/cases/296-239727.webp",
-      "alt": "Исследование — сценарии и архитектура сайта"
+      "src": "/assets/cases/296-239727-source22.webp",
+      "alt": "Исследование — сценарии и архитектура сайта",
+      "radius": 14
     },
     {
       "id": "296:239737",
@@ -22,7 +23,7 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "title": "Гипотезы",
       "paragraphs": [
         "✦ Если сделать каталог, категории и поиск заметнее, пользователю будет проще начать выбор и найти нужный товар.",
-        "✦ Если сократить число конкурирующих акцентов, ключевые действия будут считываться быстрее.",
+        "✦ Если убрать лишние акценты, основные действия будет проще заметить.",
         "✦ Если упростить фильтрацию и сделать категории нагляднее, покупатель будет меньше теряться в ассортименте.",
         "✦ Если собрать цену, наличие, доставку и кнопки покупки в одной зоне, предложение будет проще оценить.",
         "✦ Если разделить корзину и оформление на последовательные этапы, пользователю будет проще сосредоточиться на текущем действии.",
@@ -30,7 +31,10 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       ],
       "kind": "text",
       "panel": false,
-      "links": []
+      "links": [],
+      "gap": 22,
+      "headingSize": 28,
+      "headingLineHeight": 1.45
     },
     {
       "id": "296:239745",
@@ -43,8 +47,11 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
         "Пересобрал основные страницы вокруг последовательного выбора: знакомство с ассортиментом, поиск подходящей модели, оценка товара и покупка."
       ],
       "kind": "text",
-      "panel": false,
-      "links": []
+      "panel": true,
+      "links": [],
+      "gap": 20,
+      "headingSize": 48,
+      "headingLineHeight": 1.45
     },
     {
       "id": "296:239749",
@@ -58,16 +65,22 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       ],
       "kind": "text",
       "panel": false,
-      "links": []
+      "links": [],
+      "gap": 22,
+      "headingSize": 28,
+      "headingLineHeight": 1.45
     },
     {
       "id": "296:239752",
       "name": "Решение — обновлённый главный экран",
-      "width": 1160,
-      "height": 874,
+      "width": 2048,
+      "height": 1280,
       "kind": "image",
-      "src": "/assets/cases/296-239752.webp",
-      "alt": "Решение — обновлённый главный экран"
+      "presentation": "macbook-scroll",
+      "screenTitle": "Главный экран",
+      "src": "/assets/cases/copterdrone-main-screen.png",
+      "alt": "Решение — обновлённый главный экран",
+      "radius": 14
     },
     {
       "id": "296:239757",
@@ -81,7 +94,10 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       ],
       "kind": "text",
       "panel": false,
-      "links": []
+      "links": [],
+      "gap": 22,
+      "headingSize": 28,
+      "headingLineHeight": 1.45
     },
     {
       "id": "296:239760",
@@ -89,8 +105,9 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "width": 1160,
       "height": 663,
       "kind": "image",
-      "src": "/assets/cases/296-239760.webp",
-      "alt": "Решение — поиск и шапка при прокрутке"
+      "src": "/assets/cases/296-239760-source22.webp",
+      "alt": "Решение — поиск и шапка при прокрутке",
+      "radius": 14
     },
     {
       "id": "296:239773",
@@ -98,13 +115,16 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "width": 1160,
       "height": 161,
       "eyebrow": null,
-      "title": "Товарные карточки с понятными приоритетами",
+      "title": "Карточки товаров: главное видно сразу",
       "paragraphs": [
-        "Переработал структуру карточек, расположение избранного и обозначение скидки. Изображение, название, цена и действие образуют последовательную иерархию."
+        "Перестроил карточки, переместил избранное и уточнил обозначение скидки. Изображение, название, цена и кнопка покупки читаются последовательно."
       ],
       "kind": "text",
       "panel": false,
-      "links": []
+      "links": [],
+      "gap": 22,
+      "headingSize": 28,
+      "headingLineHeight": 1.45
     },
     {
       "id": "296:239776",
@@ -112,8 +132,9 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "width": 1160,
       "height": 1189,
       "kind": "image",
-      "src": "/assets/cases/296-239776.webp",
-      "alt": "Решение — карточки товаров"
+      "src": "/assets/cases/296-239776-source22.webp",
+      "alt": "Решение — карточки товаров",
+      "radius": 14
     },
     {
       "id": "296:239786",
@@ -123,20 +144,24 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "eyebrow": null,
       "title": "Доверие и поддержка",
       "paragraphs": [
-        "Добавил преимущества магазина, оценки покупателей, новости и понятные точки связи. После знакомства с предложением пользователь может обратиться за консультацией."
+        "Добавил преимущества магазина, отзывы покупателей, новости и контакты. Пользователь может оценить магазин и обратиться за консультацией."
       ],
       "kind": "text",
       "panel": false,
-      "links": []
+      "links": [],
+      "gap": 22,
+      "headingSize": 28,
+      "headingLineHeight": 1.45
     },
     {
       "id": "296:239789",
       "name": "Решение — преимущества, отзывы и обратная связь",
-      "width": 1160,
-      "height": 1236,
+      "width": 1922,
+      "height": 2048,
       "kind": "image",
-      "src": "/assets/cases/296-239789.webp",
-      "alt": "Решение — преимущества, отзывы и обратная связь"
+      "src": "/assets/cases/copterdrone-trust-export-v2.png",
+      "alt": "Решение — преимущества, отзывы и обратная связь",
+      "radius": 14
     },
     {
       "id": "296:239954",
@@ -146,11 +171,14 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "eyebrow": null,
       "title": "Каталог: быстрее к товарам",
       "paragraphs": [
-        "Уменьшил верхнюю часть каталога: крупный промобаннер и множество чипсов отодвигали товары вниз. Перестроил категории и фильтрацию, чтобы ассортимент появлялся раньше."
+        "Сократил верхнюю часть каталога: крупный баннер и множество меток отодвигали товары вниз. Перестроил категории и фильтры, чтобы ассортимент был виден раньше."
       ],
       "kind": "text",
       "panel": false,
-      "links": []
+      "links": [],
+      "gap": 22,
+      "headingSize": 28,
+      "headingLineHeight": 1.45
     },
     {
       "id": "296:239957",
@@ -158,8 +186,9 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "width": 1160,
       "height": 1236,
       "kind": "image",
-      "src": "/assets/cases/296-239957.webp",
-      "alt": "Решение — каталог и фильтрация"
+      "src": "/assets/cases/296-239957-source22.webp",
+      "alt": "Решение — каталог и фильтрация",
+      "radius": 14
     },
     {
       "id": "296:240015",
@@ -170,20 +199,24 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "title": "Карточка товара: всё для принятия решения",
       "paragraphs": [
         "Выделил основные кнопки покупки, добавил краткое описание и похожие товары. Собрал информацию о покупке в одной зоне.",
-        "Объединил комплектацию с изображениями и расположил фото и видео последовательно, вместо разнесения материалов по отдельным вкладкам."
+        "Объединил комплектацию с изображениями. Фото и видео разместил последовательно, чтобы не приходилось переключаться между вкладками."
       ],
       "kind": "text",
       "panel": false,
-      "links": []
+      "links": [],
+      "gap": 22,
+      "headingSize": 28,
+      "headingLineHeight": 1.45
     },
     {
       "id": "296:240019",
       "name": "Решение — страница товара",
-      "width": 1160,
-      "height": 1236,
+      "width": 1922,
+      "height": 2048,
       "kind": "image",
-      "src": "/assets/cases/296-240019.webp",
-      "alt": "Решение — страница товара"
+      "src": "/assets/cases/copterdrone-product-export.png",
+      "alt": "Решение — страница товара",
+      "radius": 14
     },
     {
       "id": "296:240403",
@@ -197,7 +230,10 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       ],
       "kind": "text",
       "panel": false,
-      "links": []
+      "links": [],
+      "gap": 22,
+      "headingSize": 28,
+      "headingLineHeight": 1.45
     },
     {
       "id": "296:240406",
@@ -205,8 +241,9 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "width": 1160,
       "height": 1236,
       "kind": "image",
-      "src": "/assets/cases/296-240406.webp",
-      "alt": "Решение — корзина и оформление заказа"
+      "src": "/assets/cases/296-240406-source22.webp",
+      "alt": "Решение — корзина и оформление заказа",
+      "radius": 14
     },
     {
       "id": "296:240508",
@@ -220,7 +257,10 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       ],
       "kind": "text",
       "panel": false,
-      "links": []
+      "links": [],
+      "gap": 22,
+      "headingSize": 28,
+      "headingLineHeight": 1.45
     },
     {
       "id": "296:240511",
@@ -228,17 +268,19 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "width": 1160,
       "height": 1001,
       "kind": "image",
-      "src": "/assets/cases/296-240511.webp",
-      "alt": "Решение — личный кабинет"
+      "src": "/assets/cases/296-240511-source22.webp",
+      "alt": "Решение — личный кабинет",
+      "radius": 14
     },
     {
       "id": "386:148049",
       "name": "Frame 1597880362",
-      "width": 1160,
-      "height": 833.9869384765625,
+      "width": 2048,
+      "height": 1472,
       "kind": "image",
-      "src": "/assets/cases/386-148049.webp",
-      "alt": "Личный кабинет CopterDrone: детали интерфейса"
+      "src": "/assets/cases/copterdrone-mobile-export.png",
+      "alt": "Мобильные экраны CopterDrone: главная, каталог, карточка товара и личный кабинет",
+      "radius": 0
     },
     {
       "id": "296:240821",
@@ -246,13 +288,16 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "width": 1160,
       "height": 268,
       "eyebrow": "03 / COPTERDRONE",
-      "title": "Узнаваемая и технологичная айдентика",
+      "title": "Обновлённый логотип и фирменный стиль",
       "paragraphs": [
-        "Обновил логотип, сохранив название CopterDrone. Визуальный образ поддерживает тематику радиоуправляемых моделей и связывает интерфейс с характером магазина."
+        "Обновил логотип, сохранив название CopterDrone. Знак отражает тематику радиоуправляемых моделей и используется вместе с оформлением сайта."
       ],
       "kind": "text",
-      "panel": false,
-      "links": []
+      "panel": true,
+      "links": [],
+      "gap": 20,
+      "headingSize": 48,
+      "headingLineHeight": 1.45
     },
     {
       "id": "296:240825",
@@ -266,7 +311,10 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       ],
       "kind": "text",
       "panel": false,
-      "links": []
+      "links": [],
+      "gap": 22,
+      "headingSize": 28,
+      "headingLineHeight": 1.45
     },
     {
       "id": "296:240828",
@@ -274,8 +322,9 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "width": 1160,
       "height": 426.55859375,
       "kind": "image",
-      "src": "/assets/cases/296-240828.webp",
-      "alt": "Айдентика — исходный логотип"
+      "src": "/assets/cases/296-240828-source22.webp",
+      "alt": "Айдентика — исходный логотип",
+      "radius": 14
     },
     {
       "id": "296:240831",
@@ -290,16 +339,20 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       ],
       "kind": "text",
       "panel": false,
-      "links": []
+      "links": [],
+      "gap": 22,
+      "headingSize": 28,
+      "headingLineHeight": 1.45
     },
     {
       "id": "296:240837",
       "name": "Айдентика — вариант на светлом фоне",
-      "width": 1160,
-      "height": 389,
+      "width": 2048,
+      "height": 686,
       "kind": "image",
-      "src": "/assets/cases/296-240837.webp",
-      "alt": "Айдентика — вариант на светлом фоне"
+      "src": "/assets/cases/copterdrone-logo-export.png",
+      "alt": "Айдентика — вариант на светлом фоне",
+      "radius": 14
     },
     {
       "id": "296:240840",
@@ -307,8 +360,9 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "width": 1160,
       "height": 407,
       "kind": "image",
-      "src": "/assets/cases/296-240840.webp",
-      "alt": "Айдентика — вариант на тёмном фоне"
+      "src": "/assets/cases/296-240840-source22.webp",
+      "alt": "Айдентика — вариант на тёмном фоне",
+      "radius": 14
     },
     {
       "id": "296:240843",
@@ -319,21 +373,25 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "title": "Что получилось",
       "paragraphs": [
         "Переработал ключевые сценарии интернет-магазина: от первого знакомства с ассортиментом до оформления заказа и личного кабинета. Обновлённые страницы связаны общей навигацией, визуальной иерархией и айдентикой.",
-        "Подготовлены макеты для desktop и мобильных устройств, новый личный кабинет и варианты логотипа. Влияние решений на продажи и конверсию в этом кейсе не измерялось."
+        "Подготовил макеты для компьютеров и телефонов, новый личный кабинет и варианты логотипа. Влияние редизайна на продажи и конверсию не измерялось."
       ],
       "kind": "text",
       "panel": true,
       "links": [],
-      "statusLabel": "Результат работы"
+      "statusLabel": "Результат работы",
+      "gap": 20,
+      "headingSize": 48,
+      "headingLineHeight": 1.45
     },
     {
       "id": "347:196298",
       "kind": "image",
-      "src": "/assets/cases/347-196298.webp",
+      "src": "/assets/cases/copterdrone-brand-export-v2.png",
       "alt": "Айдентика — обновлённый логотип",
-      "width": 1440,
-      "height": 527,
-      "wide": true
+      "width": 2048,
+      "height": 749,
+      "wide": true,
+      "radius": 0
     }
   ],
   "primekraft": [
@@ -348,8 +406,11 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
         "Перестроил визуальные приоритеты: поиск и каталог помогают начать выбор, товарные блоки раскрывают ассортимент, а основные действия остаются заметными."
       ],
       "kind": "text",
-      "panel": false,
-      "links": []
+      "panel": true,
+      "links": [],
+      "gap": 20,
+      "headingSize": 48,
+      "headingLineHeight": 1.45
     },
     {
       "id": "342:125835",
@@ -363,7 +424,10 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       ],
       "kind": "text",
       "panel": false,
-      "links": []
+      "links": [],
+      "gap": 22,
+      "headingSize": 28,
+      "headingLineHeight": 1.45
     },
     {
       "id": "342:125838",
@@ -371,8 +435,9 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "width": 1160,
       "height": 750.8864135742188,
       "kind": "image",
-      "src": "/assets/cases/342-125838.webp",
-      "alt": "Решение — поиск, каталог и шапка"
+      "src": "/assets/cases/342-125838-source22.webp",
+      "alt": "Решение — поиск, каталог и шапка",
+      "radius": 14
     },
     {
       "id": "342:125902",
@@ -386,16 +451,20 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       ],
       "kind": "text",
       "panel": false,
-      "links": []
+      "links": [],
+      "gap": 22,
+      "headingSize": 28,
+      "headingLineHeight": 1.45
     },
     {
       "id": "342:125905",
       "name": "Решение — первый экран и порядок блоков",
-      "width": 1160,
-      "height": 1396.054931640625,
+      "width": 1701,
+      "height": 2048,
       "kind": "image",
-      "src": "/assets/cases/342-125905.webp",
-      "alt": "Решение — первый экран и порядок блоков"
+      "src": "/assets/cases/primekraft-home-user-export.png",
+      "alt": "Решение — первый экран и порядок блоков",
+      "radius": 14
     },
     {
       "id": "342:126462",
@@ -405,20 +474,24 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "eyebrow": null,
       "title": "Каталог и быстрый просмотр",
       "paragraphs": [
-        "Объединил быстрые категории, фильтры и просмотр товара в один сценарий. В модальном окне собрал изображение, описание, цену и действие, чтобы изучать предложение, не теряя контекст каталога."
+        "Добавил быстрые категории, фильтры и просмотр товара. В отдельном окне собрал изображение, описание, цену и кнопку покупки: детали можно изучить, не уходя из каталога."
       ],
       "kind": "text",
       "panel": false,
-      "links": []
+      "links": [],
+      "gap": 22,
+      "headingSize": 28,
+      "headingLineHeight": 1.45
     },
     {
       "id": "342:126465",
       "name": "Решение — каталог и быстрый просмотр",
-      "width": 1160,
-      "height": 852.9837646484375,
+      "width": 2048,
+      "height": 1506,
       "kind": "image",
-      "src": "/assets/cases/342-126465.webp",
-      "alt": "Решение — каталог и быстрый просмотр"
+      "src": "/assets/cases/primekraft-catalog-user-export.png",
+      "alt": "Решение — каталог и быстрый просмотр",
+      "radius": 14
     },
     {
       "id": "342:126619",
@@ -428,20 +501,24 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "eyebrow": null,
       "title": "Карточки, которые проще сравнивать",
       "paragraphs": [
-        "Привёл карточки к единой структуре, уменьшил визуальный шум и тяжёлые тени. Усилил кнопку покупки и объединил её с ценой, чтобы ключевое действие считывалось быстрее."
+        "Привёл карточки к единой структуре, убрал лишние акценты и тяжёлые тени. Выделил кнопку покупки и объединил её с ценой, чтобы действие было заметнее."
       ],
       "kind": "text",
       "panel": false,
-      "links": []
+      "links": [],
+      "gap": 22,
+      "headingSize": 28,
+      "headingLineHeight": 1.45
     },
     {
       "id": "342:126622",
       "name": "Решение — визуальная иерархия карточки",
-      "width": 1160,
-      "height": 693.6829223632812,
+      "width": 2048,
+      "height": 1224,
       "kind": "image",
-      "src": "/assets/cases/342-126622.webp",
-      "alt": "Решение — визуальная иерархия карточки"
+      "src": "/assets/cases/primekraft-card-user-export.png",
+      "alt": "Решение — визуальная иерархия карточки",
+      "radius": 14
     },
     {
       "id": "342:126639",
@@ -449,8 +526,9 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "width": 1160,
       "height": 1025.318359375,
       "kind": "image",
-      "src": "/assets/cases/342-126639.webp",
-      "alt": "Решение — единая система товарных карточек"
+      "src": "/assets/cases/342-126639-source22.webp",
+      "alt": "Решение — единая система товарных карточек",
+      "radius": 14
     },
     {
       "id": "342:126657",
@@ -460,21 +538,25 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "eyebrow": null,
       "title": "Оформление заказа без лишних поисков",
       "paragraphs": [
-        "Разделил форму на получателя, доставку и оплату. Состав заказа, скидку и итоговую сумму собрал справа, рядом с заметной кнопкой оформления.",
+        "Разделил форму на три блока: получатель, доставка и оплата. Состав заказа, скидку и итоговую сумму собрал рядом с кнопкой оформления.",
         "Курьер и пункт выдачи переключаются в одном блоке. Сроки и стоимость расположены рядом с выбранным способом доставки."
       ],
       "kind": "text",
       "panel": false,
-      "links": []
+      "links": [],
+      "gap": 22,
+      "headingSize": 28,
+      "headingLineHeight": 1.45
     },
     {
       "id": "342:126661",
       "name": "Решение — оформление заказа",
-      "width": 1160,
-      "height": 815.330810546875,
+      "width": 2048,
+      "height": 1439,
       "kind": "image",
-      "src": "/assets/cases/342-126661.webp",
-      "alt": "Решение — оформление заказа"
+      "src": "/assets/cases/primekraft-checkout-user-export.png",
+      "alt": "Решение — оформление заказа",
+      "radius": 14
     },
     {
       "id": "342:126714",
@@ -487,8 +569,11 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
         "Сохранил чёрно-жёлтую основу и образ носорога. Развил их в единой графике для сайта, контента и брендовых носителей."
       ],
       "kind": "text",
-      "panel": false,
-      "links": []
+      "panel": true,
+      "links": [],
+      "gap": 20,
+      "headingSize": 48,
+      "headingLineHeight": 1.45
     },
     {
       "id": "342:126718",
@@ -496,8 +581,9 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "width": 1160,
       "height": 870.362060546875,
       "kind": "image",
-      "src": "/assets/cases/342-126718.webp",
-      "alt": "Айдентика — палитра и типографика"
+      "src": "/assets/cases/342-126718-source22.webp",
+      "alt": "Айдентика — палитра и типографика",
+      "radius": 14
     },
     {
       "id": "342:126746",
@@ -507,20 +593,24 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "eyebrow": null,
       "title": "Рафт — персонаж бренда",
       "paragraphs": [
-        "Развил фирменный образ носорога в полноценного 2D-персонажа. Рафт появляется в сюжетах про поиск, оплату и доставку, помогает объяснять действия и передаёт характер Prime Kraft."
+        "Разработал 2D-персонажа на основе фирменного носорога. Рафт появляется в сюжетах о поиске, оплате и доставке и помогает объяснять действия на сайте."
       ],
       "kind": "text",
       "panel": false,
-      "links": []
+      "links": [],
+      "gap": 22,
+      "headingSize": 28,
+      "headingLineHeight": 1.45
     },
     {
       "id": "342:126749",
       "name": "Айдентика — Рафт и его сценарии",
-      "width": 1160,
-      "height": 693.6829223632812,
+      "width": 2048,
+      "height": 1224,
       "kind": "image",
-      "src": "/assets/cases/342-126749.webp",
-      "alt": "Айдентика — Рафт и его сценарии"
+      "src": "/assets/cases/primekraft-raft-user-export.png",
+      "alt": "Айдентика — Рафт и его сценарии",
+      "radius": 14
     },
     {
       "id": "342:126763",
@@ -530,20 +620,24 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "eyebrow": null,
       "title": "Персонализация и навигация",
       "paragraphs": [
-        "Подготовил набор аватаров для личного кабинета и иконки категорий в едином стиле. Персонаж становится частью пользовательского опыта, а категории получают узнаваемые визуальные ориентиры."
+        "Подготовил аватары для личного кабинета и иконки категорий в одном стиле. Рафт используется в профиле, а иллюстрации помогают различать категории."
       ],
       "kind": "text",
       "panel": false,
-      "links": []
+      "links": [],
+      "gap": 22,
+      "headingSize": 28,
+      "headingLineHeight": 1.45
     },
     {
       "id": "342:126766",
       "name": "Айдентика — аватары и категории",
-      "width": 1160,
-      "height": 889.91259765625,
+      "width": 2048,
+      "height": 1571,
       "kind": "image",
-      "src": "/assets/cases/342-126766.webp",
-      "alt": "Айдентика — аватары и категории"
+      "src": "/assets/cases/primekraft-avatars-user-export.png",
+      "alt": "Айдентика — аватары и категории",
+      "radius": 14
     },
     {
       "id": "342:126829",
@@ -557,7 +651,10 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       ],
       "kind": "text",
       "panel": false,
-      "links": []
+      "links": [],
+      "gap": 22,
+      "headingSize": 28,
+      "headingLineHeight": 1.45
     },
     {
       "id": "342:126832",
@@ -565,8 +662,9 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "width": 1160,
       "height": 693.6829223632812,
       "kind": "image",
-      "src": "/assets/cases/342-126832.webp",
-      "alt": "Айдентика — обложки статей"
+      "src": "/assets/cases/342-126832-source22.webp",
+      "alt": "Айдентика — обложки статей",
+      "radius": 14
     },
     {
       "id": "342:126843",
@@ -576,20 +674,24 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "eyebrow": null,
       "title": "За пределами интерфейса",
       "paragraphs": [
-        "Показал, как визуальная система работает на упаковке, наружной рекламе и спортивных аксессуарах. Одни и те же цвета, графика и персонаж объединяют разные точки контакта с брендом."
+        "Подготовил примеры упаковки, наружной рекламы и спортивных аксессуаров. Цвета, графика и Рафт сохраняют узнаваемость бренда на разных носителях."
       ],
       "kind": "text",
       "panel": false,
-      "links": []
+      "links": [],
+      "gap": 22,
+      "headingSize": 28,
+      "headingLineHeight": 1.45
     },
     {
       "id": "342:126846",
       "name": "Брендовые носители — упаковка и реклама",
-      "width": 1160,
-      "height": 653.1336059570312,
+      "width": 2048,
+      "height": 1153,
       "kind": "image",
-      "src": "/assets/cases/342-126846.webp",
-      "alt": "Брендовые носители — упаковка и реклама"
+      "src": "/assets/cases/primekraft-packaging-user-export.png",
+      "alt": "Брендовые носители — упаковка и реклама",
+      "radius": 14
     },
     {
       "id": "342:126849",
@@ -597,8 +699,9 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "width": 1160,
       "height": 537.2783813476562,
       "kind": "image",
-      "src": "/assets/cases/342-126849.webp",
-      "alt": "Брендовые носители — спортивная сумка"
+      "src": "/assets/cases/342-126849-source22.webp",
+      "alt": "Брендовые носители — спортивная сумка",
+      "radius": 14
     },
     {
       "id": "342:126851",
@@ -614,16 +717,20 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "kind": "text",
       "panel": true,
       "links": [],
-      "statusLabel": "Статус проекта"
+      "statusLabel": "Статус проекта",
+      "gap": 20,
+      "headingSize": 48,
+      "headingLineHeight": 1.45
     },
     {
       "id": "342:126857",
       "kind": "image",
-      "src": "/assets/cases/342-126857.webp",
+      "src": "/assets/cases/primekraft-final-user-export.png",
       "alt": "Брендовые носители — рекламная композиция",
-      "width": 1440,
-      "height": 870,
-      "wide": true
+      "width": 2048,
+      "height": 1237,
+      "wide": true,
+      "radius": 0
     }
   ],
   "4sales": [
@@ -633,13 +740,16 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "width": 1160,
       "height": 268,
       "eyebrow": "02 / 4SALES CRM",
-      "title": "Архитектура и вайрфреймы",
+      "title": "Структура и каркасы экранов",
       "paragraphs": [
-        "До визуального оформления описал функции страниц и связи между разделами. Вайрфреймы помогли определить состав блоков, положение фильтров, таблиц и основных действий."
+        "Сначала описал функции страниц и связи между разделами. На каркасах экранов определил состав блоков и расположение фильтров, таблиц и основных действий."
       ],
       "kind": "text",
-      "panel": false,
-      "links": []
+      "panel": true,
+      "links": [],
+      "gap": 20,
+      "headingSize": 48,
+      "headingLineHeight": 1.45
     },
     {
       "id": "306:102891",
@@ -650,11 +760,14 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "title": "Система вокруг заказа",
       "paragraphs": [
         "Выделил основные рабочие разделы: заказы, клиенты, коммуникации, товары и склады, менеджеры и настройки.",
-        "Для страниц зафиксировал назначение, данные и доступные действия. Такая детализация связывает общую карту системы с конкретным экраном и помогает не потерять необходимые функции."
+        "Для каждой страницы описал назначение, данные и доступные действия. Так связал карту системы с отдельными экранами и сохранил необходимые функции."
       ],
       "kind": "text",
       "panel": false,
-      "links": []
+      "links": [],
+      "gap": 22,
+      "headingSize": 28,
+      "headingLineHeight": 1.45
     },
     {
       "id": "311:104586",
@@ -662,8 +775,9 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "width": 1160,
       "height": 561.5723266601562,
       "kind": "image",
-      "src": "/assets/cases/311-104586.webp",
-      "alt": "Архитектура CRM — система вокруг заказа"
+      "src": "/assets/cases/311-104586-source22.webp",
+      "alt": "Архитектура CRM — система вокруг заказа",
+      "radius": 14
     },
     {
       "id": "306:102896",
@@ -690,12 +804,15 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "eyebrow": null,
       "title": "Сначала структура, затем визуальный слой",
       "paragraphs": [
-        "На вайрфреймах проработал заказы, клиентов, коммуникации, товары и склад. Проверил расположение навигации, фильтров, таблиц и кнопок создания.",
+        "На каркасах проработал заказы, клиентов, коммуникации, товары и склад. Определил расположение навигации, фильтров, таблиц и кнопок создания.",
         "После этого перенёс общие принципы в UI: постоянное левое меню, заголовок с действиями, блок фильтрации и основная рабочая область."
       ],
       "kind": "text",
       "panel": false,
-      "links": []
+      "links": [],
+      "gap": 22,
+      "headingSize": 28,
+      "headingLineHeight": 1.45
     },
     {
       "id": "315:111445",
@@ -703,8 +820,9 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "width": 1160,
       "height": 761.25,
       "kind": "image",
-      "src": "/assets/cases/315-111445.webp",
-      "alt": "Обзор вайрфреймов CRM"
+      "src": "/assets/cases/315-111445-source22.webp",
+      "alt": "Обзор вайрфреймов CRM",
+      "radius": 14
     },
     {
       "id": "315:111994",
@@ -712,11 +830,14 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "width": 1160,
       "height": 41,
       "eyebrow": null,
-      "title": "Детальный вайрфрейм",
+      "title": "Детальный каркас экрана",
       "paragraphs": [],
       "kind": "text",
       "panel": false,
-      "links": []
+      "links": [],
+      "headingSize": 28,
+      "headingLineHeight": 1.45,
+      "gap": 0
     },
     {
       "id": "315:111720",
@@ -724,8 +845,9 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "width": 1160,
       "height": 761.25,
       "kind": "image",
-      "src": "/assets/cases/315-111720.webp",
-      "alt": "Вайрфрейм в деталях"
+      "src": "/assets/cases/315-111720-source22.webp",
+      "alt": "Вайрфрейм в деталях",
+      "radius": 14
     },
     {
       "id": "306:102903",
@@ -738,8 +860,11 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
         "Разделы используют общую структуру, но показывают данные своего сценария. Статусы, фильтры и основные действия помогают ориентироваться в плотном интерфейсе."
       ],
       "kind": "text",
-      "panel": false,
-      "links": []
+      "panel": true,
+      "links": [],
+      "gap": 20,
+      "headingSize": 48,
+      "headingLineHeight": 1.45
     },
     {
       "id": "306:102907",
@@ -747,22 +872,34 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "width": 1160,
       "height": 161,
       "eyebrow": null,
-      "title": "Дашборд: обзор работы с продажами",
+      "title": "Обзор работы с продажами",
       "paragraphs": [
-        "Собрал ключевые показатели, динамику выручки и распределение заказов по каналам. Сводка даёт точку входа в ежедневную работу и помогает перейти от общей картины к конкретным заказам."
+        "Собрал ключевые показатели, динамику выручки и распределение заказов по каналам. С дашборда менеджер видит общую картину продаж и переходит к нужным заказам."
       ],
       "kind": "text",
       "panel": false,
-      "links": []
+      "links": [],
+      "gap": 22,
+      "headingSize": 28,
+      "headingLineHeight": 1.45
     },
     {
       "id": "315:116030",
       "name": "4sales / Дашборд — обновлённый UI",
-      "width": 1160,
-      "height": 928.7086181640625,
+      "width": 2048,
+      "height": 1642,
       "kind": "image",
-      "src": "/assets/cases/315-116030.webp",
-      "alt": "Дашборд CRM"
+      "presentation": "container-scroll",
+      "screenTitle": "Дашборд",
+      "links": [
+        {
+          "label": "Открыть прототип 4sales ↗",
+          "href": "https://4sales-about.mark-sanginov.workers.dev/"
+        }
+      ],
+      "src": "/assets/cases/4sales-dashboard-user-export.png",
+      "alt": "Дашборд CRM",
+      "radius": 14
     },
     {
       "id": "306:103286",
@@ -770,23 +907,27 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "width": 1160,
       "height": 241,
       "eyebrow": null,
-      "title": "Заказы: управляемая рабочая очередь",
+      "title": "Заказы: статусы и действия",
       "paragraphs": [
         "Объединил фильтры, статусы, оплату и основные данные заказа в одном экране. Добавил выделение строк и массовые действия, чтобы работать сразу с несколькими заказами.",
         "Основные фильтры расположены над таблицей. Дополнительные условия доступны отдельно и не занимают всю рабочую область по умолчанию."
       ],
       "kind": "text",
       "panel": false,
-      "links": []
+      "links": [],
+      "gap": 22,
+      "headingSize": 28,
+      "headingLineHeight": 1.45
     },
     {
       "id": "315:118340",
       "name": "Orders",
-      "width": 1160,
-      "height": 1114.0833740234375,
+      "width": 2048,
+      "height": 1966,
       "kind": "image",
-      "src": "/assets/cases/315-118340.webp",
-      "alt": "Заказы CRM"
+      "src": "/assets/cases/4sales-orders-user-export.png",
+      "alt": "Заказы CRM",
+      "radius": 14
     },
     {
       "id": "306:103291",
@@ -794,22 +935,26 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "width": 1160,
       "height": 161,
       "eyebrow": null,
-      "title": "Клиенты: контакты и история отношений",
+      "title": "Клиенты: контакты и история заказов",
       "paragraphs": [
         "Собрал в списке контактные данные, менеджера, статус и показатели заказов. Поиск по имени, телефону или почте помогает найти нужного клиента, а фильтры — выделить нужную группу."
       ],
       "kind": "text",
       "panel": false,
-      "links": []
+      "links": [],
+      "gap": 22,
+      "headingSize": 28,
+      "headingLineHeight": 1.45
     },
     {
       "id": "315:119856",
       "name": "Clients",
-      "width": 1160,
-      "height": 896.583251953125,
+      "width": 2048,
+      "height": 1583,
       "kind": "image",
-      "src": "/assets/cases/315-119856.webp",
-      "alt": "Клиенты CRM"
+      "src": "/assets/cases/4sales-clients-user-export.png",
+      "alt": "Клиенты CRM",
+      "radius": 14
     },
     {
       "id": "306:103295",
@@ -817,22 +962,26 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "width": 1160,
       "height": 161,
       "eyebrow": null,
-      "title": "Коммуникации: отдельное пространство для переписки",
+      "title": "Коммуникации: письма и сообщения",
       "paragraphs": [
-        "Спроектировал раздел коммуникаций в той же системе навигации и фильтрации. Он даёт менеджеру рабочую область для писем и сообщений без необходимости заново осваивать интерфейс."
+        "Для писем и сообщений выделил отдельный раздел. Сохранил знакомую навигацию и фильтры, чтобы менеджеру было проще перейти к переписке."
       ],
       "kind": "text",
       "panel": false,
-      "links": []
+      "links": [],
+      "gap": 22,
+      "headingSize": 28,
+      "headingLineHeight": 1.45
     },
     {
       "id": "315:121358",
       "name": "Сommunications",
-      "width": 1160,
-      "height": 936.8611450195312,
+      "width": 2048,
+      "height": 1654,
       "kind": "image",
-      "src": "/assets/cases/315-121358.webp",
-      "alt": "Коммуникации CRM"
+      "src": "/assets/cases/4sales-communications-user-export.png",
+      "alt": "Коммуникации CRM",
+      "radius": 14
     },
     {
       "id": "306:103299",
@@ -843,20 +992,24 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "title": "Товары и склады: учёт в общей системе",
       "paragraphs": [
         "Разделил работу с каталогом, группами товаров, брендами, складами и складскими операциями. В общей навигации доступны просмотр товаров, оприходование, списание и контрагенты.",
-        "Повторяющиеся таблицы, фильтры и действия оформлены по единым правилам, чтобы пользователь мог переносить привычный способ работы между разделами."
+        "Таблицы, фильтры и действия оформил одинаково, чтобы при переходе между разделами не приходилось заново разбираться в интерфейсе."
       ],
       "kind": "text",
       "panel": false,
-      "links": []
+      "links": [],
+      "gap": 22,
+      "headingSize": 28,
+      "headingLineHeight": 1.45
     },
     {
       "id": "315:123072",
       "name": "products-warehouses",
-      "width": 1160,
-      "height": 1017.4290161132812,
+      "width": 2048,
+      "height": 1796,
       "kind": "image",
-      "src": "/assets/cases/315-123072.webp",
-      "alt": "Товары и склады CRM"
+      "src": "/assets/cases/4sales-products-warehouses-user-export.png",
+      "alt": "Товары и склады CRM",
+      "radius": 0
     },
     {
       "id": "306:103304",
@@ -870,16 +1023,20 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       ],
       "kind": "text",
       "panel": false,
-      "links": []
+      "links": [],
+      "gap": 22,
+      "headingSize": 28,
+      "headingLineHeight": 1.45
     },
     {
       "id": "315:124712",
       "name": "managers",
-      "width": 1160,
-      "height": 757.2222290039062,
+      "width": 2048,
+      "height": 1336,
       "kind": "image",
-      "src": "/assets/cases/315-124712.webp",
-      "alt": "Менеджеры CRM"
+      "src": "/assets/cases/4sales-managers-user-export.png",
+      "alt": "Менеджеры CRM",
+      "radius": 11.277778625488281
     },
     {
       "id": "306:103308",
@@ -890,11 +1047,14 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "title": "Компоненты вместо разрозненных экранов",
       "paragraphs": [
         "В Figma собрал набор элементов: кнопки, поля, таблицы, навигацию, иконки, небольшие компоненты и состояния боковой панели.",
-        "Это основа для последовательного развития продукта: новые страницы можно собирать из знакомых элементов и поддерживать единые состояния и визуальные правила."
+        "Новые страницы можно собирать из готовых элементов. Это помогает сохранять одинаковое оформление и поведение кнопок, полей и таблиц."
       ],
       "kind": "text",
       "panel": false,
-      "links": []
+      "links": [],
+      "gap": 22,
+      "headingSize": 28,
+      "headingLineHeight": 1.45
     },
     {
       "id": "306:103312",
@@ -904,7 +1064,7 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "eyebrow": null,
       "title": "Общая система интерфейса",
       "paragraphs": [
-        "Навигация  /  Кнопки  /  Поля ввода  /  Таблицы\nСтатусы  /  Иконки  /  Карточки показателей"
+        "Навигация, кнопки, поля ввода, таблицы, статусы, иконки и карточки показателей."
       ],
       "kind": "text",
       "panel": true,
@@ -913,7 +1073,10 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
           "label": "Открыть компоненты и макеты ↗",
           "href": "https://www.figma.com/design/ufCGdzahHmwbLQWYjeAzNp?node-id=394-13480"
         }
-      ]
+      ],
+      "gap": 20,
+      "headingSize": 32,
+      "headingLineHeight": 1.45
     },
     {
       "id": "306:103316",
@@ -923,11 +1086,14 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "eyebrow": "04 / 4SALES CRM",
       "title": "От макетов к браузерному прототипу",
       "paragraphs": [
-        "С помощью AI-инструментов собрал фронтенд-прототип CRM. Он позволяет показать проект в браузере и перейти между основными страницами."
+        "С помощью ИИ-инструментов собрал прототип CRM. Его можно открыть в браузере и перейти между основными разделами."
       ],
       "kind": "text",
       "panel": true,
-      "links": []
+      "links": [],
+      "gap": 20,
+      "headingSize": 48,
+      "headingLineHeight": 1.45
     },
     {
       "id": "306:103320",
@@ -947,7 +1113,10 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
           "label": "Открыть прототип 4sales ↗",
           "href": "https://4sales-about.mark-sanginov.workers.dev/"
         }
-      ]
+      ],
+      "gap": 24,
+      "headingSize": 32,
+      "headingLineHeight": 1.45
     },
     {
       "id": "306:103325",
@@ -957,12 +1126,15 @@ export const caseContent: Record<string, CaseContentBlock[]> = {
       "eyebrow": null,
       "title": "Что получилось",
       "paragraphs": [
-        "Подготовил анализ и бенчмаркинг, архитектуру разделов, описание функций страниц, вайрфреймы, UI-макеты и браузерный прототип.",
-        "Результат — связанная концепция рабочего интерфейса для менеджеров. Изменения направлены на понятность сценариев и единообразие системы; влияние на скорость работы и бизнес-показатели пока не измерялось."
+        "Сравнил системы, описал структуру и функции разделов, подготовил каркасы экранов, UI-макеты и браузерный прототип.",
+        "Получилась концепция CRM с общей навигацией и правилами оформления. Влияние изменений на скорость работы менеджеров и бизнес-показатели пока не измерялось."
       ],
       "kind": "text",
       "panel": false,
-      "links": []
+      "links": [],
+      "gap": 22,
+      "headingSize": 28,
+      "headingLineHeight": 1.45
     }
   ]
 };

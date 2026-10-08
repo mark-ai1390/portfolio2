@@ -28,6 +28,9 @@ export default function TextBlockAnimation({ children, animateOnScroll = true, d
       const targets = [...container.querySelectorAll<HTMLElement>('h1, h2, p')];
       const splits = targets.map((target, targetIndex) => SplitText.create(target, {
         type: 'lines', mask: 'lines', linesClass: 'text-block-line', autoSplit: true,
+        // SplitText's default whitespace cleanup turns NBSP back into a normal
+        // space. Retain the typography bonds while measuring animated lines.
+        reduceWhiteSpace: false,
         onSplit(self) {
           const blocks = self.masks.map(mask => {
             const block = document.createElement('div');

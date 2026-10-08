@@ -1,6 +1,6 @@
 {
   "project": "Портфолио Марка Сангинова",
-  "last_updated": "2026-10-02",
+  "last_updated": "2026-10-04",
   "design_source": "https://www.figma.com/design/yojJb08rcCuEd3ZTZZYsgA/Portfolio-2026?node-id=296-259684",
   "rules": {
     "single_active_feature": true,
@@ -58,7 +58,7 @@
         "2026-10-02, сессия 012: локально все три карточки открывают реализованные вступления; проверены прямые URL, reload и возврат. Новые вступления ещё не опубликованы в GitHub из-за отклонённой загрузки 4sales-concepts.png.",
         "Сессия013: публикация общего пакета вступлений и новых разрешённых пользователем PNG снимает блокер переходов Prime Kraft/4sales; резюме всё ещё отсутствует."
       ],
-      "notes": "Главная с оригинальными normal/hover, фото и тремя переходами во вступления кейсов. Резюме пока отсутствует по сообщению пользователя; элемент недоступен. Портрет статичный. Crossfade300ms, reduced motion и touch проверены."
+      "notes": "Главная с оригинальными normal/hover, фото и тремя переходами во вступления кейсов. Сессия028: готовый PDF резюме подключён отдельной ссылкой с открытием в новой вкладке; файл проверен в production output. Новая браузерная проверка недоступна. Портрет статичный. Crossfade300ms, reduced motion и touch проверены в предыдущих сессиях."
     },
     {
       "id": "portfolio-003",
@@ -66,15 +66,18 @@
       "area": "primekraft",
       "title": "Основа кейсов на Prime Kraft",
       "user_visible_behavior": "Кейс /projects/primekraft содержит все разделы и оригинальные иллюстрации по 342:125764.",
-      "status": "not_started",
+      "status": "passing",
       "verification": [
         "Сверка порядка и материалов всех разделов",
         "Прямой URL и обновление работают",
         "Назад возвращает на главную",
         "Текст и сложная иллюстрация читаются на desktop/mobile"
       ],
-      "evidence": [],
-      "notes": "Общие контейнеры, шапка, вводная, нумерованные разделы, галерея, результат и контакты. Сессия 012: вступление собрано отдельно в этапе portfolio-008: обложка, анимированный H1, оригинальная композиция концептов, два абзаца задачи. Полный кейс в рамках этого этапа ещё не собран."
+      "evidence": [
+        "2026-10-03, session 018: all remaining Page 3 sections completed; 37 original illustrations at width 2048 verified nonempty and decoded. Build/typecheck passed; 74/75 full-suite checks passed, corrected new link locator then 19/19 completion tests passed. All six widths, short viewport, keyboard, reduced motion, section order, image proportions, contacts and Figma/prototype links verified. Desktop/mobile source illustrations and final layouts inspected.",
+        "2026-10-03, session 022: reviewed all79 post-animation blocks and36 illustrations in all3 cases against Page3 Figma. Restored original export geometry, preserved white panels, corrected source typography, padding, gaps and radii. Cache-busted source22 WebP assets keep responsive previews and original full-size links. Baseline89/89 and updated89/89 passed; final build/typecheck and21/21 completion/source-fidelity tests passed. All144 replacement assets decoded; desktop/mobile screenshots inspected."
+      ],
+      "notes": "Full case completed through results and contacts, preserving approved intro, timeline and blur animations. Main body copy and headings are HTML; original complex illustrations open at full resolution."
     },
     {
       "id": "portfolio-004",
@@ -82,7 +85,7 @@
       "area": "copterdrone",
       "title": "Кейс CopterDrone",
       "user_visible_behavior": "Кейс /projects/copterdrone соответствует 296:239537 и сохраняет последовательность исследования, интерфейсов и айдентики.",
-      "status": "in_progress",
+      "status": "passing",
       "verification": [
         "Сверка всех разделов и оригинальных материалов",
         "Прямой URL, обновление и Назад работают",
@@ -97,9 +100,12 @@
         "2026-10-02, сессия 009: highlighter/blur заменены на заданный GSAP TextBlockAnimation; cover + перенос CopterDrone с белой плашкой, два абзаца задачи, отдельный анимированный заголовок исследования и существующая timeline. ./init.sh прошёл build и 25/25 тестов, hero/task/research 1440/375 просмотрены.",
         "2026-10-02, сессия 010: обложка снова на всю ширину case-main; H1 и задача слева, padding задачи 64px / 48px mobile. Возвращён scroll reveal исследования blur 12px / opacity / подъём 20px с smoothstep, focus и reduced motion. Финальный ./init.sh: build и 27/27 passed; снимки 1440/375 просмотрены.",
         "2026-10-02, сессия 011: удалена стрелка, добавлена оригинальная композиция готовых концептов 357:144535 сразу после H1 перед задачей. PNG 1160×625, 100% case-main, без дополнительного кадрирования; открывается в полном размере. Финальный ./init.sh: build и 27/27 passed, включая размер/загрузку/слот/пропорции концептов на шести ширинах. Снимки 1440/375 сверены с Figma.",
-        "2026-10-02, сессия 012: окно концептов 1160:428, центральное object-fit cover исходной композиции; responsive уменьшение на узких экранах. Общий CasePage сохраняет введение и research blur. Локально финальный ./init.sh: 43/43 passed; desktop/mobile снимки просмотрены."
+        "2026-10-02, сессия 012: окно концептов 1160:428, центральное object-fit cover исходной композиции; responsive уменьшение на узких экранах. Общий CasePage сохраняет введение и research blur. Локально финальный ./init.sh: 43/43 passed; desktop/mobile снимки просмотрены.",
+        "2026-10-03, session 018: all remaining Page 3 sections completed; 37 original illustrations at width 2048 verified nonempty and decoded. Build/typecheck passed; 74/75 full-suite checks passed, corrected new link locator then 19/19 completion tests passed. All six widths, short viewport, keyboard, reduced motion, section order, image proportions, contacts and Figma/prototype links verified. Desktop/mobile source illustrations and final layouts inspected.",
+        "2026-10-03, session 022: reviewed all79 post-animation blocks and36 illustrations in all3 cases against Page3 Figma. Restored original export geometry, preserved white panels, corrected source typography, padding, gaps and radii. Cache-busted source22 WebP assets keep responsive previews and original full-size links. Baseline89/89 and updated89/89 passed; final build/typecheck and21/21 completion/source-fidelity tests passed. All144 replacement assets decoded; desktop/mobile screenshots inspected.",
+        "Original PNG SHA-256 matches attachments; full-size lossless WebP pixels match PNGs. Build/typecheck passed. Full suite89/91; two mobile failures fixed by atomic preview save. Final6/6 CopterDrone completion checks at six widths plus temporary desktop/mobile QA7/7 passed. All20 previews decoded and screenshots inspected."
       ],
-      "notes": "Текущий согласованный объём — вступление и начало исследования. Обложка занимает всю ширину case-main без кадрирования; H1 и задача слева. GSAP/SplitText раскрывает текст акцентными полосами; CopterDrone на отдельной строке переходит в белую плашку через .5s после раскрытия. После H1 — оригинальная композиция готовых концептов из третьего блока Figma; стрелка удалена. Задача из двух пользовательских абзацев, padding 64px / 48px mobile; далее отдельный заголовок UX и четыре шага. Нижний Research Stage проявляется при подходе по прокрутке из blur/opacity; focus/reduced motion показывают сразу. Остальные разделы кейса ещё не реализованы. Окно готовых концептов теперь 428px при ширине 1160px, уменьшается пропорционально на узких экранах."
+      "notes": "Full case completed through results and contacts, preserving approved intro, timeline and blur animations. Main body copy and headings are HTML; original complex illustrations open at full resolution."
     },
     {
       "id": "portfolio-005",
@@ -107,14 +113,17 @@
       "area": "4sales",
       "title": "Кейс 4sales CRM",
       "user_visible_behavior": "Кейс /projects/4sales соответствует 306:102823 и ведёт к существующим макетам, архитектуре и браузерному прототипу.",
-      "status": "not_started",
+      "status": "passing",
       "verification": [
         "Сверка разделов, экранов и системы компонентов",
         "Проверка внешних ссылок",
         "Прямой URL, обновление и Назад работают"
       ],
-      "evidence": [],
-      "notes": "Не переделывать отдельный сайт CRM. Сессия 012: вступление собрано отдельно в этапе portfolio-008: обложка, анимированный H1, оригинальная композиция концептов, два абзаца задачи. Полный кейс в рамках этого этапа ещё не собран."
+      "evidence": [
+        "2026-10-03, session 018: all remaining Page 3 sections completed; 37 original illustrations at width 2048 verified nonempty and decoded. Build/typecheck passed; 74/75 full-suite checks passed, corrected new link locator then 19/19 completion tests passed. All six widths, short viewport, keyboard, reduced motion, section order, image proportions, contacts and Figma/prototype links verified. Desktop/mobile source illustrations and final layouts inspected.",
+        "2026-10-03, session 022: reviewed all79 post-animation blocks and36 illustrations in all3 cases against Page3 Figma. Restored original export geometry, preserved white panels, corrected source typography, padding, gaps and radii. Cache-busted source22 WebP assets keep responsive previews and original full-size links. Baseline89/89 and updated89/89 passed; final build/typecheck and21/21 completion/source-fidelity tests passed. All144 replacement assets decoded; desktop/mobile screenshots inspected."
+      ],
+      "notes": "Full case completed through results and contacts, preserving approved intro, timeline and blur animations. Main body copy and headings are HTML; original complex illustrations open at full resolution."
     },
     {
       "id": "portfolio-006",
@@ -122,15 +131,19 @@
       "area": "accessibility",
       "title": "Адаптивность, доступность и взаимодействия",
       "user_visible_behavior": "Все страницы читаются на телефоне и коротком экране, доступны с клавиатуры и учитывают reduced motion.",
-      "status": "not_started",
+      "status": "blocked",
       "verification": [
         "1440, 1280, 1024, 768, 390, 375 px без горизонтальной прокрутки",
         "Короткое окно не скрывает контакты",
         "Focus, reduced motion, touch и alt проверены",
         "Если реализован просмотр иллюстраций: Escape, focus trap и возврат фокуса"
       ],
-      "evidence": [],
-      "notes": "Адаптивность закладывается с первого этапа; отдельного актуального мобильного макета нет. Базовые проверки адаптивности и focus главной уже прошли; этап целиком не проверен, страницы кейсов не созданы."
+      "evidence": [
+        "2026-10-03, session 018: all remaining Page 3 sections completed; 37 original illustrations at width 2048 verified nonempty and decoded. Build/typecheck passed; 74/75 full-suite checks passed, corrected new link locator then 19/19 completion tests passed. All six widths, short viewport, keyboard, reduced motion, section order, image proportions, contacts and Figma/prototype links verified. Desktop/mobile source illustrations and final layouts inspected.",
+        "2026-10-03, session 022: reviewed all79 post-animation blocks and36 illustrations in all3 cases against Page3 Figma. Restored original export geometry, preserved white panels, corrected source typography, padding, gaps and radii. Cache-busted source22 WebP assets keep responsive previews and original full-size links. Baseline89/89 and updated89/89 passed; final build/typecheck and21/21 completion/source-fidelity tests passed. All144 replacement assets decoded; desktop/mobile screenshots inspected.",
+        "2026-10-04, сессия035: TypeScript и bundled production build passed. ReactDOMServer всех трёх CasePage подтвердил ровно две подсказки, отсутствие триггеров на обложке/концептах и существование оригинальных файлов; 60 численных проверок сохранения координат zoom, границы1–6× и геометрия pinch прошли. Добавлены четыре browser specs, не запускались: control-browser unavailable. Новые gesture/focus/browser pass не заявляются."
+      ],
+      "notes": "Предыдущие browser-проверки адаптивности и клавиатуры сохранены в evidence. Сессия035: добавлен native dialog для содержательных иллюстраций, mobile2×, zoom/pan/pinch, Escape, возврат фокуса/прокрутки и reduced-motion для подсказки. Текущая browser-проверка новых жестов и focus trap не выполнена: обязательный control-browser недоступен. Статус blocked относится к повторной проверке, реализация завершена; сборка и структурные/численные проверки прошли."
     },
     {
       "id": "portfolio-007",
@@ -138,7 +151,7 @@
       "area": "release",
       "title": "Финальная сверка и публикация",
       "user_visible_behavior": "Четыре страницы опубликованы с рабочими прямыми URL, метаданными и оптимизированными локальными материалами.",
-      "status": "not_started",
+      "status": "in_progress",
       "verification": [
         "Визуальная сверка четырёх экранов",
         "Production-сборка и smoke готового dist",
@@ -146,7 +159,7 @@
         "Нет временных ресурсов, битых файлов и неподтверждённых результатов"
       ],
       "evidence": [],
-      "notes": "Хостинг и адрес публикации ещё не выбраны."
+      "notes": "2026-10-03: публичный сайт успешно опубликован: https://mark-sanginov-portfolio.ligeon199815.chatgpt.site. Native deployment succeeded, access_mode public, версия1, source24ea4a6e692279c461098e901c161729c259819c. Production build/typecheck прошли; SPA fallback настроен. Финальная browser-проверка именно опубликованных прямых URL не выполнена; этап не отмечен passing."
     },
     {
       "id": "portfolio-008",
@@ -165,9 +178,112 @@
         "2026-10-02: локальная реализация завершена; исходные PNG 345:172088 (384938 bytes) и 350:235506 (183369 bytes), 1160×428, PNG verify прошёл.",
         "2026-10-02: финальный ./init.sh прошёл npm ci, typecheck/build и 43/43 Playwright. Снимки трёх вступлений desktop/mobile просмотрены и концепты сверены с Figma.",
         "Сессия 013: пользовательские PNG 2048×755 скопированы без изменения байтов; сверены SHA-256 с вложениями. Build/typecheck и 43/43 Playwright прошли с восстановленным Chromium153. Снимки трёх вступлений 1440/375 просмотрены; desktop окно1160×428, mobile335×123.6. Все новые PNG приняты GitHub create_blob; общий пакет публикуется в существующую ветку PR#1.",
-        "2026-10-03: PRIMEKRAFT капсом, Telegram с MaskButton и локальной nature-маской, Макеты Figma справа под обложкой, отдельные пользовательские обложки 2048×1225 с fill/550px. Проверены 18 комбинаций маршрута/ширины, hover/focus/reduced motion. Build/typecheck прошли. 42/43 Playwright прошли; оставшееся ожидание старого заголовка обновлено под запрос пользователя, повторные 3/3 covers прошли."
+        "2026-10-03: PRIMEKRAFT капсом, Telegram с MaskButton и локальной nature-маской, Макеты Figma справа под обложкой, отдельные пользовательские обложки 2048×1225 с fill/550px. Проверены 18 комбинаций маршрута/ширины, hover/focus/reduced motion. Build/typecheck прошли. 42/43 Playwright прошли; оставшееся ожидание старого заголовка обновлено под запрос пользователя, повторные 3/3 covers прошли.",
+        "2026-10-03, сессия 015: новые обложки CopterDrone/PRIMEKRAFT 2048×970; общий Heading H1 48px desktop/32px mobile, H2 32px, H3 24px; Product Design на HEAD стал H2. Отступ H1 → концепты 60px (+20). init.sh: build/typecheck и 43/43 Playwright прошли, 24 дополнительные комбинации маршрута/ширины и снимки проверены."
       ],
       "notes": "Единые вступления всех трёх кейсов готовы. Пользователь прислал новые PNG и прямо поручил вставить их; прежние изображения заменены, новые GitHub blobs приняты. Полные разделы Prime Kraft и CRM остаются отдельными этапами. Сессия 014: новые обложки кейсов хранятся отдельно от normal/hover главной; 550px object-fit cover на всех ширинах. Tailwind 4 и shadcn-compatible aliases/config добавлены для MaskButton."
+    }
+  ],
+  "session_verification": [
+    {
+      "session": "016",
+      "behavior": "Research findings and shared timelines for all three portfolio cases",
+      "evidence": "./init.sh: build/typecheck and 47 Playwright tests passed; desktop/mobile screenshots inspected; equal 12px interview image gaps verified."
+    },
+    {
+      "session": "017",
+      "behavior": "CopterDrone conclusion character blur; PRIMEKRAFT hypotheses and CRM selection principle/hypotheses block blur",
+      "evidence": "Build/typecheck and56/56 Playwright passed; Figma high-fidelity sections and desktop/mobile screenshots verified; delay2s, once and reduced motion tested."
+    },
+    {
+      "session": "018",
+      "behavior": "All three case studies completed from Page 3, including CRM retailCRM/4sales benchmarking and final contacts",
+      "evidence": "2026-10-03, session 018: all remaining Page 3 sections completed; 37 original illustrations at width 2048 verified nonempty and decoded. Build/typecheck passed; 74/75 full-suite checks passed, corrected new link locator then 19/19 completion tests passed. All six widths, short viewport, keyboard, reduced motion, section order, image proportions, contacts and Figma/prototype links verified. Desktop/mobile source illustrations and final layouts inspected."
+    },
+    {
+      "session": "019",
+      "behavior": "Project Figma links; shared InteractiveHoverButton back-to-top after research; native CRM comparison below its selection heading; corrected dark illustration backgrounds and fill edges",
+      "evidence": "Baseline init.sh: build/typecheck and 75/75 Playwright passed. Final build/typecheck and 82/82 Playwright passed. 13 corrected 2048px illustration exports checked for (23,24,26) composited backgrounds; desktop/mobile table, button and final images inspected. Temporary Figma export clones removed; source designs preserved. Remote application update in progress. Publication blocked: auto-review rejected both remaining asset blobs and the source tree; no branch ref was updated. Explicit authorization for publishing the complete source and 13 corrected illustrations to public mark-ai1390/portfolio2 is required. User explicitly authorized publication; blocker resolved. All26 application paths verified against local hashes and branch updated to 6a16d6f6140cbfe20acc03b52c13ae71eb78a5ff."
+    },
+    {
+      "session": "021",
+      "behavior": "Back-to-top in right gutter and responsive WebP case previews",
+      "evidence": "Baseline82/82 passed; updated suite83/89, then identified and repaired incomplete artifacts and density-rounding test precision. Final build/typecheck and26/26 completion/performance tests passed. All120 generated assets decoded. Desktop/mobile screenshots inspected. 39 images with original full-size links preserved; 1160px previews ~70% fewer bytes."
+    },
+    {
+      "session": "022",
+      "behavior": "All three post-animation case layouts restored to original Figma composition",
+      "evidence": "2026-10-03, session 022: reviewed all79 post-animation blocks and36 illustrations in all3 cases against Page3 Figma. Restored original export geometry, preserved white panels, corrected source typography, padding, gaps and radii. Cache-busted source22 WebP assets keep responsive previews and original full-size links. Baseline89/89 and updated89/89 passed; final build/typecheck and21/21 completion/source-fidelity tests passed. All144 replacement assets decoded; desktop/mobile screenshots inspected."
+    },
+    {
+      "session": "023",
+      "behavior": "Five CopterDrone illustrations replaced with exact user Figma PNG exports",
+      "evidence": "Original PNG SHA-256 matches attachments; full-size lossless WebP pixels match PNGs. Build/typecheck passed. Full suite89/91; two mobile failures fixed by atomic preview save. Final6/6 CopterDrone completion checks at six widths plus temporary desktop/mobile QA7/7 passed. All20 previews decoded and screenshots inspected."
+    },
+    {
+      "session": "024",
+      "behavior": "CopterDrone trust block and final updated-logo composition replaced with new supplied PNGs",
+      "evidence": "Original bytes preserved;8 lossless responsive previews decoded; full-size pixels match PNG. Existing CopterDrone completion checks6/6 passed at six viewport widths; git diff --check clean."
+    },
+    {
+      "session": "025",
+      "behavior": "CopterDrone and PRIMEKRAFT final illustrations fill the entire viewport beyond1440px",
+      "evidence": "Existing completion tests12/12 passed. Temporary geometry checks at eight widths375–2560 verified both edges and absence of horizontal overflow; total14/14 passed. Desktop screenshots inspected."
+    },
+    {
+      "session": "026",
+      "behavior": "Eight PRIMEKRAFT illustrations replaced with exact supplied Figma PNG exports",
+      "evidence": "Original bytes preserved;32 responsive lossless previews decode; full-size pixels match PNG. Completion6/6 passed at six widths. Three outdated reference fixtures refreshed from supplied exports, unchanged comparison criteria; source-fidelity/typography2/2 passed."
+    },
+    {
+      "session": "027",
+      "behavior": "Six 4sales CRM illustrations replaced with supplied Figma PNG exports",
+      "evidence": "Original bytes preserved;24 lossless responsive WebPs decoded with exact dimensions; full-size pixels match. Contact sheet inspected; exactly six src/width/height substitutions, all other blocks/order/fields unchanged. Bundled production build/typecheck and git diff --check passed. Browser QA skipped: required control-browser skill unavailable in managed preview workflow; no new browser pass claimed."
+    },
+    {
+      "session": "028",
+      "behavior": "Homepage Resume link opens the completed one-page Russian PDF",
+      "evidence": "Replaced disabled placeholder with an anchor using central author.resume URL, target blank and noopener noreferrer. Original, public and dist PDF bytes match. Bundled production build/typecheck and git diff --check passed. Browser QA not run because control-browser is unavailable; animations and other content unchanged."
+    },
+    {
+      "session": "029",
+      "behavior": "Resume refreshed after 2026 Russian-language job-market review",
+      "evidence": "One-page PDF and editable DOCX rewritten with concrete duties, UI/UX title, distinct commercial/concept project status and single-column typography. Final document PNG inspected; PDF text and six links verified. Homepage links to v2 URL to avoid stale cache; source/public/dist bytes match. Production build/typecheck and git diff --check passed. No new browser QA; layout and case assets unchanged."
+    },
+    {
+      "session": "030",
+      "behavior": "CopterDrone main-screen illustration uses an adapted MacBook scroll transition with supplied Main.png",
+      "evidence": "Original PNG bytes preserved; four lossless WebPs decoded and pixel comparisons passed. Exactly one case block changes src/height/presentation; others and homepage preserved. Eight-viewport numerical geometry checks passed; all new public/dist assets match and bundle has responsive manifest. Final production typecheck/build passed after last geometry adjustment. Browser QA unavailable under managed Sites workflow; no visual or interaction pass claimed."
+    },
+    {
+      "session": "031",
+      "behavior": "New exact user-export covers for PRIMEKRAFT and CRM, with pointer Comet Card tilt and glare",
+      "evidence": "Source mapping: image2 PRIMEKRAFT normal, image1 hover; image3 CRM normal, image4 hover. Twelve lossless exact WebPs verified channel-by-channel against originals/resizes. Comet only on these two cards; mouse/fine-pointer gate, reduced-motion/static keyboard focus, nonblocking glare, original single links and hover crossfade retained. Existing cover tests updated for requested transform behavior but not run: control-browser unavailable. Final typecheck/production build and git diff --check passed. All12 public/dist copies match; existing responsive entries, cases/MacBook Scroll, CopterDrone homepage data, author/resume and dependencies unchanged. No new browser pass claimed."
+    },
+    {
+      "session": "032",
+      "behavior": "Six mobile case images, readable Russian copy and nonbreaking short words; heading/animated screen/caption order for CRM and CopterDrone",
+      "evidence": "18 exact lossless RGBA WebPs and public/dist bytes verified.79 blocks/36 existing images preserve order and geometry.54 copy edits; typography functional cases passed, TextAnimate grouping and SplitText NBSP preservation repaired. Eight numerical MacBook containment checks passed. Production typecheck/build passed. Existing browser specs adapted but not run: control-browser unavailable. No visual browser pass claimed."
+    },
+    {
+      "session": "033",
+      "behavior": "CopterDrone homepage card uses the same Comet tilt and glare as PRIMEKRAFT and4sales",
+      "evidence": "Only CopterDrone cardAnimation flag changed in application data; all3 cards reuse8°/6px Comet configuration with existing touch/reduced-motion/focus guards. Existing cover spec requires3 wrappers and fixes surface locator; not run because control-browser unavailable. Production build/typecheck runs in packaging; no new visual browser pass claimed."
+    },
+    {
+      "session": "034",
+      "behavior": "Square full-width mobile covers and consistent top/footer navigation buttons across all cases",
+      "evidence": "All9 mobile-cover variants numerically verified fully opaque after CSS corner underlay, original assets unchanged. Shared CaseNavLink for4 navigation links; mobile Figma left-aligned, identical top/footer labels and style, decorative contact icons removed. Production build/typecheck and diff check passed. Browser specs adapted but not run: control-browser unavailable. No new visual browser pass claimed."
+    },
+    {
+      "session": "035",
+      "behavior": "Full-screen mobile illustration viewer with zoom and pan; subtle shade and animated cursor only on the first two substantive images per case",
+      "evidence": "Final bundled production build/typecheck and diff check passed. ReactDOMServer rendered all3 full case pages, exactly2 cues per case; covers/decorative concepts excluded and original files present. 60 zoom-anchor/inverse cases, limits and pinch geometry passed. Four browser specs added but not run: mandatory control-browser unavailable. Native dialog focus/gesture behavior remains unverified in a browser; original links and all assets/dependencies unchanged."
+    },
+    {
+      "session": "036",
+      "behavior": "Homepage heading corrected from Product Design to Product Designer",
+      "evidence": "Only author.discipline changed in application data; existing heading assertions updated to requested text. Bundled production build/typecheck and git diff --check passed. New heading confirmed in production bundle. Browser tests not run: mandatory control-browser unavailable; no layout or interaction changes."
     }
   ]
 }

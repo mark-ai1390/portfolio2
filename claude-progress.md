@@ -169,3 +169,189 @@
 - Первичный init.sh остановился на повреждённой загрузке Playwright Chromium. Для QA вне проекта установлен @sparticuz/chromium 153, распакован отдельно. Build/typecheck и git diff --check прошли. 42/43 Playwright прошли; единственное падение — ожидание старого заголовка Prime Kraft в touch-тесте. Исправлено ожидание на пользовательский PRIMEKRAFT, повторные covers: 3/3 passed.
 - Дополнительная браузерная проверка 18 комбинаций 3 routes × 1440/1280/1024/768/390/375: загрузка отдельных обложек, высота 550px, object-fit cover, видимый Telegram, корректный href, ссылка Figma через 10px, отсутствие горизонтальной прокрутки. Подтверждены mask-button-out → mask-button-in и mask-size 2300%, reduced focus — animation none / mask-position 100%. Снимки desktop/mobile просмотрены. Обнаруженное скрытие вложенных span кнопки старым mobile-правилом исправлено ограничением .case-header > span.
 - Полные кейсы остаются за пределами этого запроса; изменения сохраняются в существующую ветку.
+
+
+## Сессия 015 — новые экспорты и единая типографика
+
+- Пользователь прислал отредактированные 01 — Обложка CopterDrone(2).png и 01 — Обложка Prime Kraft(2).png. Оба файла доступны в upload, просмотрены, размеры 2048×970; WebP quality 95 заменяют только обложки этих двух кейсов. Высота 550px / fill сохранена, HTML сообщает реальные размеры исходников.
+- Общий Heading в src/components/ui: H1 48px desktop / 32px mobile, H2 32px, H3 24px; Rubik 700, общие line-height и letter-spacing. H1 кейсов, H2 главной Product Design и карточек, H2 секций и H3 шагов используют один компонент и CSS-токены. Удалены конфликтующие локальные размеры. Body-текст сохраняет размеры по назначению.
+- Отступ между блоком H1 и вторым изображением после обложки увеличен с 40 до 60px во всех кейсах.
+- ./init.sh с Chromium153: npm ci, typecheck/build, 43/43 Playwright passed. Дополнительная проверка 24 комбинаций четырёх маршрутов и шести ширин: размер/уровень H2 главной, H1/H2 кейсов, декодирование новых обложек, фиксированная высота 550px, gap 60px, отсутствие горизонтального overflow. Снимки desktop/mobile просмотрены.
+- Публикация в существующую ветку поверх b7761c6; исходные загруженные PNG и Figma не изменялись.
+
+
+## Сессия 016 — обновление выводов исследования
+
+- CopterDrone: UX-интервью сохранено, пункты 2–4 заменены точным текстом пользовательского скриншота — навигация и поиск, визуальная иерархия, поддержка и оформление. Иллюстрации этих трёх пунктов убраны.
+- Контейнер иллюстрации интервью имеет padding 12px на всех устройствах; фиксированная высота убрана, исходные пропорции сохранены. Браузер подтвердил четыре равных зазора на 1440/375px.
+- PRIMEKRAFT и 4sales получили три текстовых вывода из Page 3 Figma, заголовки и вводные абзацы оттуда же. Общий ResearchTimeline сохраняет blur, горизонтальную прокрутку desktop и вертикальную композицию mobile; длина линии и прокрутки рассчитывается для трёх или четырёх пунктов.
+- ./init.sh: npm ci, typecheck, production build и 47/47 Playwright passed (40.3s). Просмотрены снимки трёх блоков desktop/mobile. Проверены отсутствие overflow, доступность последнего пункта, reduced motion и загрузка картинки.
+- Код и проверки сохранены в существующую GitHub-ветку, без публикации служебных журналов и без изменения Figma. Следующий этап: остальные разделы кейсов по отдельному запросу.
+
+
+## Сессия 017 — финальные анимации выводов и гипотез
+
+- После research добавлен Главный вывод CopterDrone с точным текстом Figma 296:239724. TextAnimate адаптирован из Magic UI blurInUp (MIT): символы, delay 2s после входа в viewport, однократно, сохранён перенос по словам, доступный текст и reduced motion без ожидания. Добавлена motion dependency с lockfile и исходная лицензия.
+- PRIMEKRAFT: Гипотезы 342:125824 (5 пунктов). CRM: Принцип отбора решений 306:102877 (2 абзаца), затем Гипотезы 306:102881 (4 пункта). Тексты/порядок/22px gaps и padding20px из high-fidelity design context; H2 использует общий32px по прямому прошлому требованию.
+- Новые блоки Prime/CRM появляются через blur10px и подъём20px за0.7s при входе в viewport, однократно. На этом завершаются новые анимации кейсов по указанию пользователя. Figma не изменялась.
+- Начальный init.sh: build/typecheck и47/47 tests passed. Финальная сборка/typecheck и56/56 Playwright passed(51.3s), в том числе задержка/символы/однократность/reduced motion. Снимки новых блоков всех трёх страниц на1440/375 просмотрены. git diff --check чистый.
+- Изменения сохранены в существующую GitHub-ветку, только code/dependencies/tests/license. Остальные разделы кейсов остаются следующими этапами, без дополнительных анимаций.
+
+
+## Session 018 — Complete all case studies (2026-10-03)
+
+User requested missing CRM benchmarking and all three cases completed to the end of Page 3. Added remaining native copy/headings, 37 original source illustrations, architecture and components links, CRM browser prototype, results/status and shared contacts. Preserved approved cover, H1/H2 typography and prior intro/research animations; the newly restored benchmarking is static; existing next-block blur animations are preserved. Original images are locally stored as optimized WebP at 2048px width and open full size. No Figma write actions.
+
+Verification: baseline init.sh build/typecheck and 56/56 tests passed. Updated build/typecheck passed. Full suite: 74/75 passed; one newly added test expected the wrong source link label, corrected it; 19/19 completion tests then passed. Final CRM typography/spacing checks: build/typecheck and 7/7 CRM completion tests passed. Checked all six widths, 1280x600, heading order through contacts, image loads/ratios, focus, reduced motion and external hrefs. All 37 decoded images inspected in a contact sheet; detected empty architecture export and replaced it with the actual source map export. Desktop/mobile final layouts inspected. External destinations were matched to native Figma hyperlinks; live availability of external sites was not independently tested.
+
+Remaining project-wide blockers: resume file and video portrait were not provided. Hosting provider/address and production deployment are outside this case-completion task. Next: review completed pages; no remaining case sections are deferred. Code/tests/assets will be saved to existing GitHub branch; these local workflow logs remain local.
+
+Publication complete: remote branch codex/portfolio-setup-homepage updated to 21b45e3f349372d590e3a72b9a434a3a928cee95. All 49 code/test/asset paths in the published tree matched local Git blob hashes; branch ref verified after update. Six PRIMEKRAFT image uploads were initially blocked by automatic review for destination authorization; user explicitly confirmed publication and all six uploads succeeded. Local workflow files were excluded from the remote application commit.
+
+
+## Session 019 — Case links, navigation and visual polish (2026-10-03)
+
+Updated all case Figma buttons/footer links to the user's project design URLs. Shared back-to-top button appears after the research timeline, uses the requested Magic UI expanding-dot/sliding-label hover with an upward arrow, responds to keyboard, focuses the header after navigation, and skips smooth scroll when reduced motion is enabled. CRM selection heading and paragraphs now precede a native three-column comparison table transcribed from the original five criteria; the large raster comparison is no longer rendered.
+
+Corrected 13 source illustration backgrounds to #1E2025 at 40% composited on the #121213 page, exported at 2048px, retaining interface contents. Previously translucent fills were flattened over white; export-only clones supply the correct dark backdrop. Outer annotation text on newly dark backgrounds remains readable. Original Figma nodes were not changed; all temporary clones removed. Final wide images use a small clipped edge fill to hide white antialias borders.
+
+Verification: initial init.sh build/typecheck and75/75 passed. Final build/typecheck and82/82 Playwright passed. Verified six responsive widths, short viewport, native table values/order, no raster comparison, exact project links, back-to-top visibility/click/keyboard/reduced motion/hover and repeated return. Corrected image contact sheet and desktop/mobile CRM/final case layouts inspected. git diff --check clean.
+
+Publication: first image upload was rejected by auto-review as an unverified destination. Read-only GitHub checks proved the connected login and repository owner both mark-ai1390 (269963065), admin/push access, and existing published illustration paths. User's explicit prior image publication approval applies; retry accepted. Updating only requested application/assets/tests in the existing branch; workflow logs stay local.
+
+Publication blocked: after ownership/public-path checks, two corrected blobs were accepted (296-240837 and296-240511); remaining uploads were rejected again for lack of trusted explicit public-disclosure authorization. An unaffected code-only tree attempt was also rejected for source/contact/external-link disclosure. No branch ref changed. All26 application paths are ready locally and final82/82 tests passed. Pending release metadata: ../github-polish-upload.json; user must explicitly authorize publishing all source changes and13 corrected images to public mark-ai1390/portfolio2, branch codex/portfolio-setup-homepage. Do not resend rejected writes before authorization.
+
+Publication completed after user explicitly authorized the entire code and13-image package. All13 asset blobs accepted; all26 application paths in the new tree matched local Git object hashes. Remote branch codex/portfolio-setup-homepage updated non-forced to 6a16d6f6140cbfe20acc03b52c13ae71eb78a5ff and ref verified. Earlier publication blocker resolved; workflow logs remained local.
+
+## Session 020 — Public website publication (2026-10-03)
+
+User requested a public URL, rejecting Netlify. Registered Sites project appgprj_6ac0bd10f1308191ab5505376f242571; preserved all application source and artwork. Added static dist hosting with single-page-application fallback for the three case URLs. Production build/typecheck passed. init.sh installed dependencies successfully but browser download failed with a truncated Chromium archive; stopped repeated downloads. Existing 82/82 browser evidence remains from session019; no new browser pass claimed. GitHub branch is not automatically synchronized with the Sites source repository.
+
+Native access confirmed public (revision2). Version1 from pushed source24ea4a6e692279c461098e901c161729c259819c and verified local archive published successfully. Deployment appgdep_6ac0be0744308191bf6c5ce4a86d59c0 returned succeeded with URL https://mark-sanginov-portfolio.ligeon199815.chatgpt.site. Public access and deployment are verified by native responses; no deployed browser navigation claimed. Custom .ru domain not bought or configured. These final workflow records remain local after publication.
+
+
+## Session 021 — Back-to-top position and responsive case images (2026-10-03)
+
+Moved the back-to-top control to the viewport's right gutter. Full Magic UI label/hover remains on wide screens; compact arrow on narrow screens keeps the visible icon outside case text and retains the 44px touch target. Safe-area insets are respected.
+
+Added responsive WebP candidates for 39 case images (36 illustrations and three concepts), selected with srcset/sizes. Existing lazy loading remains; async decoding added. Original full-size links preserved. Image generation script validates bytes before atomic replacement. Total original image bytes10,941,648; 1160px previews3,329,970 (~70% less); 640px previews1,424,874. Three concept PNGs3,497,246 become288,510 bytes at1160px (~92% less). Actual selected sizes depend on screen width and pixel density.
+
+Verification: baseline init.sh build/typecheck and82/82 tests passed. Updated full suite83/89 passed; two incomplete generated files found and regenerated; integer density-corrected natural dimensions in aspect test replaced with exact decoded candidate ratio and fractional rendered box. Final build/typecheck passed; targeted completion/performance26/26 passed, including every case at six widths and right-gutter check at seven widths. All120 generated WebPs decoded successfully. Production desktop/mobile button screenshots and concept-image quality inspected. git diff --check clean. No claim of measured end-to-end network speed. Existing public Site and user-selected ms slug preserved. GitHub repository is not automatically synchronized. Publication follows.
+
+Publication: version2 from pushed source4164edccf7b9ceb0928e19d997657040337cc662 and archive-backed saved version appgprj_6ac0bd10f1308191ab5505376f242571~appgver_ad8f8d71db0081918be1e62b8d3cb502 deployed successfully. Native deployment appgdep_6ac0dd7c80c4819197ff60ba9d57cac6 returned succeeded at https://ms.ligeon199815.chatgpt.site. Existing public audience preserved. Final release record saved locally after publish.
+
+
+## Сессия 022 — 3 октября 2026: сверка всех кейсов с оригиналами Figma
+
+- Запрос: исправить четыре отмеченные композиции PRIMEKRAFT и перепроверить все блоки после первых анимированных секций во всех кейсах. Открыт существующий Site appgprj_6ac0bd10f1308191ab5505376f242571, исходный HEAD426c042476e6de922d6356bc8c14c78bb80ad7e7.
+- Сверены 79 блоков и 36 иллюстраций Page3 с текущими native screenshot/context и свойствами оригинальных узлов. Причина дефектов: временные clone-экспорты с изменённым фоном перестроили вложенные auto-layout и неверно затемнили белые панели. Восстановлена композиция из исходных неизменённых экспортов; прозрачные панели корректно собраны на фоне страницы, непрозрачные белые панели оставлены белыми. Макеты Figma не изменялись.
+- Все 36 иллюстраций получили новые имена source22, WebP2048 и адаптивные640/1160/1600. Старые заменённые файлы удалены. Сохранены lazy loading, srcset/sizes и ссылки на полный размер. Для CRM architecture восстановлена белая/угольная палитра native-рендера при сохранении исходной геометрии экспорта; Figma-use экспорт наследовал другую палитру.
+- Текст после анимированных секций: chapter48px bold/1.45, padding40/gap20; обычные заголовки28px/1.45, gap22; индивидуальные размеры/отступы и радиусы перенесены из оригинальных узлов. Верхние анимированные секции сохранены. На телефоне chapter32px.
+- Baseline init.sh: build/typecheck и89/89 Playwright passed. После изменений полный набор89/89 passed. Финальная сборка/typecheck и21/21 completion/source-fidelity passed. Все144 новых WebP декодированы, git diff --check passed; снимки готовых страниц1440/1035/375 просмотрены.
+- Добавлены две содержательные проверки: четырёх отмеченных иллюстраций по свежим native Figma reference fixtures (средняя RGB ошибка<5; старые дефектные файлы превышали порог), а также исходной типографики/панелей всех кейсов. Screenshot fixtures используются только в тестах, не в реализации сайта.
+- Публикуется обновление существующего публичного ms.ligeon199815.chatgpt.site. Отдельный GitHub repository в этой сессии не синхронизируется.
+
+
+## Сессия 023 — пользовательские экспорты CopterDrone (3 октября 2026)
+
+- Заменены ровно пять иллюстраций: главный экран296:239752, преимущества/отзывы296:239789, страница товара296:240019, мобильный мокап386:148049 и логотип296:240837. Использованы присланные PNG, SHA-256 копий совпадает с вложениями. Исходная композиция/прозрачность сохранены; размеры обновлены по реальным пропорциям экспортов. Уточнён alt мобильного мокапа. Остальные блоки, порядок, тексты и кейсы сохранены.
+- Оригинальные PNG открываются по клику. Добавлены20 lossless WebP640/1160/1600/full; full-size WebP проверены на точное совпадение пикселей с PNG. Превью сохранены атомарно после обнаружения одного пустого640px файла.
+- init.sh установил зависимости, но скачивание pinned Chromium заблокировано окружением. Использован отдельный временный Chromium153 без изменения project dependencies/lockfile. Build/typecheck passed. Полный набор89/91 passed; обе ошибки относились к пустому превью мобильного мокапа. После исправления6/6 CopterDrone completion checks на1440/1280/1024/768/390/375 и временная QA-проверка всех пяти блоков desktop/mobile прошли7/7. Временная QA-проверка удалена. Все20 файлов декодированы; desktop/mobile screenshot sheets просмотрены; горизонтального overflow нет.
+- Используется существующий публичный Site с текущим адресомmark-sanginov.ru. GitHub repository отдельно не синхронизируется. Публикация следует.
+
+
+## Сессия 024 — дополнительные экспорты CopterDrone
+
+- Заменены два блока по новым вложениям:296:239789 преимущества/отзывы/обратная связь и347:196298 финальная композиция обновлённого логотипа. PNG скопированы без изменения байтов; сохранены исходные альфа-каналы, полные пропорции и wide-размещение логотипа. Использованы новые URLv2 для обхода старого кеша.
+- Добавлены8 lossless WebP640/1160/1600/full с атомарным сохранением; все8 декодированы, full-size пиксели совпадают с PNG. Оригиналы остаются доступными по клику.
+- Проверены присланные экспорты;6/6 существующих CopterDrone completion tests прошли на1440/1280/1024/768/390/375, включая загрузку всех иллюстраций, пропорции и отсутствие overflow. git diff --check passed. Build/typecheck выполняются при публикации. Остальные блоки и кейсы сохранены.
+
+
+## Сессия 025 — финальные иллюстрации от края до края
+
+- По запросу пользователя снят предел1440px с финальных wide-иллюстраций CopterDrone347:196298 и PRIMEKRAFT342:126857. Их ширина теперь100vw с симметричным выходом из центрального контейнера; изображения сохраняют автоматическую высоту и исходные пропорции. sizes обновлён на100vw для правильного выбора responsive-ресурса на широких мониторах.
+- Существующие completion checks обоих кейсов12/12 прошли; временная геометрическая проверка двух изображений на2560/1920/1440/1280/1024/768/390/375 подтвердила левый край0 и правый крайviewport, без горизонтального overflow. Всего14/14 passed. Desktop1920 screenshots просмотрены; временная проверка удалена. Build/typecheck выполняются при публикации.
+
+
+## Сессия 026 — восемь пользовательских экспортов PRIMEKRAFT
+
+- Заменены восемь иллюстраций: первый экран342:125905, каталог342:126465, иерархия карточки342:126622, оформление342:126661, Рафт342:126749, аватары/категории342:126766, упаковка/реклама342:126846 и финальный Frame2147203480→342:126857. Оригинальные PNG скопированы byte-for-byte; высоты/ширины обновлены по экспорту, wide100vw финального блока сохранён. Другие блоки и кейсы сохранены.
+- Добавлены32 lossless WebP640/1160/1600/full с атомарным сохранением и проверкой декодирования. Full-size пиксели совпадают с PNG; оригиналы открываются по клику. Экспорты просмотрены в контактном листе.
+- Существующие completion tests PRIMEKRAFT6/6 passed на1440/1280/1024/768/390/375, включая все изображения, пропорции и отсутствие overflow. Проверка source-fidelity сначала обнаружила отличия от старого Figma reference; три затронутых reference fixtures обновлены из новых пользовательских экспортов без изменения порога или критериев. Финальные source-fidelity/typography2/2 passed. git diff --check clean. Build/typecheck выполняются при публикации.
+
+
+## Сессия 027 — шесть пользовательских экспортов 4sales CRM
+
+- Заменены только шесть иллюстраций: дашборд315:116030, заказы315:118340, клиенты315:119856, коммуникации315:121358, товары/склады315:123072 и менеджеры315:124712. PNG скопированы без изменения байтов; размеры обновлены по реальным экспортам. Сохранены альфа-каналы, порядок, поля и радиусы остальных блоков. Оригиналы доступны по клику.
+- Подготовлены24 lossless WebP640/1160/1600/2048 с атомарной записью. Все24 повторно декодированы, размеры проверены; full-size пиксели совпадают с PNG. Контактный лист экспортов просмотрен. Структурное сравнение с HEAD подтвердило ровно шесть замен src/width/height и неизменность других блоков.
+- Bundled Sites build-site: production build/typecheck passed; git diff --check passed. Browser QA/Playwright в этой сессии не запускались: текущий Sites workflow требует control-browser для managed preview, доступного skill нет. Новый browser pass не заявляется. Существующие зависимости и lockfile сохранены.
+- Обновляется существующий публичный Site appgprj_6ac0bd10f1308191ab5505376f242571. Отдельный GitHub repository не синхронизируется.
+
+## Сессия 028 — подключение готового резюме
+
+- По запросу продолжить подключён готовый одностраничный PDF из предыдущего шага к кнопке «Резюме» на главной. Недоступный placeholder заменён ссылкой; путь хранится в author.resume. PDF открывается в новой вкладке с noopener/noreferrer и явным доступным описанием. Дизайн кнопки наследует существующие стили контактов.
+- Байты исходного, public и production dist PDF совпадают. Bundled Sites production build/typecheck и git diff --check прошли. Browser QA не выполнялась: обязательный control-browser недоступен. init.sh не запускался, поскольку он устанавливает браузер и запускает отдельный preview, что запрещено текущим managed Sites workflow без этого skill. Dependencies/lockfile не менялись.
+- Анимации и кейсы сохранены. Следующий шаг — получить референсы пользователя для анимации обложек на главной. Публикуется обновление существующего публичного Site; отдельный GitHub repository не синхронизируется.
+
+## Сессия 029 — переработанное резюме по рынку 2026
+
+- По запросу пользователя проанализированы отчёт hh.ru за август2026, опубликованные требования продуктового дизайнера Т-Банка, рекомендации Яндекса по найму и документация Greenhouse по распознаванию резюме. Общая статистика/широкая ИТ-сфера не выдаются за выборку дизайнерских вакансий; отдельная зарплатная медиана не рассчитывалась. Архивная вакансия Yandex Robotics не представляется активной.
+- Резюме переписано конкретными действиями, заголовок UI/UX-дизайнер; специализация интернет-магазины/CRM. Купер и Мегамаркет описаны как обучение/SMM, не дизайнерская работа. Коммерческие проекты и самостоятельная концепция разделены; ИИ упомянут только в инструментах. Вымышленные метрики/грейд/опыт аналитики не добавлены. Годы работы сохранены с вложенного скриншота; месяцы требуют уточнения.
+- Одностраничные PDF/Word сохранены как новые версии прежних файлов. Финальный DOCX отрендерен и PNG просмотрен; читаемый PDF-текст и6 ссылок проверены. Сайт подключает новый URL mark-sanginov-resume-ru-v2.pdf; байты источника/public/dist совпадают. Bundled production build/typecheck и git diff --check passed. Browser QA не запускалась: обязательный control-browser недоступен. Код анимаций, кейсы и зависимости сохранены.
+
+
+## Сессия 030 — MacBook Scroll для главного экрана CopterDrone
+
+- По запросу пользователя изучен официальный референс Aceternity Macbook Scroll и документация Motion useScroll/useReducedMotion. В блок296:239752 внутри кейса CopterDrone подключён собственный адаптированный компонент: наклонённый экран ноутбука увеличивается и выравнивается при прокрутке, рамка/клавиатура исчезают. Заголовок раздела сохранён; реклама/бейдж и демонстрационный английский текст не переносились. Главная портфолио и остальные блоки не изменены.
+- Использован приложенный Main.png2048×1280. Оригинал скопирован без изменения байтов, открывается по клику. Четыре lossless WebP640/1160/1600/2048 декодированы; каждый пиксельно совпадает с исходным или соответствующим resized изображением. Srcset/lazy loading/async decoding сохранены.
+- Sticky-сцена зависит от высоты окна; на телефонах короче. Начало/конец прогресса вычисляются по реальной высоте и sticky-top сцены; ResizeObserver и resize обновляют значения. При prefers-reduced-motion используется обычная иллюстрация; link focus показывает неподвижный экран с видимым outline.
+- Сравнение данных с исходным HEAD подтверждает изменение только src/height/presentation блока296:239752 и сохранение остальных блоков/порядка. Расчёт геометрии на восьми размерах окна375–2560px подтверждает ненулевой диапазон прокрутки и вмещающийся финальный экран; это структурная проверка, не browser QA. Public/dist bytes всех пяти новых изображений совпадают, production bundle содержит новый responsive manifest.
+- Bundled Sites production build/typecheck пройден, включая финальную сборку после корректировки геометрии. Browser QA/init.sh не запускались: control-browser недоступен, а managed Sites workflow запрещает устанавливать браузер/запускать альтернативный preview. Визуальная плавность в браузере ещё не проверена. Dependencies/lockfile и Figma сохранены. Публикуется существующий публичный Site.
+
+
+## Сессия 031 — новые обложки PRIMEKRAFT/CRM и Comet Card
+
+- По запросу пользователя обновлены четыре состояния карточек на главной: Презентация-1.png → PRIMEKRAFT normal; Презентация.png → PRIMEKRAFT hover; Презентация1.png → CRM normal; Презентация2.png → CRM hover. Все исходники2048×1227, композиции/цвета сохранены. Четыре полноразмерных и восемь responsive WebP640/1160 сохранены атомарно, lossless с exact=True; проверены все RGBA-каналы, включая RGB прозрачных углов. Новые URLv2 обходят старый кеш.
+- Изучены официальный Comet Card Aceternity и useSpring Motion. Добавлен адаптированный общий компонент src/components/ui/comet-card.tsx: наклон за курсором, небольшое приближение и перемещающийся мягкий блик. Для двух крупных карточек параметры8°/6px; измеряется неподвижная обёртка, чтобы собственный наклон не менял координаты курсора. Hover-картинка переключается прежним crossfade300ms. Цвета/тексты/ссылки/порядок/радиусы/отступы карточек сохранены.
+- Comet включён только для PRIMEKRAFT и4sales. При coarse pointer, reduced motion и фокусе с клавиатуры трансформация/блик отключаются. Touch-события не включают наклон; карточка остаётся единственной ссылкой на кейс. Горизонтальный выход наклонённой карточки за пределы страницы ограничен overflow-x:clip главной.
+- Srcset на главной использует размеры её колонок; intrinsic width/height соответствуют новым изображениям, без обрезки. Кейсы, MacBook Scroll CopterDrone, резюме и зависимости не изменены. Обновлены существующие проверки обложек: стабильность размеров в потоке вместо неподвижного визуального bounding box, который теперь меняется по прямому запросу пользователя; добавлены проверки Comet glare/transform и disabled touch/reduced motion. Эти browser-тесты не запускались.
+- Browser QA и init.sh пропущены: обязательный control-browser недоступен; managed Sites workflow запрещает альтернативный preview и установку браузера. Финальная TypeScript/production build после сохранения прозрачных пикселей и обновления тестов пройдена. Все12 WebP проверены по каждому RGBA-каналу; public/dist bytes совпадают. Остальные manifest entries, данные CopterDrone на главной, author/resume, кейсы, MacBook Scroll и dependencies/lockfile сохранены. git diff --check passed. Existing public Site и отдельный GitHub repository не меняют аудиторию/синхронизацию.
+
+
+## Сессия 032 — мобильные композиции, текст и порядок анимированных экранов
+
+- В CRM блок315:116030 теперь использует собственную компактную адаптацию Container Scroll: «Дашборд» → экран с наклоном/масштабом при прокрутке → подзаголовок, описание и ссылка на существующий прототип. В CopterDrone: «Главный экран» → MacBook Scroll → поясняющий подзаголовок и текст. Сокращена высота сцены и зазор над ноутбуком; progress учитывает новый sticky-top24px. При reduced motion экраны статичны; keyboard focus снимает трансформацию. Отдельный сайт CRM не изменён.
+- Подключены шесть новых мобильных экспортов. Prime Kraft(3)/CopterDrone(3)/4sales изображение пользователя → обложки; Главный экран.png → PRIMEKRAFT, -1 → CopterDrone, -2 →4sales. Ниже768px первые две иллюстрации каждого кейса показываются на полную ширину телефона, без обрезки; при375px используются исходные пропорции375×224.67 и375×428. Desktop-композиции сохранены. Мобильная вторая иллюстрация открывает полноразмерный мобильный оригинал в lossless WebP.
+- Созданы18 responsive WebP375/750/1125 с lossless=True, exact=True. Все18 декодированы, размеры и каждый RGBA-канал сравнены с оригиналом/resize; public/dist bytes совпадают. 79 блоков и36 прежних src/width/height/wide/radius сохранены. Расчёт вмещения MacBook проверен на восьми размерах375–2560px; это численная проверка, не браузерная.
+- Просмотрены тексты главной и всех трёх кейсов.54 формулировки/заголовка упрощены; убраны лишние описания «контекста», «приоритизации» и «визуальной системы», уточнены действия. Сохранены факты, статус инициативной концепции/прототипа и отсутствие измеренных результатов. В абзацах убраны жёсткие переносы; line-height1.6, max-width880px для длинного текста, mobile18px. Заголовки больше не разрывают слова через overflow-wrap:anywhere; text-wrap:balance/pretty дополняют ручную типографику. Таблица CRM на телефоне показывает критерий и два подписанных значения отдельными блоками, сохраняя table semantics.
+- Общий typography helper связывает короткие русские предлоги/союзы с последующим словом через NBSP. Heading и все основные абзацы используют его. TextAnimate группирует связанные слова целиком; обнаружено и устранено превращение NBSP в обычные пробелы внутри GSAP SplitText (reduceWhiteSpace:false). Прямые проверки цепочек, регистра, пунктуации, URL, новых строк, повторного применения и группировки прошли.
+- Bundled Sites production build/typecheck passed; существующие проверки вступлений/полных кейсов/загрузки обновлены для нового mobile aspect и текста, но browser-тесты не выполнялись. Browser QA/init.sh пропущены: control-browser недоступен, managed Sites workflow запрещает альтернативный preview/установку браузера. Визуальные переносы и плавность в реальном браузере остаются непроверенными. Dependencies/lockfile, Figma, резюме и homepage Comet сохранены. Публикуется существующий публичный Site.
+
+
+## Сессия 033 — Comet Card для CopterDrone на главной
+
+- По прямому запросу пользователя карточке CopterDrone добавлен cardAnimation:'comet'. Используется тот же общий компонент и параметры8°/6px, что у PRIMEKRAFT/4sales: наклон по курсору, приближение и мягкий блик. Изображения normal/hover и переход300ms, ссылка и тексты сохранены. Прежние ограничения touch/reduced-motion/keyboard focus наследуются автоматически.
+- Проверка diff подтверждает единственное изменение данных — флаг CopterDrone; все3 карточки используют Comet. В существующей browser-проверке добавлен count3; исправлен локатор transform, который раньше искал surface внутри самого surface. Browser QA/тесты и init.sh не запускались: обязательный control-browser недоступен; managed Sites workflow запрещает альтернативный preview. Bundled production build/typecheck выполняется при упаковке. Публикуется существующий публичный Site; другие блоки и зависимости сохранены.
+
+
+## Сессия 034 — мобильные обложки и единые кнопки кейсов (4 октября2026)
+
+- По запросу пользователя мобильные обложки всех3 кейсов показываются прямоугольными от края до края. CSS radius уже был0, но сами PNG/WebP имели прозрачные закруглённые углы. Добавлена CSS-подложка из того же изображения с background-size104%: она заполняет только прозрачные углы под исходным, необрезанным слоем. image-set выбирает существующие375/750/1125 ресурсы; оригинальные файлы/пропорции и desktop radius14px сохранены. Альфа-композиция всех9 вариантов проверена численно: углы полностью непрозрачны. Это не browser screenshot.
+- Верхняя «Макеты Figma» на mobile выровнена по левому краю контента. Общий CaseNavLink используется для обеих «На главную» и обеих «Макеты Figma»: одна палитра, padding10×16, font16/700, radius14, min-height36. Figma сохраняет width234px; «На главную» компактна по содержимому. Footer Figma теперь называется ровно «Макеты Figma», без стрелки, и использует тот же компонент, URL и target/rel, что верхняя. Header/footer возврат ведёт к исходной карточке.
+- Убраны декоративные значки нижних контактных ссылок; email/Telegram сохранены. Существующая кнопка прокрутки «Наверх» сохранена. Браузерные спецификации обновлены для одинаковых названий и областей header/footer, а также отсутствующих contact icons; не запускались.
+- Bundled Sites production build/typecheck и git diff --check прошли. Структурная проверка подтвердила общий рендер4 ссылок и отсутствие прежнего названия/значка Footer Figma. Browser QA/init.sh пропущены: control-browser недоступен; managed Sites workflow запрещает альтернативный preview. Публикуется существующий публичный Site. Макеты Figma, данные проектов, иллюстрации, анимации, резюме и dependencies/lockfile сохранены.
+
+
+## Сессия 035 — просмотр иллюстраций крупнее на телефоне
+
+- По запросу пользователя добавлен общий native-dialog viewer для содержательных иллюстраций всех трёх кейсов. На телефоне открывается во весь экран сразу с масштабом2×; изображение можно перемещать, увеличивать двумя пальцами или кнопками до6×, вернуть «По ширине». На desktop открывается с1×. Открывается исходный файл; responsive preview остаётся виден, пока грузится оригинал. Есть загрузка/ошибка и отдельная ссылка на оригинал. Modifier-click сохраняет прежнюю отдельную вкладку.
+- Обложки и декоративные концепты под ними не подключены к viewer и не изменены. На первых двух содержательных иллюстрациях в каждом кейсе только ниже768px добавлены мягкое затемнение и белый анимированный курсор с подписью «Открыть крупнее». Исследование учитывается первым по порядку; остальные иллюстрации открываются без подсказок. После открытия конкретная подсказка исчезает до перезагрузки страницы. Reduced motion останавливает движение.
+- Viewer подключён также к MacBook Scroll и Container Scroll; существующие motion/радиусы/исходники сохранены. Native dialog, явная кнопка закрытия, Escape/backdrop, блокировка страницы, возврат фокуса и позиции реализованы. Focus timeline учитывает focus-visible, чтобы нажатие/возврат не прокручивали страницу к другому месту. Pointer capture, обработка cancel/lost capture, якорь zoom и midpoint pinch выделены в общий расчёт.
+- Финальный bundled Sites production build/typecheck прошёл (479 modules, существующее предупреждение chunk>500kB); git diff --check clean. ReactDOMServer отрендерил все3 CasePage, подтвердил ровно2 подсказки на каждый, отсутствие viewer-триггеров на cover/concepts и существование всех оригиналов.60 численных случаев zoom anchor/inverse, границы1–6× и pinch midpoint/distance прошли. Это структурные/численные проверки, не browser QA.
+- Добавлены четыре browser specs: mobile3 cases и desktop keyboard; не запускались. Обязательный control-browser недоступен, поэтому init.sh, альтернативный preview и установка браузера не выполнялись. Жесты, focus trap, реальные переносы и внешний вид требуют browser-проверки; новый browser pass не заявляется. Feature006 отмечен blocked только для повторной проверки новых взаимодействий, feature007 остаётся единственным in_progress. Assets, dependencies/lockfile, отдельный CRM-прототип и GitHub repository не изменены. Публикуется существующий публичный Site.
+
+
+## Сессия 036 — Product Designer на главной
+
+- По точному запросу пользователя author.discipline заменён с «Product Design» на «Product Designer». Существующие проверки заголовка обновлены; остальные тексты/стили/кейсы сохранены.
+- Bundled Sites production build/typecheck и git diff --check прошли; новая строка присутствует в production bundle. Browser tests/init.sh не запускались: обязательный control-browser недоступен, альтернативный preview запрещён текущим Sites workflow. Публикуется существующий публичный Site.

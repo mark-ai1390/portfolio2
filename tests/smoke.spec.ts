@@ -7,7 +7,7 @@ test('главная запускается без ошибок JavaScript и з
   page.on('requestfailed', request => failedRequests.push(request.url()));
   const response = await page.goto('/');
   expect(response?.status()).toBe(200);
-  await expect(page.getByRole('heading', { name: 'Product Design' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Product Designer' })).toBeVisible();
   await expect(page.getByText('Марк Сангинов', { exact: true })).toBeVisible();
   expect(await page.evaluate(async () => {
     await document.fonts.load('400 16px Rubik', 'Марк');

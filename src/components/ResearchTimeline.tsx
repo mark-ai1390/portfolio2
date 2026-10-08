@@ -1,6 +1,8 @@
+import { typography } from '../lib/typography';
 import { useEffect, useRef, type CSSProperties } from 'react';
 import { Heading } from './ui/heading';
 import type { ResearchStep } from '../data/case-research';
+import { CaseImageLink } from './CaseImageViewer';
 
 export function ResearchTimeline({ steps }: { steps: ResearchStep[] }) {
   const section = useRef<HTMLElement>(null);
@@ -61,6 +63,7 @@ export function ResearchTimeline({ steps }: { steps: ResearchStep[] }) {
         <div className="research-window">
           <ol className="research-track" ref={track} onFocusCapture={event => {
             const root = section.current!;
+            if (!(event.target as HTMLElement).matches(':focus-visible')) return;
             if (!root.classList.contains('research--pinned')) return;
             const item = (event.target as HTMLElement).closest('li');
             const index = [...track.current!.children].indexOf(item!);
@@ -73,10 +76,11 @@ export function ResearchTimeline({ steps }: { steps: ResearchStep[] }) {
               <li className="research-step" key={step.title} style={{ '--step': index } as CSSProperties}>
                 <div className="research-marker" aria-hidden="true"><span>{String(index + 1).padStart(2, '0')}</span></div>
                 <Heading level={3}>{step.title}</Heading>
-                <p>{step.text}</p>
-                {step.image && <a className="research-image" href={step.image} target="_blank" rel="noopener noreferrer" aria-label={`Открыть иллюстрацию: ${step.title}`}>
+                <p>{typography(step.text)}</p>
+                {step.image && <CaseImageLink className="research-image" image={{ src: step.image, alt: step.alt ?? step.title, width: step.width!, height: step.height! }}
+                  style={{ '--case-cue-inset': '12px', '--case-cue-radius': '8px' } as CSSProperties} aria-label={`Открыть иллюстрацию: ${step.title}`}>
                   <img src={step.image} alt={step.alt} width={step.width} height={step.height} loading="lazy" />
-                </a>}
+                </CaseImageLink>}
               </li>
             ))}
           </ol>
@@ -85,4 +89,3 @@ export function ResearchTimeline({ steps }: { steps: ResearchStep[] }) {
     </section>
   );
 }
-

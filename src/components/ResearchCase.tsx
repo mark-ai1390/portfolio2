@@ -1,3 +1,4 @@
+import { typography } from '../lib/typography';
 import { CasePage } from './CasePage';
 import { CaseFollowups } from './CaseFollowups';
 import { CaseContent } from './CaseContent';
@@ -16,7 +17,7 @@ export function ResearchCase({ id }: { id: string }) {
         <TextBlockAnimation blockColor={project.accent}>
           <p className="case-eyebrow">01 / {project.company.toUpperCase()}</p>
           <CaseHeading id="research-title">{research.title}</CaseHeading>
-          <p className="case-research-description">{research.introduction}</p>
+          <p className="case-research-description">{typography(research.introduction)}</p>
         </TextBlockAnimation>
       </div>
       <ResearchTimeline steps={research.steps} />

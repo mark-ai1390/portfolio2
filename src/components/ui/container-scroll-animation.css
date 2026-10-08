@@ -1,0 +1,24 @@
+.container-scroll { position: relative; min-width: 0; width: 100%; perspective: 1200px; padding: 12px 12px 20px; }
+.container-scroll-title { margin-bottom: 20px; }
+.container-scroll-card { border: 8px solid #36373e; border-radius: 24px; background: #17181d; box-shadow: 0 20px 60px #0005; transform-origin: center top; }
+.container-scroll-card a, .container-scroll-card img { display: block; width: 100%; }
+.container-scroll-card img { height: auto; border-radius: 16px; }
+.container-scroll-card:has(:focus-visible) { transform: none !important; }
+.case-dashboard-screen { margin: 0; min-width: 0; }
+.case-screen-section { display: flex; flex-direction: column; min-width: 0; gap: 16px; }
+.case-screen-section > .heading { font-size: 32px; line-height: 1.35; }
+.case-screen-caption { display: flex; flex-direction: column; gap: 16px; padding-top: 4px; }
+.case-screen-caption > .heading { font-size: 24px; line-height: 1.45; }
+.case-screen-caption p { margin: 0; font-size: 20px; line-height: 1.6; color: #cacad2; }
+.case-screen-caption a { align-self: flex-start; color: var(--case-accent); font-size: 18px; line-height: 1.45; }
+@media (max-width: 767px) {
+  .container-scroll { padding: 8px 0 12px; }
+  .container-scroll-card { border-width: 4px; border-radius: 16px; }
+  .container-scroll-card img { border-radius: 12px; }
+  .case-screen-section > .heading { font-size: 28px; }
+  .case-screen-caption > .heading { font-size: 22px; }
+  .case-screen-caption p { font-size: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .container-scroll-card { transform: none !important; }
+}

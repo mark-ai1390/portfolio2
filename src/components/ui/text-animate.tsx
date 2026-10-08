@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion, type Variants } from 'motion/react';
+import { typography } from '../../lib/typography';
 
 // Adapted from Magic UI Text Animate (MIT), retaining its blurInUp timing.
 // https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/text-animate.tsx
@@ -23,8 +24,9 @@ const blurInUp: Variants = {
 
 export function TextAnimate({ children, by = 'character', delay = 0, duration = .3, className }: TextAnimateProps) {
   const reduced = useReducedMotion();
-  if (reduced) return <p className={className}>{children}</p>;
-  const segments = by === 'character' ? Array.from(children) : [children];
+  const text = typography(children);
+  if (reduced) return <p className={className}>{text}</p>;
+  const segments = by === 'character' ? Array.from(text) : [text];
   const container: Variants = {
     hidden: { opacity: 1 },
     show: { opacity: 1, transition: { delayChildren: delay, staggerChildren: duration / segments.length } },
@@ -34,12 +36,12 @@ export function TextAnimate({ children, by = 'character', delay = 0, duration = 
   const segment = (text: string) => <motion.span key={index++} className="text-animate-character" variants={blurInUp}>{text}</motion.span>;
   return (
     <motion.p className={className} variants={container} initial="hidden" whileInView="show" viewport={{ once: true, amount: .2 }}>
-      <span className="sr-only">{children}</span>
+      <span className="sr-only">{text}</span>
       <span aria-hidden="true">
-        {by === 'character' ? children.split(/(\s+)/).map((word, i) => /^\s+$/.test(word)
+        {by === 'character' ? text.split(/([ \t\r\n]+)/).map((word, i) => /^[ \t\r\n]+$/.test(word)
           ? <span key={i}>{Array.from(word).map(segment)}</span>
           : <span key={i} className="text-animate-word">{Array.from(word).map(segment)}</span>)
-          : segment(children)}
+          : segment(text)}
       </span>
     </motion.p>
   );

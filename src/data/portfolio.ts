@@ -5,7 +5,8 @@ export interface Project {
   path: string;
   figmaNode: string;
   tags: string[];
-  cover: { src: string; hoverSrc: string; alt: string };
+  cover: { src: string; hoverSrc: string; alt: string; width?: number; height?: number };
+  cardAnimation?: 'comet';
 }
 
 // Copy verified against Page 3, homepage 296:259684 and card set 417:144766.
@@ -14,38 +15,42 @@ export const projects: Project[] = [
   {
     id: 'primekraft',
     title: 'PrimeKraft',
-    summary: 'Концепция редизайна интернет-магазина: аудит, структура, карточка товара, корзина и развитие визуального языка бренда.',
+    summary: 'Аудит и концепция интернет-магазина спортивного питания: каталог, карточки товаров, оформление заказа и фирменный стиль.',
     tags: ['E-commerce', 'UI/UX', 'Brand System'],
     path: '/projects/primekraft',
     figmaNode: '342:125764',
-    cover: { src: '/assets/primekraft-normal.webp', hoverSrc: '/assets/primekraft-hover.webp', alt: 'Концепция магазина PrimeKraft на экране ноутбука' },
+    cover: { src: '/assets/primekraft-normal-v2.webp', hoverSrc: '/assets/primekraft-hover-v2.webp', alt: 'Концепция магазина PrimeKraft на экране ноутбука', width: 2048, height: 1227 },
+    cardAnimation: 'comet',
   },
   {
     id: 'copterdrone',
     title: 'CopterDrone',
-    summary: 'Редизайн интернет-магазина радиоуправляемых моделей',
+    summary: 'Редизайн интернет-магазина радиоуправляемых моделей: поиск, каталог, покупка и личный кабинет.',
     tags: ['E-commerce', 'UI/UX', 'Mobile-first'],
     path: '/projects/copterdrone',
     figmaNode: '296:239537',
     cover: { src: '/assets/copterdrone-normal.webp', hoverSrc: '/assets/copterdrone-hover.webp', alt: 'Интернет-магазин CopterDrone на ноутбуке и телефоне' },
+    cardAnimation: 'comet',
   },
   {
     id: '4sales',
     title: '4SALES CRM',
-    summary: 'Редизайн CRM-системы для работы с клиентами, заказами, товарами, менеджерами и внутренними процессами.',
+    summary: 'Редизайн CRM для работы с заказами, клиентами, товарами и командой. От анализа и структуры экранов до макетов и прототипа.',
     tags: ['CRM', 'Product design'],
     path: '/projects/4sales',
     figmaNode: '306:102823',
-    cover: { src: '/assets/4sales-normal.webp', hoverSrc: '/assets/4sales-hover.webp', alt: 'Дашборд 4SALES CRM на планшете' },
+    cover: { src: '/assets/4sales-normal-v2.webp', hoverSrc: '/assets/4sales-hover-v2.webp', alt: 'Дашборд 4SALES CRM на планшете', width: 2048, height: 1227 },
+    cardAnimation: 'comet',
   },
 ];
 
 export const author = {
   name: 'Марк Сангинов',
+  resume: '/assets/mark-sanginov-resume-ru-v2.pdf',
   portrait: '/assets/mark-portrait.jpg',
-  discipline: 'Product Design',
+  discipline: 'Product Designer',
   areas: ['B2B', 'Desktop', 'Mobile'],
-  description: 'Проектирую e-commerce и сложные web-интерфейсы от UX-аудита и структуры\nдо UI и передачи в разработку',
+  description: 'Проектирую интернет-магазины и CRM. Изучаю сценарии, продумываю структуру и готовлю макеты для разработки.',
   contacts: [
     { label: 'Email', href: 'mailto:ligeon199815@gmail.com' },
     { label: 'Telegram', href: 'https://t.me/Markro1998' },
