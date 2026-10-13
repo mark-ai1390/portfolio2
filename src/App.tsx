@@ -1,6 +1,7 @@
 import { Heading } from './components/ui/heading';
 import { AuthorPanel } from './components/AuthorPanel';
 import { ProjectCard } from './components/ProjectCard';
+import { ConceptGallery } from './components/ConceptGallery';
 import { projects } from './data/portfolio';
 import { CopterDroneCase } from './components/CopterDroneCase';
 import { useEffect } from 'react';
@@ -32,6 +33,7 @@ export function App() {
         <AuthorPanel />
         <main id="projects" className="project-list" aria-label="Проекты" tabIndex={-1}>
           {projects.map(project => <ProjectCard key={project.id} project={project} />)}
+          <ConceptGallery />
         </main>
       </div>
     </>
